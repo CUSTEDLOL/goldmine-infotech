@@ -1,0 +1,187 @@
+/* ============================================================
+   Software Overview Page — prefix: swo-
+   ============================================================ */
+
+.swo-root {
+  padding-top: 72px;
+  background: #fff;
+  overflow-x: clip;
+}
+
+/* ──────────────────────────────────────────
+   HERO — compact dark header ~320px
+────────────────────────────────────────── */
+.swo-hero {
+  background: #0a0a0a;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 64px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle grid overlay */
+.swo-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+.swo-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  width: 100%;
+}
+
+.swo-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fca311;
+  margin-bottom: 20px;
+}
+
+.swo-headline {
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #fff;
+  margin: 0 0 20px;
+  white-space: pre-line;
+}
+
+.swo-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.42);
+  line-height: 1.65;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ──────────────────────────────────────────
+   SOFTWARE NAV SECTION
+────────────────────────────────────────── */
+.swo-nav-section {
+  background: #fff;
+  padding: 80px 24px;
+}
+
+.swo-nav-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.swo-nav-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 32px;
+}
+
+.swo-nav-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.swo-nav-group-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fca311;
+  margin-bottom: 12px;
+}
+
+.swo-nav-list {
+  border: 1px solid #ebebeb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.swo-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid #ebebeb;
+  font-size: 15px;
+  color: #0a0a0a;
+  text-decoration: none;
+  transition: background 0.12s;
+  gap: 12px;
+}
+
+.swo-nav-link:last-child {
+  border-bottom: none;
+}
+
+.swo-nav-link:hover {
+  background: #fafafa;
+}
+
+.swo-nav-link-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.swo-nav-arrow {
+  color: #ccc;
+  font-size: 16px;
+  flex-shrink: 0;
+  transition: color 0.12s, transform 0.12s;
+}
+
+.swo-nav-link:hover .swo-nav-arrow {
+  color: #fca311;
+  transform: translateX(2px);
+}
+
+.swo-nav-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  background: rgba(252,163,17,0.12);
+  border: 1px solid rgba(252,163,17,0.3);
+  color: #fca311;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+
+/* ──────────────────────────────────────────
+   RESPONSIVE
+────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .swo-hero {
+    min-height: auto;
+    padding: 48px 20px;
+  }
+
+  .swo-nav-section {
+    padding: 56px 20px;
+  }
+
+  .swo-nav-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}

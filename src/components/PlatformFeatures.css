@@ -1,0 +1,214 @@
+/* ============================================================
+   Platform Features — Scroll-jacked Slot Machine
+   ============================================================ */
+
+.platform {
+  background: var(--white);
+}
+
+.pf-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 48px;
+  width: 100%;
+}
+
+/* ── Split Header ── */
+.pf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 80px;
+  gap: 40px;
+}
+
+.pf-header-left {
+  flex: 1;
+}
+
+.pf-header-left h2 {
+  font-size: clamp(32px, 3.5vw, 44px);
+  font-weight: 500;
+  color: var(--black);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+  max-width: 500px;
+}
+
+.pf-header-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.pf-header-right p {
+  font-size: 18px;
+  color: var(--black);
+  line-height: 1.5;
+  margin: 0;
+  max-width: 480px;
+}
+
+/* ── Two columns ── */
+.pf-two-col {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  position: relative;
+}
+
+/* ── LEFT: Full List ── */
+.pf-left-list {
+  flex: 0 0 38%;
+  display: flex;
+  flex-direction: column;
+  gap: 22vh;
+  padding-top: 15vh;
+  padding-bottom: 20vh;
+}
+
+.pf-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  color: #a3a3a3;
+  transition: color 0.4s ease, opacity 0.4s ease;
+  opacity: 0.3;
+  padding-right: 32px;
+}
+
+.pf-list-item[data-active="true"] {
+  color: var(--black);
+  opacity: 1;
+}
+
+.pf-list-item-icon {
+  margin-top: 5px;
+}
+
+.pf-list-item-content {
+  flex: 1;
+}
+
+.pf-list-item-title {
+  font-size: clamp(24px, 2.5vw, 32px); /* Slightly larger, more bold appearance like screenshot */
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.02em;
+  transition: font-size 0.4s ease, color 0.4s ease;
+  line-height: 1.2;
+}
+
+.pf-list-item-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #888;
+  margin: 0;
+  margin-top: 16px;
+  max-width: 90%;
+}
+
+/* ─────────────────────────────────────────────
+   RIGHT: Visual container (Sticky)
+───────────────────────────────────────────── */
+.pf-right-container {
+  flex: 1;
+  position: sticky;
+  top: 15vh;
+  margin-bottom: 2vh;
+  margin-left: 24px;
+}
+
+.pf-right-container::before {
+  content: '';
+  position: absolute;
+  inset: -18% -12%;
+  background: radial-gradient(ellipse at 60% 50%, rgba(252,163,17,0.22) 0%, rgba(239,45,86,0.18) 40%, rgba(1,25,54,0.08) 70%, transparent 100%);
+  filter: blur(48px);
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.pf-visual-frame {
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  background: transparent;
+  border-radius: 20px;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: none;
+  z-index: 1;
+  transition: width 0.4s ease, aspect-ratio 0.4s ease;
+  min-height: 500px;
+}
+
+.pf-visual-frame--apps {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+}
+
+.pf-visual-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+  transform: scale(1.1);
+  transform-origin: center;
+}
+
+/* ─────────────────────────────────────────────
+   Responsive
+───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .pf-sticky {
+    position: relative;
+    height: auto;
+    overflow: visible;
+    padding: 80px 0;
+  }
+
+  .pf-outer {
+    height: auto !important;
+  }
+
+  .pf-two-col {
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .pf-left {
+    flex: unset;
+    width: 100%;
+  }
+
+  .pf-slot-mask {
+    height: auto;
+    overflow: visible;
+  }
+
+  .pf-slot-item {
+    position: relative;
+    height: auto;
+    opacity: 1 !important;
+    transform: none !important;
+    margin-bottom: 40px;
+  }
+
+  .pf-right {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .pf-sticky-inner {
+    padding: 0 20px;
+  }
+}
+
+/* --- Old styles to remove/overwrite (can leave at bottom safely) --- */
+.pf-slot-mask, .pf-slot-item, .pf-icon, .pf-title, .pf-desc, .pf-dots, .pf-dot { display: none; }

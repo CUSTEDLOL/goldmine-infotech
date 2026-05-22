@@ -1,0 +1,222 @@
+/* Tailwind v4 — utilities only, no preflight so existing reset is preserved */
+@import "tailwindcss" layer(utilities);
+
+@theme {
+  --color-color-1: hsl(var(--color-1));
+  --color-color-2: hsl(var(--color-2));
+  --color-color-3: hsl(var(--color-3));
+  --color-color-4: hsl(var(--color-4));
+  --color-color-5: hsl(var(--color-5));
+
+  --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
+
+  @keyframes rainbow {
+    0% { background-position: 0%; }
+    100% { background-position: 200%; }
+  }
+}
+
+/* ─────────────────────────────
+   Tokens
+───────────────────────────── */
+:root {
+  --white:        #fcfcfc;
+  --off-white:    #f7f7f7;
+  --black:        #0a0a0a;
+  --dark:         #111111;
+  --purple:       #23022e;
+  --purple-pale:  #eeecfd;
+  --blue:         #6184d8;
+  --orange:       #FCA311;
+  --green:        #43aa8b;
+  --navy-cta:     #0e0855;
+  --text:         #111111;
+  --muted:        #6b6b6b;
+  --border:       #e5e5e5;
+  
+  --color-1: 0 100% 63%;
+  --color-2: 270 100% 63%;
+  --color-3: 210 100% 63%;
+  --color-4: 195 100% 63%;
+  --color-5: 90 100% 63%;
+}
+
+/* ─────────────────────────────
+   Reset
+───────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  background: #fcfcfc;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* ─────────────────────────────
+   Layout
+───────────────────────────── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* ─────────────────────────────
+   Visual Placeholder
+───────────────────────────── */
+.vp {
+  background: #eeeeee;
+  border: 2px dashed #cccccc;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #aaaaaa;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.vp-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: #d8d8d8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vp-icon svg { width: 20px; height: 20px; stroke: #aaa; fill: none; stroke-width: 2; }
+.vp.dark {
+  background: #1c1c1c;
+  border-color: #333;
+  color: #555;
+}
+.vp.dark .vp-icon { background: #2a2a2a; }
+.vp.dark .vp-icon svg { stroke: #555; }
+
+/* ─────────────────────────────
+   Shared Typography
+───────────────────────────── */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.eyebrow-purple { background: var(--purple-pale); color: var(--purple); }
+.eyebrow-dark {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.eyebrow-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+.section-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+h1, h2, h3 { line-height: 1.1; letter-spacing: -0.025em; }
+
+/* ─────────────────────────────
+   Buttons
+───────────────────────────── */
+.btn {
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+  font-family: inherit;
+}
+.btn-black { background: var(--black); color: #fff; }
+.btn-black:hover { background: #2a2a2a; }
+.btn-white { background: #fff; color: var(--black); }
+.btn-white:hover { background: #f0f0f0; }
+.btn-outline-white {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.25);
+}
+.btn-outline-white:hover { background: rgba(255,255,255,0.08); }
+.btn-lg { padding: 16px 34px; font-size: 15px; }
+
+/* ─────────────────────────────
+   Logo Pill
+───────────────────────────── */
+.logo-pill {
+  font-size: 14px;
+  font-weight: 700;
+  color: #c8c8c8;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────
+   Marquee
+───────────────────────────── */
+.marquee-outer { overflow: hidden; }
+.marquee-track {
+  display: flex;
+  gap: 72px;
+  width: max-content;
+  animation: scroll-left 28s linear infinite;
+}
+@keyframes scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ─────────────────────────────
+   CTA Email Row (shared)
+───────────────────────────── */
+.cta-email-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 440px;
+  margin: 0 auto 16px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 999px;
+  padding: 6px 6px 6px 20px;
+}
+.cta-email-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #fff;
+  font-family: inherit;
+}
+.cta-email-input::placeholder { color: rgba(255,255,255,0.35); }
+.cta-note {
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+}

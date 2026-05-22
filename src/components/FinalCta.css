@@ -1,0 +1,16 @@
+.final-cta {
+  background: var(--black);
+  padding: 120px 0;
+  text-align: center;
+}
+
+.final-cta-title {
+  font-size: clamp(36px, 5.5vw, 76px);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 48px;
+}

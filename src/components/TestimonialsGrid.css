@@ -1,0 +1,152 @@
+.tgrid-section {
+  background: var(--white);
+  padding: 100px 0;
+}
+
+.tgrid-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.tgrid-header h2 {
+  font-size: clamp(26px, 3.5vw, 44px);
+  font-weight: 800;
+  color: var(--black);
+}
+
+.heart { color: transparent; text-shadow: 0 0 0 #cfcfcf; font-size: 0.8em; vertical-align: middle; margin: 0 4px; }
+
+/* The masonry/masonry-like grid wrapper */
+.tgrid-wrapper {
+  position: relative;
+  overflow: hidden; /* Hide the faded edges/scroll overlap if needed */
+  padding: 40px 0;
+  height: 800px; /* Fixed height for the rolling effect */
+  mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
+
+.tgrid {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+/* Individual columns for masonry illusion */
+.tgrid-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 380px;
+  /* Allow columns to size properly for animation */
+  will-change: transform;
+}
+
+/* Animation classes applied from React */
+.roll-up {
+  animation: rollUp 40s linear infinite;
+}
+.roll-down {
+  animation: rollDown 40s linear infinite;
+}
+
+/* Pause on hover */
+.tgrid-column:hover {
+  animation-play-state: paused;
+}
+
+@keyframes rollUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); } /* Scrolls precisely half since we duplicate content */
+}
+
+@keyframes rollDown {
+  0% { transform: translateY(-50%); } 
+  100% { transform: translateY(0); }
+}
+
+.tcard {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background-color: var(--white);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.tcard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.tcard-stars {
+  color: #f4a922;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+.tcard-text {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.tcard-foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.tcard-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #e4e4e4;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+
+.tcard-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.tcard-role {
+  font-size: 12px;
+  color: #777;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 1024px) {
+  .tgrid-wrapper {
+    height: 600px;
+  }
+  .tgrid {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    height: auto;
+  }
+  .tgrid-column {
+    width: 100%;
+    max-width: 500px;
+    animation: none !important; /* Disable rolling on mobile for better UX initially, or keep it if preferred */
+  }
+  .tgrid-column:nth-child(2) {
+    margin-top: 0;
+  }
+}

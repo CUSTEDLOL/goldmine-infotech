@@ -1,0 +1,709 @@
+/* ================================================================
+   MobilesPage.css  —  prefix: mob-
+   Goldmine Infotech | Commercial product page — Mobile Phones
+   Accent: #fca311 (amber/gold)
+   ================================================================ */
+
+.mob-root {
+  padding-top: 72px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ================================================================
+   1. HERO
+   ================================================================ */
+.mob-hero {
+  min-height: 100vh;
+  background: #fcfcfc;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.mob-hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 48px;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+}
+
+.mob-hero-left {
+  position: relative;
+  z-index: 2;
+}
+
+.mob-hero-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #fca311;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding: 6px 14px;
+  border: 1px solid rgba(252, 163, 17, 0.35);
+  border-radius: 4px;
+  background: rgba(252, 163, 17, 0.09);
+}
+
+.mob-hero-headline {
+  font-size: clamp(52px, 7vw, 88px);
+  font-weight: 700;
+  color: #0a0a0a;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  margin: 0 0 24px 0;
+  white-space: pre-line;
+}
+
+.mob-hero-sub {
+  font-size: 18px;
+  color: #555555;
+  line-height: 1.6;
+  margin: 0 0 36px 0;
+  max-width: 460px;
+}
+
+.mob-hero-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.mob-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fca311;
+  color: #0a0a0a;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+
+.mob-btn-primary:hover {
+  background: #e09300;
+  transform: translateY(-1px);
+}
+
+.mob-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #0a0a0a;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 50px;
+  border: 1.5px solid #0a0a0a;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+
+.mob-btn-ghost:hover {
+  border-color: #333333;
+  background: rgba(0, 0, 0, 0.04);
+  transform: translateY(-1px);
+}
+
+.mob-hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mob-trust-badge {
+  font-size: 12px;
+  font-weight: 600;
+  color: #555555;
+  padding: 5px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 100px;
+  background: #f5f5f5;
+  white-space: nowrap;
+}
+
+.mob-hero-right {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mob-hero-visual {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 580px;
+}
+
+.mob-collage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  border-radius: 14px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.mob-collage-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ================================================================
+   2. BRAND STRIP
+   ================================================================ */
+.mob-brands {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 32px 48px;
+}
+
+.mob-brands-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mob-brand-name {
+  font-size: 20px;
+  font-weight: 800;
+  color: #cccccc;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 0.2s;
+  cursor: default;
+  user-select: none;
+}
+
+.mob-brand-name:hover {
+  color: #999999;
+}
+
+.mob-brand-sep {
+  color: #e0e0e0;
+  font-size: 20px;
+  font-weight: 300;
+  user-select: none;
+}
+
+/* ================================================================
+   3. CATEGORY CARDS
+   ================================================================ */
+.mob-categories {
+  background: #111827;
+  padding: 80px 48px;
+}
+
+.mob-categories-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.mob-section-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.mob-section-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fca311;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.mob-section-label--dark {
+  color: #fca311;
+}
+
+.mob-section-title {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.mob-section-title--dark {
+  color: #0a0a0a;
+}
+
+.mob-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.mob-cat-card {
+  background: #1a1a2e;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.mob-cat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.mob-cat-band {
+  height: 6px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.mob-cat-band--blue {
+  background: linear-gradient(90deg, #1e3a8a, #2563eb, #60a5fa);
+}
+
+.mob-cat-band--gold {
+  background: linear-gradient(90deg, #b8760a, #fca311, #ffd166);
+}
+
+.mob-cat-band--dark {
+  background: linear-gradient(90deg, #1a1a1a, #3a3a3a, #555555);
+}
+
+.mob-cat-band--green {
+  background: linear-gradient(90deg, #047857, #059669, #34d399);
+}
+
+.mob-cat-body {
+  padding: 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mob-cat-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.01em;
+}
+
+.mob-cat-desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+  flex: 1;
+}
+
+.mob-cat-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fca311;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.mob-cat-link::after {
+  content: '→';
+  transition: transform 0.2s;
+}
+
+.mob-cat-card:hover .mob-cat-link::after {
+  transform: translateX(4px);
+}
+
+/* ================================================================
+   4. FEATURED PRODUCTS
+   ================================================================ */
+.mob-products {
+  background: #f5f5f7;
+  padding: 80px 48px;
+}
+
+.mob-products-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.mob-prod-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.mob-prod-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e5e5e5;
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.mob-prod-card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.mob-prod-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  z-index: 2;
+}
+
+.mob-prod-badge--green {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.mob-prod-badge--blue {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.mob-prod-badge--orange {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.mob-prod-img-wrap {
+  height: 180px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.mob-prod-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mob-prod-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mob-prod-placeholder-label {
+  font-size: 24px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.22);
+  letter-spacing: -0.02em;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.mob-prod-body {
+  padding: 20px 24px 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mob-prod-brand-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.mob-prod-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0a0a0a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.mob-prod-specs {
+  font-size: 13px;
+  color: #666666;
+  line-height: 1.6;
+  margin: 0 0 16px 0;
+  flex: 1;
+  white-space: pre-line;
+}
+
+.mob-prod-price {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0a0a0a;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
+}
+
+.mob-prod-quote-btn {
+  width: 100%;
+  background: #0a0a0a;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 11px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-align: center;
+}
+
+.mob-prod-quote-btn:hover {
+  background: #333333;
+}
+
+/* ================================================================
+   5. WHY BUY
+   ================================================================ */
+.mob-why {
+  background: #fca311;
+  padding: 80px 48px;
+}
+
+.mob-why-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.mob-why-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.mob-why-title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  color: #0a0a0a;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.02em;
+}
+
+.mob-why-sub {
+  font-size: 17px;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0;
+}
+
+.mob-why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.mob-why-item {
+  text-align: center;
+}
+
+.mob-why-num {
+  font-size: 48px;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.12);
+  line-height: 1;
+  margin-bottom: 16px;
+  letter-spacing: -0.04em;
+}
+
+.mob-why-item-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0a0a0a;
+  margin: 0 0 10px 0;
+}
+
+.mob-why-item-desc {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.65);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ================================================================
+   6. CTA STRIP
+   ================================================================ */
+.mob-cta {
+  background: linear-gradient(135deg, #0d1b3e 0%, #0a0a1a 100%);
+  padding: 80px 48px;
+  text-align: center;
+}
+
+.mob-cta-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.mob-cta-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fca311;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.mob-cta-headline {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 14px 0;
+  letter-spacing: -0.02em;
+}
+
+.mob-cta-sub {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin: 0 0 36px 0;
+}
+
+.mob-cta-btns {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.mob-btn-whatsapp {
+  background: #25d366;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-block;
+}
+
+.mob-btn-whatsapp:hover {
+  background: #1da851;
+  transform: translateY(-1px);
+}
+
+.mob-btn-store {
+  background: transparent;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 50px;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  display: inline-block;
+}
+
+.mob-btn-store:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-1px);
+}
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-width: 1024px) {
+  .mob-hero-inner {
+    grid-template-columns: 1fr;
+    padding: 60px 32px;
+    text-align: center;
+  }
+  .mob-hero-sub {
+    margin: 0 auto 36px;
+  }
+  .mob-hero-ctas {
+    justify-content: center;
+  }
+  .mob-hero-trust {
+    justify-content: center;
+  }
+  .mob-hero-right {
+    justify-content: center;
+  }
+  .mob-cat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .mob-prod-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .mob-why-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .mob-hero-inner {
+    padding: 48px 24px;
+  }
+  .mob-categories,
+  .mob-products,
+  .mob-why,
+  .mob-cta,
+  .mob-brands {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .mob-cat-grid {
+    grid-template-columns: 1fr;
+  }
+  .mob-prod-grid {
+    grid-template-columns: 1fr;
+  }
+  .mob-brands-inner {
+    gap: 24px;
+  }
+  .mob-brand-sep {
+    display: none;
+  }
+}

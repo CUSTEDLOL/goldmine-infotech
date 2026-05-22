@@ -1,0 +1,78 @@
+.btn-magnetic {
+  position: relative;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px; /* Squarer, reduced from 9999px */
+  cursor: pointer;
+  overflow: visible;
+  transition: all 0.4s ease;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.05); /* Tighter shadow */
+}
+
+.btn-magnetic:hover {
+  border-color: #FCA311; /* Tailwind orange-500 */
+  color: #FCA311;
+  box-shadow: 0 4px 6px -1px rgba(249, 115, 22, 0.15);
+}
+
+/* Example custom variants overriding the base */
+.btn-magnetic.nav-contact-btn {
+  padding: 0.68rem 1.18rem;
+  font-size: 0.84rem;
+  color: #111827; /* dark text when light */
+  background: transparent;
+  border: 1px solid #011936;
+  border-radius: 999px;
+  box-shadow:
+    0 12px 28px rgba(97, 132, 216, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn-magnetic.nav-contact-btn:hover {
+  border-color: rgba(97, 132, 216, 0.78);
+  color: #011936;
+  background: transparent;
+  box-shadow:
+    0 16px 34px rgba(97, 132, 216, 0.28);
+}
+
+.particles-field {
+  position: absolute;
+  inset: -50%; /* Tighter field for dots */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.btn-magnetic:hover .particles-field {
+  opacity: 1;
+}
+
+.btn-magnetic span {
+  position: relative;
+  z-index: 10;
+}
+
+.magnetic-particle {
+  position: absolute;
+  width: 3px; /* Smaller, sleeker dots */
+  height: 3px;
+  background: #FCA311; /* Orange particles */
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.btn-magnetic.nav-contact-btn .magnetic-particle {
+  background: #011936;
+}
+
+@keyframes particleFloat {
+  0% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
+  50% { transform: translate(calc(var(--x) * -0.3), calc(var(--y) * -0.3)) scale(1); opacity: 0.8; } /* Tighter float */
+  100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
+}

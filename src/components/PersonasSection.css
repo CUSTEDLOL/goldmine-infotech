@@ -1,0 +1,346 @@
+/* ============================================================
+   Personas Section — Who We Serve
+   ============================================================ */
+
+.personas-section {
+  background: #ffffff;
+  padding: 88px 0 104px;
+}
+
+.personas-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.personas-header {
+  text-align: center;
+  margin-bottom: 34px;
+}
+
+.personas-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(97, 132, 216, 0.08);
+  border: 1px solid rgba(97, 132, 216, 0.16);
+  border-radius: 40px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(35, 2, 46, 0.6);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.personas-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+.personas-title {
+  font-size: clamp(34px, 4.7vw, 64px);
+  font-weight: 700;
+  color: var(--black);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  margin-bottom: 14px;
+}
+
+.personas-subtitle {
+  font-size: 16px;
+  color: rgba(35, 2, 46, 0.62);
+  line-height: 1.65;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.personas-shell {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* ── Tab Strip ── */
+.personas-tabs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid rgba(35, 2, 46, 0.08);
+}
+
+.personas-tab {
+  min-height: 224px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+  padding: 16px 12px 12px;
+  border-radius: 14px;
+  border: 1.5px solid transparent;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.18s ease;
+  color: rgba(35, 2, 46, 0.5);
+  position: relative;
+  font-family: inherit;
+  overflow: hidden;
+}
+
+.personas-tab:hover:not(.personas-tab--active) {
+  border-color: rgba(35, 2, 46, 0.15);
+  color: rgba(35, 2, 46, 0.75);
+}
+
+.personas-tab--active {
+  background: #fff;
+  color: var(--purple);
+  border-color: var(--purple);
+}
+
+.personas-tab__label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-align: center;
+  line-height: 1.3;
+  color: #0a0a0a;
+}
+
+.personas-tab__visual {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+}
+
+.personas-tab__visual-frame {
+  position: relative;
+  width: 100%;
+  min-height: 156px;
+  border-radius: 12px;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.personas-tab__visual-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 80%, rgba(247, 127, 0, 0.22) 0%, transparent 60%),
+    radial-gradient(ellipse at 75% 90%, rgba(97, 132, 216, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 55% 50%, rgba(252, 163, 17, 0.10) 0%, transparent 70%);
+  opacity: 0;
+  filter: blur(12px);
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+}
+
+.personas-tab--active .personas-tab__visual-frame::before {
+  opacity: 0;
+}
+
+.personas-tab__visual-image {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  padding: 10px 8px 0;
+  filter: saturate(1.02) contrast(1.01);
+  transform: translateY(2px) scale(1);
+  transition: transform 0.22s ease, filter 0.22s ease;
+}
+
+.personas-tab:hover .personas-tab__visual-image,
+.personas-tab--active .personas-tab__visual-image {
+  transform: translateY(0) scale(1.025);
+  filter: saturate(1.06) contrast(1.02);
+}
+
+/* ── Content Body ── */
+.personas-body {
+  padding: 46px 56px 54px;
+}
+
+.personas-body__inner {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.95fr) minmax(0, 1.25fr);
+  gap: 72px;
+  align-items: start;
+}
+
+.personas-body__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.personas-body__headline {
+  font-size: clamp(34px, 4.2vw, 60px);
+  font-weight: 700;
+  color: var(--black);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  margin: 0 0 30px;
+}
+
+.personas-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(35, 2, 46, 0.14);
+  background: #ffffff;
+  color: rgba(35, 2, 46, 0.86);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.18s ease;
+  font-family: inherit;
+  letter-spacing: 0.01em;
+  box-shadow: 0 4px 14px rgba(35, 2, 46, 0.04);
+}
+
+.personas-cta:hover {
+  background: #fcfaf5;
+  border-color: rgba(35, 2, 46, 0.22);
+  color: var(--purple);
+  transform: translateY(-1px);
+}
+
+.personas-body__details {
+  display: flex;
+  flex-direction: column;
+}
+
+.personas-detail {
+  padding: 0 0 24px;
+}
+
+.personas-detail + .personas-detail {
+  border-top: 1px solid rgba(35, 2, 46, 0.08);
+  padding-top: 24px;
+}
+
+.personas-detail__title {
+  font-size: clamp(18px, 1.8vw, 22px);
+  font-weight: 700;
+  color: #0a0a0a;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+}
+
+.personas-detail__desc {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.65;
+  margin: 0;
+  max-width: 560px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 980px) {
+  .personas-tabs {
+    display: flex;
+    overflow-x: auto;
+    padding: 12px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .personas-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .personas-tab {
+    flex: 0 0 188px;
+  }
+
+  .personas-body {
+    padding: 34px 26px 36px;
+  }
+
+  .personas-body__inner {
+    gap: 40px;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .personas-section {
+    padding: 72px 0 84px;
+  }
+
+  .personas-inner {
+    padding: 0 16px;
+  }
+
+  .personas-header {
+    margin-bottom: 26px;
+  }
+
+  .personas-title {
+    font-size: clamp(30px, 10vw, 44px);
+    margin-bottom: 12px;
+  }
+
+  .personas-subtitle {
+    font-size: 15px;
+  }
+
+  .personas-shell {
+    border-radius: 22px;
+  }
+
+  .personas-tabs {
+    gap: 10px;
+  }
+
+  .personas-tab {
+    flex-basis: 172px;
+    min-height: 204px;
+    padding: 14px 10px 10px;
+  }
+
+  .personas-tab__visual-frame {
+    min-height: 138px;
+  }
+
+  .personas-tab__visual-image {
+    padding: 8px 6px 0;
+  }
+
+  .personas-tab__label {
+    font-size: 12px;
+  }
+
+  .personas-body {
+    padding: 28px 20px 30px;
+  }
+
+  .personas-body__headline {
+    font-size: clamp(32px, 10vw, 46px);
+    margin-bottom: 22px;
+  }
+
+  .personas-detail {
+    padding-bottom: 18px;
+  }
+
+  .personas-detail + .personas-detail {
+    padding-top: 18px;
+  }
+}

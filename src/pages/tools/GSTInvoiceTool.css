@@ -1,0 +1,668 @@
+/* ─── Root ──────────────────────────────────────────────────────────────────── */
+
+.gst-root {
+  padding-top: 72px;
+  background: #fcfcfc;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #0a0a0a;
+}
+
+/* ─── Breadcrumb ─────────────────────────────────────────────────────────────── */
+
+.gst-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 40px 0;
+  max-width: 1380px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .gst-breadcrumb {
+    padding: 16px 20px 0;
+  }
+}
+
+.gst-breadcrumb-link {
+  font-size: 13px;
+  color: #888;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.gst-breadcrumb-link:hover {
+  color: #fca311;
+}
+
+.gst-breadcrumb-sep {
+  font-size: 13px;
+  color: #ccc;
+}
+
+.gst-breadcrumb-current {
+  font-size: 13px;
+  color: #444;
+  font-weight: 500;
+}
+
+/* ─── Hero ──────────────────────────────────────────────────────────────────── */
+
+.gst-hero {
+  text-align: center;
+  padding: 40px 24px 32px;
+  max-width: 660px;
+  margin: 0 auto;
+}
+
+.gst-hero-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #fca311;
+  background: #fff8ed;
+  border: 1px solid #fde8bb;
+  border-radius: 999px;
+  padding: 4px 12px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.gst-hero-title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 14px;
+  color: #0a0a0a;
+}
+
+.gst-hero-accent {
+  color: #fca311;
+}
+
+.gst-hero-sub {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ─── Two-column Layout ──────────────────────────────────────────────────────── */
+
+.gst-layout {
+  display: grid;
+  grid-template-columns: 440px 1fr;
+  gap: 24px;
+  padding: 0 40px 64px;
+  max-width: 1380px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+@media (max-width: 1100px) {
+  .gst-layout {
+    grid-template-columns: 1fr;
+    padding: 0 24px 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gst-layout {
+    padding: 0 16px 48px;
+  }
+}
+
+/* ─── Cards ──────────────────────────────────────────────────────────────────── */
+
+.gst-form-card {
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.gst-preview-card {
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 16px;
+  padding: 28px;
+  position: sticky;
+  top: 88px;
+}
+
+/* ─── Section ────────────────────────────────────────────────────────────────── */
+
+.gst-section {
+  padding-bottom: 22px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.gst-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.gst-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 14px;
+}
+
+/* ─── Form Fields ─────────────────────────────────────────────────────────────── */
+
+.gst-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.gst-field:last-child {
+  margin-bottom: 0;
+}
+
+.gst-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.gst-input,
+.gst-textarea,
+.gst-select {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #0a0a0a;
+  background: #fafafa;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s;
+  -webkit-appearance: none;
+  appearance: none;
+  font-family: inherit;
+}
+
+.gst-input:focus,
+.gst-textarea:focus,
+.gst-select:focus {
+  border-color: #fca311;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(252, 163, 17, 0.1);
+}
+
+.gst-textarea {
+  resize: vertical;
+  min-height: 56px;
+}
+
+.gst-select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23888' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px;
+  padding-right: 30px;
+}
+
+/* ─── Row Grids ──────────────────────────────────────────────────────────────── */
+
+.gst-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .gst-row-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Line Items ─────────────────────────────────────────────────────────────── */
+
+.gst-items-header {
+  display: grid;
+  grid-template-columns: 2fr 60px 70px 80px 70px 80px 28px;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.gst-items-col-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0 4px;
+}
+
+.gst-item-row {
+  display: grid;
+  grid-template-columns: 2fr 60px 70px 80px 70px 80px 28px;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.gst-item-input {
+  box-sizing: border-box;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 7px;
+  padding: 8px 8px;
+  font-size: 13px;
+  color: #0a0a0a;
+  background: #fafafa;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s;
+  font-family: inherit;
+  width: 100%;
+}
+
+.gst-item-input:focus {
+  border-color: #fca311;
+  background: #ffffff;
+  box-shadow: 0 0 0 2px rgba(252, 163, 17, 0.1);
+}
+
+.gst-item-input--readonly {
+  background: #f5f5f5;
+  color: #555;
+  cursor: default;
+}
+
+.gst-item-select {
+  box-sizing: border-box;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 7px;
+  padding: 8px 20px 8px 8px;
+  font-size: 13px;
+  color: #0a0a0a;
+  background: #fafafa;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23aaa' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  background-size: 8px;
+}
+
+.gst-item-remove {
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 18px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.15s;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+}
+
+.gst-item-remove:hover {
+  color: #ef4444;
+  background: #fef2f2;
+}
+
+.gst-add-item-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  background: none;
+  border: 1.5px dashed #d0d0d0;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #888;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+  font-family: inherit;
+}
+
+.gst-add-item-btn:hover {
+  border-color: #fca311;
+  color: #fca311;
+}
+
+/* ─── Generate Button ────────────────────────────────────────────────────────── */
+
+.gst-generate-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+  width: 100%;
+  padding: 14px 20px;
+  background: #fca311;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  font-family: inherit;
+  letter-spacing: -0.01em;
+}
+
+.gst-generate-btn:hover {
+  background: #e8940f;
+}
+
+.gst-generate-btn:active {
+  transform: scale(0.99);
+}
+
+/* ─── Preview Panel ──────────────────────────────────────────────────────────── */
+
+.gst-preview-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 16px;
+}
+
+/* ─── Invoice Preview ────────────────────────────────────────────────────────── */
+
+.gst-inv {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 28px 28px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #222;
+  overflow: hidden;
+}
+
+.gst-inv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #fca311;
+}
+
+.gst-inv-biz-name {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0a0a0a;
+  letter-spacing: -0.02em;
+  margin: 0 0 4px;
+}
+
+.gst-inv-biz-gst {
+  font-size: 11px;
+  color: #888;
+  font-weight: 500;
+}
+
+.gst-inv-title-block {
+  text-align: right;
+}
+
+.gst-inv-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fca311;
+  letter-spacing: 0.04em;
+  margin: 0 0 4px;
+}
+
+.gst-inv-meta {
+  font-size: 11.5px;
+  color: #666;
+}
+
+.gst-inv-addresses {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.gst-inv-addr-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 6px;
+}
+
+.gst-inv-addr-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0a0a0a;
+  margin: 0 0 2px;
+}
+
+.gst-inv-addr-line {
+  font-size: 12px;
+  color: #555;
+  line-height: 1.5;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.gst-inv-addr-gst {
+  font-size: 11px;
+  color: #888;
+  margin-top: 4px;
+}
+
+/* ─── Items Table ────────────────────────────────────────────────────────────── */
+
+.gst-inv-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+
+.gst-inv-th {
+  padding: 7px 10px;
+  background: #f8f8f8;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #888;
+  text-align: left;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.gst-inv-th--right {
+  text-align: right;
+}
+
+.gst-inv-td {
+  padding: 7px 10px;
+  color: #444;
+  border-bottom: 1px solid #f5f5f5;
+  vertical-align: middle;
+}
+
+.gst-inv-td--right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.gst-inv-td--num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Totals ──────────────────────────────────────────────────────────────────── */
+
+.gst-inv-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid #ebebeb;
+}
+
+.gst-inv-notes {
+  flex: 1;
+}
+
+.gst-inv-notes-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 4px;
+}
+
+.gst-inv-notes-text {
+  font-size: 11.5px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.gst-inv-totals {
+  min-width: 200px;
+}
+
+.gst-inv-total-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 12px;
+  color: #555;
+  padding: 3px 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.gst-inv-total-row--grand {
+  font-size: 14px;
+  font-weight: 800;
+  color: #0a0a0a;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 6px;
+  margin-top: 4px;
+}
+
+.gst-inv-total-row--grand .gst-inv-total-val {
+  color: #fca311;
+}
+
+.gst-inv-total-label {
+  color: inherit;
+}
+
+.gst-inv-total-val {
+  font-weight: 600;
+}
+
+.gst-inv-sig-line {
+  border-top: 1px solid #ccc;
+  margin-top: 28px;
+  padding-top: 4px;
+  font-size: 10px;
+  color: #aaa;
+  text-align: right;
+}
+
+.gst-inv-page-footer {
+  margin-top: 16px;
+  padding-top: 10px;
+  border-top: 1px dashed #e0e0e0;
+  text-align: center;
+  font-size: 10px;
+  color: #bbb;
+}
+
+/* ─── CTA ────────────────────────────────────────────────────────────────────── */
+
+.gst-cta {
+  text-align: center;
+  padding: 40px 24px 60px;
+  border-top: 1px solid #efefef;
+}
+
+.gst-cta-text {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0a0a0a;
+  margin: 0 0 10px;
+}
+
+.gst-cta-link {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fca311;
+  text-decoration: none;
+  border-bottom: 1.5px solid #fca311;
+  padding-bottom: 1px;
+  transition: opacity 0.15s;
+}
+
+.gst-cta-link:hover {
+  opacity: 0.7;
+}
+
+/* ─── Responsive items table scroll ─────────────────────────────────────────── */
+
+.gst-items-scroll {
+  overflow-x: auto;
+}
+
+@media (max-width: 600px) {
+  .gst-items-header,
+  .gst-item-row {
+    grid-template-columns: 2fr 50px 60px 70px 60px 70px 24px;
+    gap: 4px;
+  }
+
+  .gst-inv-addresses {
+    grid-template-columns: 1fr;
+  }
+
+  .gst-inv-footer {
+    flex-direction: column;
+  }
+
+  .gst-inv-totals {
+    min-width: unset;
+    width: 100%;
+  }
+}

@@ -1,0 +1,70 @@
+.text-arrow-btn {
+  --primary-color: #111;
+  --hovered-color: #FCA311;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: relative;
+  display: inline-flex;
+  font-weight: 600;
+  font-size: 14px;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.text-arrow-btn p {
+  margin: 0;
+  position: relative;
+  font-size: 14px;
+  color: var(--primary-color);
+  white-space: nowrap;
+}
+
+/* Sliding underline — scoped to the <p> so it only spans the text */
+.text-arrow-btn p::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  left: 0;
+  bottom: -5px;
+  background: var(--hovered-color);
+  height: 2px;
+  transition: width 0.3s ease-out;
+}
+
+/* Orange text overlay — clips left-to-right via width */
+.text-arrow-btn p::before {
+  position: absolute;
+  content: attr(data-text);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  color: var(--hovered-color);
+  white-space: nowrap;
+  overflow: hidden;
+  transition: width 0.3s ease-out;
+}
+
+.text-arrow-btn:hover p::after {
+  width: 100%;
+}
+
+.text-arrow-btn:hover p::before {
+  width: 100%;
+}
+
+.text-arrow-btn:hover svg {
+  transform: translateX(4px);
+  color: var(--hovered-color);
+}
+
+.text-arrow-btn svg {
+  color: var(--primary-color);
+  transition: transform 0.2s ease-out 0.15s, color 0.2s ease-out 0.15s;
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+}

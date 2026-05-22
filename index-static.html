@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amplemarket — Step into the future of sales: Human + AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─────────────────────────────
+       Tokens
+    ───────────────────────────── */
+    :root {
+      --white:        #ffffff;
+      --off-white:    #f7f7f7;
+      --black:        #0a0a0a;
+      --dark:         #111111;
+      --purple:       #6B5CE7;
+      --purple-pale:  #eeecfd;
+      --navy-cta:     #0e0855;
+      --text:         #111111;
+      --muted:        #6b6b6b;
+      --border:       #e5e5e5;
+    }
+
+    /* ─────────────────────────────
+       Reset
+    ───────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* ─────────────────────────────
+       Visual Placeholder
+    ───────────────────────────── */
+    .vp {
+      background: #eeeeee;
+      border: 2px dashed #cccccc;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #aaaaaa;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .vp-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: #d8d8d8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .vp-icon svg { width: 20px; height: 20px; stroke: #aaa; fill: none; stroke-width: 2; }
+    .vp.dark {
+      background: #1c1c1c;
+      border-color: #333;
+      color: #555;
+    }
+    .vp.dark .vp-icon { background: #2a2a2a; }
+    .vp.dark .vp-icon svg { stroke: #555; }
+    .vp.circle {
+      border-radius: 50%;
+      font-size: 0;
+    }
+
+    /* ─────────────────────────────
+       Shared Typography
+    ───────────────────────────── */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    .eyebrow-purple {
+      background: var(--purple-pale);
+      color: var(--purple);
+    }
+    .eyebrow-dark {
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .eyebrow-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.7;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    h1, h2, h3 { line-height: 1.1; letter-spacing: -0.025em; }
+
+    /* ─────────────────────────────
+       Buttons
+    ───────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }
+    .btn-black {
+      background: var(--black);
+      color: #fff;
+    }
+    .btn-black:hover { background: #2a2a2a; }
+
+    .btn-white {
+      background: #fff;
+      color: var(--black);
+    }
+    .btn-white:hover { background: #f0f0f0; }
+
+    .btn-outline-white {
+      background: transparent;
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.25);
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.08); }
+
+    .btn-lg { padding: 16px 34px; font-size: 15px; }
+
+    /* arrow icon */
+    .arrow { font-style: normal; }
+
+    /* ═══════════════════════════════════════════
+       SECTION 1 — NAVBAR
+    ═══════════════════════════════════════════ */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      height: 64px;
+      gap: 0;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--black);
+      flex-shrink: 0;
+      margin-right: 40px;
+    }
+    .nav-logo-mark {
+      width: 30px;
+      height: 30px;
+      background: var(--black);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 900;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+      flex: 1;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--black); }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .nav-login {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.15s;
+    }
+    .nav-login:hover { color: var(--black); }
+
+    /* ═══════════════════════════════════════════
+       SECTION 2 — HERO
+    ═══════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      padding: 96px 0 0;
+      text-align: center;
+      overflow: hidden;
+      background: var(--white);
+    }
+    .hero-blob-tr {
+      position: absolute;
+      top: -80px; right: -160px;
+      width: 640px; height: 640px;
+      background: radial-gradient(ellipse at center, rgba(107,92,231,0.14) 0%, transparent 68%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-blob-bl {
+      position: absolute;
+      bottom: 80px; left: -120px;
+      width: 440px; height: 440px;
+      background: radial-gradient(ellipse at center, rgba(107,92,231,0.07) 0%, transparent 65%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    .hero-badge { margin-bottom: 28px; }
+    .hero-title {
+      font-size: clamp(38px, 5.5vw, 66px);
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 22px;
+    }
+    .hero-subtitle {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 520px;
+      margin: 0 auto 36px;
+    }
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .hero-note {
+      font-size: 12px;
+      color: #b0b0b0;
+      letter-spacing: 0.02em;
+    }
+    .hero-screenshot-wrap {
+      position: relative;
+      z-index: 1;
+      margin-top: 64px;
+      padding: 0 48px;
+    }
+    .hero-screenshot-wrap .vp {
+      width: 100%;
+      height: 520px;
+      border-radius: 20px 20px 0 0;
+      border-bottom: none;
+      box-shadow: 0 -8px 60px rgba(0,0,0,0.06);
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 3 — LOGO BAR 1
+    ═══════════════════════════════════════════ */
+    .logo-bar {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 40px 0;
+    }
+    .logo-bar-label {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #c0c0c0;
+      margin-bottom: 28px;
+    }
+    .logo-bar-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 52px;
+      flex-wrap: wrap;
+    }
+    .logo-pill {
+      font-size: 14px;
+      font-weight: 700;
+      color: #c8c8c8;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 4 — TESTIMONIAL (light)
+    ═══════════════════════════════════════════ */
+    .testi-light {
+      background: var(--white);
+      padding: 96px 0;
+    }
+    .testi-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .testi-quote {
+      font-size: clamp(20px, 2.6vw, 30px);
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--black);
+      font-style: italic;
+      margin-bottom: 44px;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+    }
+    .testi-avatar {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .testi-avatar .vp {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      border: none;
+      background: #e4e4e4;
+      font-size: 0;
+    }
+    .testi-info { text-align: left; }
+    .testi-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--black);
+    }
+    .testi-role {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .testi-divider {
+      width: 1px; height: 36px;
+      background: var(--border);
+    }
+    .testi-company {
+      font-size: 15px;
+      font-weight: 800;
+      color: #aaa;
+      letter-spacing: 0.04em;
+      text-transform: lowercase;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 5 — DARK FEATURE
+    ═══════════════════════════════════════════ */
+    .dark-feature {
+      background: var(--black);
+      padding: 100px 0 0;
+      text-align: center;
+      overflow: hidden;
+    }
+    .dark-feature-content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 32px;
+      margin-bottom: 64px;
+    }
+    .dark-feature-badge { margin-bottom: 28px; }
+    .dark-feature-title {
+      font-size: clamp(30px, 4.2vw, 56px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .dark-feature-subtitle {
+      font-size: 17px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+    .dark-feature-screenshot {
+      padding: 0 48px;
+    }
+    .dark-feature-screenshot .vp {
+      width: 100%;
+      height: 500px;
+      border-radius: 20px 20px 0 0;
+      border-bottom: none;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 6 — LOGO BAR 2 (dark marquee)
+    ═══════════════════════════════════════════ */
+    .logo-bar-dark {
+      background: #111;
+      border-top: 1px solid #1e1e1e;
+      border-bottom: 1px solid #1e1e1e;
+      padding: 28px 0;
+      overflow: hidden;
+    }
+    .marquee-outer { overflow: hidden; }
+    .marquee-track {
+      display: flex;
+      gap: 72px;
+      width: max-content;
+      animation: scroll-left 28s linear infinite;
+    }
+    .marquee-track .logo-pill {
+      color: #333;
+      white-space: nowrap;
+    }
+    @keyframes scroll-left {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 7 — TESTIMONIAL (dark)
+    ═══════════════════════════════════════════ */
+    .testi-dark {
+      background: var(--black);
+      padding: 96px 0;
+    }
+    .testi-dark .testi-quote { color: rgba(255,255,255,0.9); }
+    .testi-dark .testi-name  { color: #fff; }
+    .testi-dark .testi-role  { color: rgba(255,255,255,0.4); }
+    .testi-dark .testi-divider { background: #2a2a2a; }
+    .testi-dark .testi-company { color: #444; }
+    .testi-dark .testi-avatar .vp { background: #222; }
+
+    /* ═══════════════════════════════════════════
+       SECTION 8 — PLATFORM FEATURES
+    ═══════════════════════════════════════════ */
+    .platform {
+      background: var(--white);
+      padding: 100px 0;
+    }
+    .platform-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+    .platform-header h2 {
+      font-size: clamp(28px, 3.8vw, 48px);
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 14px;
+    }
+    .platform-header p {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .platform-layout {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .platform-tabs { display: flex; flex-direction: column; gap: 2px; }
+    .ptab {
+      padding: 18px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      border-left: 3px solid transparent;
+      transition: all 0.18s;
+    }
+    .ptab:hover { background: var(--off-white); }
+    .ptab.active {
+      background: var(--off-white);
+      border-left-color: var(--purple);
+    }
+    .ptab-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 5px;
+    }
+    .ptab-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .platform-visual .vp { width: 100%; height: 460px; }
+
+    /* ═══════════════════════════════════════════
+       SECTION 9 — TESTIMONIAL 3 (light stripe)
+    ═══════════════════════════════════════════ */
+    .testi-stripe {
+      background: var(--off-white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 10 — CTA BANNER
+    ═══════════════════════════════════════════ */
+    .cta-banner {
+      background: var(--navy-cta);
+      padding: 110px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner-glow {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 15% 50%, rgba(107,92,231,0.35) 0%, transparent 48%),
+        radial-gradient(ellipse at 85% 50%, rgba(107,92,231,0.25) 0%, transparent 48%);
+      pointer-events: none;
+    }
+    .cta-banner-content { position: relative; z-index: 1; }
+    .cta-stars {
+      font-size: 11px;
+      letter-spacing: 10px;
+      color: rgba(255,255,255,0.25);
+      margin-bottom: 28px;
+    }
+    .cta-banner-title {
+      font-size: clamp(36px, 6.5vw, 88px);
+      font-weight: 900;
+      font-style: italic;
+      line-height: 0.97;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 48px;
+    }
+    .cta-email-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: 440px;
+      margin: 0 auto 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      padding: 6px 6px 6px 20px;
+    }
+    .cta-email-input {
+      flex: 1;
+      background: none;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      color: #fff;
+      font-family: inherit;
+    }
+    .cta-email-input::placeholder { color: rgba(255,255,255,0.35); }
+    .cta-note {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 11 — BUILT FOR HEROES
+    ═══════════════════════════════════════════ */
+    .built-for {
+      background: var(--white);
+      padding: 100px 0;
+    }
+    .built-for-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+    .built-for-header h2 {
+      font-size: clamp(26px, 3.5vw, 44px);
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 14px;
+    }
+    .built-for-header p {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .built-for-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .bf-card {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .bf-visual { height: 200px; }
+    .bf-visual .vp { height: 100%; }
+    .bf-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--black);
+    }
+    .bf-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 12 — REAL RESULTS
+    ═══════════════════════════════════════════ */
+    .real-results {
+      background: var(--off-white);
+      padding: 100px 0;
+      border-top: 1px solid var(--border);
+    }
+    .rr-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .rr-header h2 {
+      font-size: clamp(26px, 3.5vw, 44px);
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+    .rr-header p { font-size: 16px; color: var(--muted); }
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      margin-bottom: 72px;
+      padding-bottom: 72px;
+      border-bottom: 1px solid var(--border);
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-size: clamp(44px, 5vw, 64px);
+      font-weight: 900;
+      color: var(--black);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .stat-desc {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 160px;
+      line-height: 1.5;
+    }
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .rc {
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .rc:nth-child(1) { background: #fce4ef; }
+    .rc:nth-child(2) { background: #e2f2e3; }
+    .rc:nth-child(3) { background: #fff8e0; }
+    .rc-brand {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #888;
+    }
+    .rc-stat {
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--black);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .rc-desc {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.65;
+    }
+    .rc-author {
+      font-size: 13px;
+      font-weight: 600;
+      color: #333;
+      margin-top: auto;
+    }
+    .rc-role {
+      font-size: 12px;
+      color: #888;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 13 — G2 BADGES STRIP
+    ═══════════════════════════════════════════ */
+    .badges-strip {
+      background: #f3f3f3;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 36px 0;
+      overflow: hidden;
+    }
+    .badges-track {
+      display: flex;
+      gap: 28px;
+      width: max-content;
+      animation: scroll-left 36s linear infinite;
+    }
+    .badge-box {
+      width: 100px; height: 100px;
+      flex-shrink: 0;
+      border-radius: 14px;
+      background: #e6e6e6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #bbb;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .badge-box-icon {
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 14 — TESTIMONIALS GRID
+    ═══════════════════════════════════════════ */
+    .tgrid-section {
+      background: var(--white);
+      padding: 100px 0;
+    }
+    .tgrid-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .tgrid-header h2 {
+      font-size: clamp(26px, 3.5vw, 44px);
+      font-weight: 800;
+      color: var(--black);
+    }
+    .tgrid-header h2 .heart { color: #e53939; }
+    .tgrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .tcard {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .tcard-stars {
+      color: #f4a922;
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+    .tcard-text {
+      font-size: 14px;
+      color: #333;
+      line-height: 1.72;
+      flex: 1;
+    }
+    .tcard-foot {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+    .tcard-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: #e4e4e4;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+    }
+    .tcard-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--black);
+    }
+    .tcard-role {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 15 — FINAL CTA
+    ═══════════════════════════════════════════ */
+    .final-cta {
+      background: var(--black);
+      padding: 120px 0;
+      text-align: center;
+    }
+    .final-cta-title {
+      font-size: clamp(36px, 5.5vw, 76px);
+      font-weight: 900;
+      font-style: italic;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 48px;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 16 — FOOTER
+    ═══════════════════════════════════════════ */
+    .footer {
+      background: #080808;
+      padding: 80px 0 40px;
+      border-top: 1px solid #161616;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 220px repeat(4, 1fr);
+      gap: 48px;
+      padding-bottom: 64px;
+      border-bottom: 1px solid #161616;
+      margin-bottom: 32px;
+    }
+    .footer-brand .nav-logo-mark { background: #1e1e1e; }
+    .footer-brand-name {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+    .footer-tagline {
+      font-size: 13px;
+      color: #454545;
+      line-height: 1.65;
+    }
+    .footer-col-head {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #3a3a3a;
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+    .footer-links a {
+      font-size: 14px;
+      color: #666;
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copy {
+      font-size: 13px;
+      color: #383838;
+    }
+    .footer-social {
+      display: flex;
+      gap: 10px;
+    }
+    .footer-social a {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: #141414;
+      border: 1px solid #222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      color: #444;
+      transition: all 0.15s;
+    }
+    .footer-social a:hover { background: #222; color: #fff; }
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-legal a {
+      font-size: 13px;
+      color: #383838;
+      transition: color 0.15s;
+    }
+    .footer-legal a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     1. NAVBAR
+═══════════════════════════════════════════ -->
+<nav class="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-mark">A</div>
+        amplemarket
+      </a>
+      <ul class="nav-links">
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Why Us</a></li>
+        <li><a href="#">Customers</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="#" class="nav-login">Login</a>
+        <a href="#" class="btn btn-black">Start for free</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════
+     2. HERO
+═══════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-blob-tr"></div>
+  <div class="hero-blob-bl"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="eyebrow eyebrow-purple">
+        <span class="eyebrow-dot"></span>
+        Introducing Duo Copilot — AI + Human selling
+      </span>
+    </div>
+    <h1 class="hero-title">Step into the future<br>of sales: Human + AI</h1>
+    <p class="hero-subtitle">Amplemarket combines AI precision with human intuition so your team can prospect smarter, engage faster, and close more — every single day.</p>
+    <div class="hero-cta-row">
+      <a href="#" class="btn btn-black btn-lg">Start for free <span class="arrow">→</span></a>
+    </div>
+    <p class="hero-note">No credit card required</p>
+  </div>
+
+  <div class="hero-screenshot-wrap">
+    <div class="vp" style="height:520px; border-radius:20px 20px 0 0; border-bottom:none; box-shadow:0 -8px 60px rgba(0,0,0,0.06);">
+      <div class="vp-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+      Visual Missing
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     3. LOGO BAR 1
+═══════════════════════════════════════════ -->
+<section class="logo-bar">
+  <div class="container">
+    <p class="logo-bar-label">Trusted by thousands of sellers worldwide</p>
+    <div class="logo-bar-row">
+      <span class="logo-pill">Deel</span>
+      <span class="logo-pill">HubSpot</span>
+      <span class="logo-pill">Bamboo</span>
+      <span class="logo-pill">Zendesk</span>
+      <span class="logo-pill">Cookielab</span>
+      <span class="logo-pill">Contentful</span>
+      <span class="logo-pill">Cloudtalk</span>
+      <span class="logo-pill">Happeo</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     4. TESTIMONIAL 1
+═══════════════════════════════════════════ -->
+<section class="testi-light">
+  <div class="container">
+    <div class="testi-inner">
+      <p class="testi-quote">"Amplemarket is like having a super assistant that doesn't sleep. The AI's top-notch, helping me find the right leads quickly and easily."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">
+          <div class="vp" style="width:48px;height:48px;border-radius:50%;border:none;background:#e4e4e4;font-size:0;"></div>
+        </div>
+        <div class="testi-info">
+          <div class="testi-name">Sarah Chen</div>
+          <div class="testi-role">Head of Sales, Capos</div>
+        </div>
+        <div class="testi-divider"></div>
+        <span class="testi-company">capos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     5. DARK FEATURE
+═══════════════════════════════════════════ -->
+<section class="dark-feature">
+  <div class="dark-feature-content">
+    <div class="dark-feature-badge">
+      <span class="eyebrow eyebrow-dark">
+        <span class="eyebrow-dot"></span>
+        Duo Copilot
+      </span>
+    </div>
+    <h2 class="dark-feature-title">Transform the way you sell with Duo Copilot</h2>
+    <p class="dark-feature-subtitle">Your AI co-pilot runs research, drafts outreach, and surfaces the right accounts — so your reps stay focused on conversations that convert.</p>
+    <a href="#" class="btn btn-white">See it in action <span class="arrow">→</span></a>
+  </div>
+  <div class="dark-feature-screenshot">
+    <div class="vp dark" style="height:500px;border-radius:20px 20px 0 0;border-bottom:none;">
+      <div class="vp-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+      Visual Missing
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     6. LOGO BAR 2 (dark marquee)
+═══════════════════════════════════════════ -->
+<section class="logo-bar-dark">
+  <div class="marquee-outer">
+    <div class="marquee-track" id="marquee1">
+      <span class="logo-pill">Salesloft</span>
+      <span class="logo-pill">Outreach</span>
+      <span class="logo-pill">Apollo</span>
+      <span class="logo-pill">ZoomInfo</span>
+      <span class="logo-pill">LinkedIn</span>
+      <span class="logo-pill">Gong</span>
+      <span class="logo-pill">Chorus</span>
+      <span class="logo-pill">6sense</span>
+      <span class="logo-pill">Demandbase</span>
+      <span class="logo-pill">Clearbit</span>
+      <!-- duplicate for seamless loop -->
+      <span class="logo-pill">Salesloft</span>
+      <span class="logo-pill">Outreach</span>
+      <span class="logo-pill">Apollo</span>
+      <span class="logo-pill">ZoomInfo</span>
+      <span class="logo-pill">LinkedIn</span>
+      <span class="logo-pill">Gong</span>
+      <span class="logo-pill">Chorus</span>
+      <span class="logo-pill">6sense</span>
+      <span class="logo-pill">Demandbase</span>
+      <span class="logo-pill">Clearbit</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     7. TESTIMONIAL 2 (dark)
+═══════════════════════════════════════════ -->
+<section class="testi-dark">
+  <div class="container">
+    <div class="testi-inner">
+      <p class="testi-quote">"I wake up to a list of highly relevant signals and accounts, saving me hours on research and personalisation every day. This is the future of sales!"</p>
+      <div class="testi-author">
+        <div class="testi-avatar">
+          <div class="vp" style="width:48px;height:48px;border-radius:50%;border:none;background:#222;font-size:0;"></div>
+        </div>
+        <div class="testi-info">
+          <div class="testi-name">Marcus Webb</div>
+          <div class="testi-role">Enterprise AE, Deel</div>
+        </div>
+        <div class="testi-divider"></div>
+        <span class="testi-company">deel</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     8. PLATFORM FEATURES
+═══════════════════════════════════════════ -->
+<section class="platform">
+  <div class="container">
+    <div class="platform-header">
+      <div class="section-label">The Platform</div>
+      <h2>All-in-one platform to level up<br>your sales process</h2>
+      <p>Everything your revenue team needs — data, outreach, AI research, and signals — in one unified workspace.</p>
+    </div>
+    <div class="platform-layout">
+      <div class="platform-tabs" id="ptabs">
+        <div class="ptab active" data-tab="0">
+          <div class="ptab-title">Better data, more value</div>
+          <div class="ptab-desc">Access 300M+ verified contacts with real-time data enrichment and intent signals.</div>
+        </div>
+        <div class="ptab" data-tab="1">
+          <div class="ptab-title">Automated sequences</div>
+          <div class="ptab-desc">Multi-channel outreach across email, LinkedIn, and phone — all on autopilot.</div>
+        </div>
+        <div class="ptab" data-tab="2">
+          <div class="ptab-title">AI research assistant</div>
+          <div class="ptab-desc">Instantly surface relevant news, triggers, and talking points for every account.</div>
+        </div>
+        <div class="ptab" data-tab="3">
+          <div class="ptab-title">Ideal customer profile</div>
+          <div class="ptab-desc">Define your ICP in plain language and let AI find your best-fit prospects.</div>
+        </div>
+        <div class="ptab" data-tab="4">
+          <div class="ptab-title">Buying signals</div>
+          <div class="ptab-desc">Know exactly when a prospect is ready to buy with real-time intent data.</div>
+        </div>
+      </div>
+      <div class="platform-visual">
+        <div class="vp" style="height:460px;">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+          Visual Missing
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     9. TESTIMONIAL 3
+═══════════════════════════════════════════ -->
+<section class="testi-stripe testi-light">
+  <div class="container">
+    <div class="testi-inner">
+      <p class="testi-quote">"I lead a global team of SDRs that was using 7 different tools to complete the full 'top funnel' cycle, now we're just using Amplemarket to do it all."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">
+          <div class="vp" style="width:48px;height:48px;border-radius:50%;border:none;background:#e4e4e4;font-size:0;"></div>
+        </div>
+        <div class="testi-info">
+          <div class="testi-name">James Okafor</div>
+          <div class="testi-role">VP of Sales, Calify</div>
+        </div>
+        <div class="testi-divider"></div>
+        <span class="testi-company">calify</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     10. CTA BANNER
+═══════════════════════════════════════════ -->
+<section class="cta-banner">
+  <div class="cta-banner-glow"></div>
+  <div class="container">
+    <div class="cta-banner-content">
+      <p class="cta-stars">★ ★ ★ ★ ★</p>
+      <h2 class="cta-banner-title">Start your<br>super sales<br>journey</h2>
+      <div class="cta-email-row">
+        <input type="email" class="cta-email-input" placeholder="Enter your work email">
+        <button class="btn btn-white">Get started</button>
+      </div>
+      <p class="cta-note">No credit card required · Free forever plan available</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     11. BUILT FOR HEROES
+═══════════════════════════════════════════ -->
+<section class="built-for">
+  <div class="container">
+    <div class="built-for-header">
+      <div class="section-label">Built for revenue teams</div>
+      <h2>Built to power revenue<br>heroes like you</h2>
+      <p>Whether you're an SDR, AE, or sales leader — Amplemarket gives every role the superpowers they need.</p>
+    </div>
+    <div class="built-for-grid">
+      <div class="bf-card">
+        <div class="bf-visual">
+          <div class="vp" style="height:200px;">
+            <div class="vp-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+            Visual Missing
+          </div>
+        </div>
+        <div class="bf-title">Turning reps into super reps</div>
+        <div class="bf-desc">Give every rep AI-powered prospecting, instant research, and personalised messaging at scale.</div>
+      </div>
+      <div class="bf-card">
+        <div class="bf-visual">
+          <div class="vp" style="height:200px;">
+            <div class="vp-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            Visual Missing
+          </div>
+        </div>
+        <div class="bf-title">Save hours on research</div>
+        <div class="bf-desc">Automated account research surfaces the right signals so your team can focus on selling, not searching.</div>
+      </div>
+      <div class="bf-card">
+        <div class="bf-visual">
+          <div class="vp" style="height:200px;">
+            <div class="vp-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+            Visual Missing
+          </div>
+        </div>
+        <div class="bf-title">Scale pipeline on autopilot</div>
+        <div class="bf-desc">Automated multi-channel sequences keep your pipeline full while your team focuses on closing deals.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     12. REAL RESULTS
+═══════════════════════════════════════════ -->
+<section class="real-results">
+  <div class="container">
+    <div class="rr-header">
+      <div class="section-label">Real results</div>
+      <h2>Real results from real customers</h2>
+      <p>Numbers that move the needle for revenue teams worldwide.</p>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num">70%+</div>
+        <div class="stat-desc">increase in qualified pipeline within 90 days</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2h</div>
+        <div class="stat-desc">saved per rep per day on manual research tasks</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">26%</div>
+        <div class="stat-desc">higher reply rates with AI-personalised outreach</div>
+      </div>
+    </div>
+
+    <div class="results-grid">
+      <div class="rc">
+        <div class="rc-brand">Deel</div>
+        <div class="rc-stat">4x</div>
+        <div class="rc-desc">"Amplemarket helped our outbound team quadruple qualified opportunities in just one quarter."</div>
+        <div class="rc-author">Ana Rodrigues</div>
+        <div class="rc-role">Head of Outbound, Deel</div>
+      </div>
+      <div class="rc">
+        <div class="rc-brand">Ow</div>
+        <div class="rc-stat">40%</div>
+        <div class="rc-desc">"We saw a 40% jump in email reply rates after switching to AI-personalised sequences."</div>
+        <div class="rc-author">Tom Erikson</div>
+        <div class="rc-role">SDR Manager, Ow</div>
+      </div>
+      <div class="rc">
+        <div class="rc-brand">Happeo</div>
+        <div class="rc-stat">3h</div>
+        <div class="rc-desc">"Our reps save 3 hours a day on research — that's time back on the phone and in front of buyers."</div>
+        <div class="rc-author">Liisa Mäkinen</div>
+        <div class="rc-role">VP Sales, Happeo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     13. G2 BADGES STRIP
+═══════════════════════════════════════════ -->
+<section class="badges-strip">
+  <div class="marquee-outer">
+    <div class="badges-track">
+      <!-- set 1 -->
+      <div class="badge-box"><div class="badge-box-icon">🏆</div>Visual Missing</div>
+      <div class="badge-box"><div class="badge-box-icon">🏆</div>Visual Missing</div>
+      <div class="badge-box"><div class="badge-box-icon">🏆</div>Visual Missing</div>
+      <div class="badge-box"><div class="badge-box-icon">🏆</div>Visual Missing</div>
+      <div class="badge-box"><div class="badge-box-icon">🏆</div>Visual Missing</div>
+      <div class="badge-box"><div class="badge-box-icon">🏆</div>Visual Missing</div>
+      <div class="badge-box"><div class="badge-box-icon">🏆</div>Visual Missing</div>
+      <div class="badge-box"><div class="badge-box-icon">🏆</div>Visual Missing</div>
+      <!-- set 2 (duplicate for loop) -->
+      <div class="badge-box"><div class="badge-box-icon">🏆</div>Visual Missing</div>
+      <div class="badge-box"><div class="badge-box-icon">🏆</div>Visual Missing</div>
+      <div class="badge-box"><div class="badge-box-icon">🏆</div>Visual Missing</div>
+      <div class="badge-box"><div class="badge-box-icon">🏆</div>Visual Missing</div>
+      <div class="badge-box"><div class="badge-box-icon">🏆</div>Visual Missing</div>
+      <div class="badge-box"><div class="badge-box-icon">🏆</div>Visual Missing</div>
+      <div class="badge-box"><div class="badge-box-icon">🏆</div>Visual Missing</div>
+      <div class="badge-box"><div class="badge-box-icon">🏆</div>Visual Missing</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     14. TESTIMONIALS GRID
+═══════════════════════════════════════════ -->
+<section class="tgrid-section">
+  <div class="container">
+    <div class="tgrid-header">
+      <h2>Some love from <span class="heart">♥</span> our customers!</h2>
+    </div>
+    <div class="tgrid">
+
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">"Amplemarket completely changed how we approach outbound. The data quality alone is worth it — we're booking meetings with accounts we couldn't reach before."</p>
+        <div class="tcard-foot">
+          <div class="tcard-avatar">👤</div>
+          <div>
+            <div class="tcard-name">Rachel Kim</div>
+            <div class="tcard-role">Enterprise SDR · Zendesk</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">"The AI personalisation is insane. Our reply rates went from 4% to over 18% in a month. The platform just works, and the support team is phenomenal."</p>
+        <div class="tcard-foot">
+          <div class="tcard-avatar">👤</div>
+          <div>
+            <div class="tcard-name">Diego Morales</div>
+            <div class="tcard-role">Sales Manager · Contentful</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">"We replaced four tools with Amplemarket. Simpler stack, better results. Our pipeline grew 60% in Q1 and the team actually enjoys prospecting now."</p>
+        <div class="tcard-foot">
+          <div class="tcard-avatar">👤</div>
+          <div>
+            <div class="tcard-name">Priya Nair</div>
+            <div class="tcard-role">VP Revenue · Happeo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">"Best investment our sales team has made. The buying signal alerts let us reach out at exactly the right moment — our close rates jumped overnight."</p>
+        <div class="tcard-foot">
+          <div class="tcard-avatar">👤</div>
+          <div>
+            <div class="tcard-name">Felix Braun</div>
+            <div class="tcard-role">AE · Cloudtalk</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">"I was sceptical about AI sales tools, but Amplemarket proved me wrong. The research summaries alone save me two hours every single morning."</p>
+        <div class="tcard-foot">
+          <div class="tcard-avatar">👤</div>
+          <div>
+            <div class="tcard-name">Sophie Laurent</div>
+            <div class="tcard-role">BDR Lead · Bamboo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">"Our SDR team went from 20 to 80 personalised outreaches per day without adding headcount. Amplemarket is a force multiplier for any sales org."</p>
+        <div class="tcard-foot">
+          <div class="tcard-avatar">👤</div>
+          <div>
+            <div class="tcard-name">Arjun Sharma</div>
+            <div class="tcard-role">Head of Growth · Deel</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     15. FINAL CTA
+═══════════════════════════════════════════ -->
+<section class="final-cta">
+  <div class="container">
+    <h2 class="final-cta-title">Unlock your AI<br>sales superpowers</h2>
+    <div class="cta-email-row" style="max-width:440px;margin:0 auto 16px;">
+      <input type="email" class="cta-email-input" placeholder="Enter your work email">
+      <button class="btn btn-white">Get started</button>
+    </div>
+    <p class="cta-note" style="color:rgba(255,255,255,0.3);font-size:12px;text-align:center;">No credit card required</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     16. FOOTER
+═══════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-name">
+          <div class="nav-logo-mark">A</div>
+          amplemarket
+        </div>
+        <p class="footer-tagline">The AI-powered sales platform that combines human intuition with machine intelligence.</p>
+      </div>
+
+      <div>
+        <div class="footer-col-head">Product</div>
+        <ul class="footer-links">
+          <li><a href="#">Duo Copilot</a></li>
+          <li><a href="#">Data & Enrichment</a></li>
+          <li><a href="#">Sequences</a></li>
+          <li><a href="#">Buying Signals</a></li>
+          <li><a href="#">Integrations</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-head">Company</div>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-head">Customers</div>
+        <ul class="footer-links">
+          <li><a href="#">Case Studies</a></li>
+          <li><a href="#">Reviews</a></li>
+          <li><a href="#">Community</a></li>
+          <li><a href="#">Partners</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-head">Resources</div>
+        <ul class="footer-links">
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Webinars</a></li>
+          <li><a href="#">Sales Glossary</a></li>
+          <li><a href="#">Status</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 Amplemarket, Inc. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="#" title="LinkedIn">in</a>
+        <a href="#" title="Twitter">𝕏</a>
+        <a href="#" title="YouTube">▶</a>
+      </div>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Settings</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  /* ─── Platform feature tabs ─── */
+  const tabs = document.querySelectorAll('.ptab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+
+  /* ─── Navbar scroll shadow ─── */
+  const navbar = document.querySelector('.navbar');
+  window.addEventListener('scroll', () => {
+    navbar.style.boxShadow = window.scrollY > 10
+      ? '0 2px 20px rgba(0,0,0,0.06)'
+      : 'none';
+  });
+</script>
+
+</body>
+</html>

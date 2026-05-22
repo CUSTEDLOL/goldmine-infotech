@@ -1,0 +1,785 @@
+/* ================================================================
+   DesktopsPage.css  —  prefix: dsk-
+   Goldmine Infotech | Commercial product page — Desktop Computers
+   ================================================================ */
+
+/* ── Root ─────────────────────────────────────────────────────── */
+.dsk-root {
+  padding-top: 72px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ================================================================
+   1. HERO
+   ================================================================ */
+.dsk-hero {
+  min-height: 100vh;
+  background: #fcfcfc;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.dsk-hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 48px;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+}
+
+/* Left column */
+.dsk-hero-left {
+  position: relative;
+  z-index: 2;
+}
+
+.dsk-hero-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #e31837;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding: 6px 14px;
+  border: 1px solid rgba(227, 24, 55, 0.35);
+  border-radius: 4px;
+  background: rgba(227, 24, 55, 0.1);
+}
+
+.dsk-hero-headline {
+  font-size: clamp(52px, 7vw, 88px);
+  font-weight: 700;
+  color: #0a0a0a;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  margin: 0 0 24px 0;
+  white-space: pre-line;
+}
+
+.dsk-hero-sub {
+  font-size: 18px;
+  color: #555555;
+  line-height: 1.6;
+  margin: 0 0 36px 0;
+  max-width: 460px;
+}
+
+.dsk-hero-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.dsk-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e31837;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+
+.dsk-btn-primary:hover {
+  background: #c0102a;
+  transform: translateY(-1px);
+}
+
+.dsk-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #0a0a0a;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 50px;
+  border: 1.5px solid #0a0a0a;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+
+.dsk-btn-ghost:hover {
+  border-color: #333333;
+  background: rgba(0, 0, 0, 0.04);
+  transform: translateY(-1px);
+}
+
+.dsk-hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dsk-trust-badge {
+  font-size: 12px;
+  font-weight: 600;
+  color: #555555;
+  padding: 5px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 100px;
+  background: #f5f5f5;
+  white-space: nowrap;
+}
+
+/* Right column — hero collage */
+.dsk-hero-right {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dsk-hero-visual {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 580px;
+}
+
+.dsk-collage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  border-radius: 14px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.dsk-collage-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ================================================================
+   2. CATEGORY CARDS
+   ================================================================ */
+.dsk-categories {
+  background: #0f0f0f;
+  padding: 80px 48px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.dsk-categories-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.dsk-section-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.dsk-section-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #e31837;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.dsk-section-title {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.dsk-section-title--light {
+  color: #0a0a0a;
+}
+
+.dsk-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.dsk-cat-card {
+  background: #1a1a1a;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.dsk-cat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.dsk-cat-band {
+  height: 6px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.dsk-cat-band--blue {
+  background: linear-gradient(90deg, #003399, #0066cc, #00a8ff);
+}
+
+.dsk-cat-band--red {
+  background: linear-gradient(90deg, #1a0005, #8b0011, #e31837);
+}
+
+.dsk-cat-band--silver {
+  background: linear-gradient(90deg, #666, #999, #ccc);
+}
+
+.dsk-cat-band--gold {
+  background: linear-gradient(90deg, #b8760a, #fca311, #ffd166);
+}
+
+.dsk-cat-body {
+  padding: 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dsk-cat-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+}
+
+.dsk-cat-desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.48);
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+  flex: 1;
+}
+
+.dsk-cat-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #e31837;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.dsk-cat-link::after {
+  content: '→';
+  transition: transform 0.2s;
+}
+
+.dsk-cat-card:hover .dsk-cat-link::after {
+  transform: translateX(4px);
+}
+
+/* ================================================================
+   3. FEATURED PRODUCTS
+   ================================================================ */
+.dsk-products {
+  background: #f5f5f7;
+  padding: 80px 48px;
+}
+
+.dsk-products-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.dsk-section-label--dark {
+  color: #e31837;
+}
+
+.dsk-prod-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.dsk-prod-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e5e5e5;
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.dsk-prod-card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.dsk-prod-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  z-index: 2;
+}
+
+.dsk-prod-badge--green {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.dsk-prod-badge--blue {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.dsk-prod-badge--orange {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.dsk-prod-img-wrap {
+  height: 180px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.dsk-prod-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.dsk-prod-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dsk-prod-placeholder-label {
+  font-size: 24px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.22);
+  letter-spacing: -0.02em;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.dsk-prod-body {
+  padding: 20px 24px 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dsk-prod-brand-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.dsk-prod-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0a0a0a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.dsk-prod-specs {
+  font-size: 13px;
+  color: #666666;
+  line-height: 1.6;
+  margin: 0 0 16px 0;
+  flex: 1;
+}
+
+.dsk-prod-price {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0a0a0a;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
+}
+
+.dsk-prod-quote-btn {
+  width: 100%;
+  background: #e31837;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 11px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-align: center;
+}
+
+.dsk-prod-quote-btn:hover {
+  background: #c0102a;
+}
+
+/* ================================================================
+   4. BULK ORDERS BANNER
+   ================================================================ */
+.dsk-bulk {
+  background: #0a0a0a;
+  padding: 80px 48px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dsk-bulk-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.dsk-bulk-accent-line {
+  width: 48px;
+  height: 4px;
+  background: #fca311;
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+
+.dsk-bulk-headline {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.dsk-bulk-desc {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.7;
+  margin: 0 0 32px 0;
+  max-width: 420px;
+}
+
+.dsk-bulk-btn {
+  display: inline-block;
+  background: #fca311;
+  color: #0a0a0a;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.dsk-bulk-btn:hover {
+  background: #e09400;
+  transform: translateY(-1px);
+}
+
+/* Right stats panel */
+.dsk-bulk-stats {
+  text-align: center;
+}
+
+.dsk-bulk-big-num {
+  font-size: clamp(80px, 10vw, 120px);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 4px;
+}
+
+.dsk-bulk-big-num span {
+  color: #fca311;
+}
+
+.dsk-bulk-big-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 40px;
+  letter-spacing: 0.02em;
+}
+
+.dsk-bulk-stat-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.dsk-bulk-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+}
+
+.dsk-bulk-stat-row-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.dsk-bulk-stat-row-val {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fca311;
+}
+
+/* ================================================================
+   5. WHY BUY — deep blue bg
+   ================================================================ */
+.dsk-why {
+  background: #0066cc;
+  padding: 80px 48px;
+}
+
+.dsk-why-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.dsk-why-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.dsk-why-title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.02em;
+}
+
+.dsk-why-sub {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
+
+.dsk-why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.dsk-why-item {
+  text-align: center;
+}
+
+.dsk-why-num {
+  font-size: 48px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.12);
+  line-height: 1;
+  margin-bottom: 16px;
+  letter-spacing: -0.04em;
+}
+
+.dsk-why-item-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+}
+
+.dsk-why-item-desc {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ================================================================
+   6. CTA STRIP
+   ================================================================ */
+.dsk-cta {
+  background: linear-gradient(135deg, #0d1b3e 0%, #0a0a1a 100%);
+  padding: 80px 48px;
+  text-align: center;
+}
+
+.dsk-cta-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.dsk-cta-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #e31837;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.dsk-cta-headline {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 14px 0;
+  letter-spacing: -0.02em;
+}
+
+.dsk-cta-sub {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.6;
+  margin: 0 0 36px 0;
+}
+
+.dsk-cta-btns {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.dsk-btn-whatsapp {
+  background: #25d366;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-block;
+}
+
+.dsk-btn-whatsapp:hover {
+  background: #1da851;
+  transform: translateY(-1px);
+}
+
+.dsk-btn-store {
+  background: transparent;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 50px;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  display: inline-block;
+}
+
+.dsk-btn-store:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-1px);
+}
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-width: 1024px) {
+  .dsk-hero-inner {
+    grid-template-columns: 1fr;
+    padding: 60px 32px;
+    text-align: center;
+  }
+  .dsk-hero-sub {
+    margin: 0 auto 36px;
+  }
+  .dsk-hero-ctas {
+    justify-content: center;
+  }
+  .dsk-hero-trust {
+    justify-content: center;
+  }
+  .dsk-hero-right {
+    justify-content: center;
+  }
+  .dsk-cat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dsk-prod-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dsk-bulk-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  .dsk-bulk-desc {
+    margin: 0 auto 32px;
+  }
+  .dsk-why-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .dsk-hero-inner {
+    padding: 48px 24px;
+  }
+  .dsk-categories,
+  .dsk-products,
+  .dsk-bulk,
+  .dsk-why,
+  .dsk-cta {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .dsk-cat-grid {
+    grid-template-columns: 1fr;
+  }
+  .dsk-prod-grid {
+    grid-template-columns: 1fr;
+  }
+}

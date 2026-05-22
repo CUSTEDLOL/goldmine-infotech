@@ -1,0 +1,150 @@
+.sec-section {
+  /* Deep navy — matches brand navy #011936, unifying with PersonasSection */
+  background: #011936;
+  padding: 100px 0 80px;
+  overflow: hidden;
+}
+
+.sec-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.sec-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.sec-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 40px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.sec-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #EF2D56;
+  animation: pulse-red 2s ease-in-out infinite;
+}
+
+@keyframes pulse-red {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
+.sec-title {
+  font-size: clamp(28px, 3.8vw, 50px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.sec-subtitle {
+  font-size: 17px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.65;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.sec-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.sec-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sec-card__eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #EF2D56;
+  margin-bottom: 10px;
+}
+
+.sec-card__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.sec-card__desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.sec-coverage {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.sec-coverage__tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(239,45,86,0.1);
+  border: 1px solid rgba(239,45,86,0.2);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.65);
+}
+
+.sec-coverage__tag-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #EF2D56;
+}
+
+.sec-cctv-wrap {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sec-bio-wrap {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .sec-section { padding: 72px 0 60px; }
+  .sec-inner { padding: 0 16px; }
+  .sec-header { margin-bottom: 40px; }
+  .sec-grid { grid-template-columns: 1fr; }
+}

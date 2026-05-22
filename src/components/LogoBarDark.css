@@ -1,0 +1,113 @@
+.logo-bar-dark {
+  background: transparent;
+  padding: 3rem 0;
+  overflow: hidden;
+  position: relative;
+  /* Add matching borders */
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo-bar-dark::before,
+.logo-bar-dark::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 15vw;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logo-bar-dark::before {
+  left: 0;
+  background: linear-gradient(to right, #000, transparent);
+}
+
+.logo-bar-dark::after {
+  right: 0;
+  background: linear-gradient(to left, #000, transparent);
+}
+
+.marquee-outer {
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* Ensure spacing is correct to loop continuously */
+.marquee-track {
+  display: flex;
+  gap: 3rem;
+  width: max-content;
+  animation: scroll-left 40s linear infinite;
+  padding-left: 3rem;
+}
+
+.logo-pill--dark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  min-width: 160px;
+  padding: 0 1.5rem;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.logo-pill--dark:hover {
+  background: transparent;
+  transform: translateY(-4px);
+  box-shadow: none;
+}
+
+.logo-img {
+  height: 40px;
+  width: 120px;
+  object-fit: contain;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.logo-img.logo-invert {
+  filter: brightness(0) invert(1);
+}
+
+.logo-img.logo-large {
+  transform: scale(1.5);
+}
+
+.logo-img.logo-xlarge {
+  transform: scale(2.2);
+}
+
+.logo-pill--dark:hover .logo-img {
+  opacity: 1;
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 1.5rem)); }
+}
+
+@media (max-width: 768px) {
+  .logo-bar-dark {
+    padding: 2rem 0;
+  }
+  .logo-pill--dark {
+    height: 50px;
+    min-width: 120px;
+    padding: 0 1rem;
+  }
+  .marquee-track {
+    gap: 2rem;
+    padding-left: 2rem;
+  }
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 1rem)); }
+  }
+}

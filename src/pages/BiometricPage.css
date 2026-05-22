@@ -1,0 +1,534 @@
+/* ============================================================
+   Biometric Systems Page — prefix: bio-
+   Design: Editorial, white-first, conversion-focused
+   ============================================================ */
+
+.bio-root {
+  padding-top: 72px;
+  background: #fcfcfc;
+  overflow-x: hidden;
+}
+
+/* ──────────────────────────────────────────
+   HERO
+────────────────────────────────────────── */
+.bio-hero {
+  background: #fcfcfc;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.bio-hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 48px 0;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 48px;
+  align-items: center;
+}
+
+/* Breadcrumb */
+.bio-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 24px;
+  letter-spacing: 0.02em;
+}
+.bio-bc-link { color: #aaa; text-decoration: none; transition: color 0.15s; }
+.bio-bc-link:hover { color: #555; }
+.bio-bc-sep { color: #ddd; }
+
+/* Eyebrow */
+.bio-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fca311;
+  margin-bottom: 20px;
+}
+
+/* Headline */
+.bio-headline {
+  font-size: clamp(44px, 5.5vw, 76px);
+  font-weight: 800;
+  line-height: 1.03;
+  letter-spacing: -0.04em;
+  color: #0a0a0a;
+  margin-bottom: 20px;
+}
+
+/* Second line lighter weight */
+.bio-headline-thin {
+  font-weight: 300;
+  color: #444;
+  font-style: italic;
+}
+
+.bio-sub {
+  font-size: clamp(15px, 1.3vw, 17px);
+  color: #666;
+  line-height: 1.7;
+  max-width: 420px;
+  margin-bottom: 32px;
+}
+
+.bio-hero-ctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-bottom: 56px;
+}
+
+.bio-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 28px;
+  background: #0a0a0a;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: background 0.15s, transform 0.15s;
+}
+.bio-btn-primary:hover { background: #222; transform: translateY(-1px); }
+
+.bio-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 24px;
+  border: 1.5px solid #0a0a0a;
+  color: #0a0a0a;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.bio-btn-secondary:hover { background: #f5f5f5; }
+
+/* ── Hero image ── */
+.bio-hero-right {
+  padding-bottom: 56px;
+}
+
+.bio-hero-img-wrap {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+
+.bio-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.bio-hero-img-wrap:hover .bio-hero-img { transform: scale(1.03); }
+
+.bio-hero-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,10,10,0.35) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Floating stat card */
+.bio-hero-stat-card {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: 12px;
+  padding: 14px 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+
+.bio-hero-stat-num {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0a0a0a;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.bio-hero-stat-label {
+  font-size: 11px;
+  color: #777;
+  letter-spacing: 0.01em;
+}
+
+/* ── Spec strip ── */
+.bio-spec-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid #ebebeb;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bio-spec-item {
+  padding: 24px 48px;
+  border-right: 1px solid #ebebeb;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.bio-spec-item:last-child { border-right: none; }
+
+.bio-spec-value {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0a0a0a;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.bio-spec-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+/* ──────────────────────────────────────────
+   SHARED LABEL & TITLE
+────────────────────────────────────────── */
+.bio-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 12px;
+}
+
+.bio-section-header {
+  margin-bottom: 40px;
+}
+
+.bio-section-title {
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 700;
+  color: #0a0a0a;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+/* ──────────────────────────────────────────
+   SYSTEM TYPES GRID
+────────────────────────────────────────── */
+.bio-types {
+  padding: 80px 48px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.bio-types-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bio-sys-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.bio-sys-card {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+  cursor: default;
+}
+.bio-sys-card:hover {
+  border-color: #c8c8c8;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.07);
+  transform: translateY(-3px);
+}
+
+.bio-sys-img-wrap {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.bio-sys-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.bio-sys-card:hover .bio-sys-img { transform: scale(1.06); }
+
+/* Tag: amber pill */
+.bio-sys-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  background: rgba(252,163,17,0.9);
+  padding: 3px 9px;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+}
+
+/* Badge: dark pill (top-right) */
+.bio-sys-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: rgba(10,10,10,0.7);
+  padding: 3px 9px;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+}
+
+.bio-sys-body {
+  padding: 20px;
+}
+
+.bio-sys-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0a0a0a;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.bio-sys-desc {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.65;
+}
+
+/* ──────────────────────────────────────────
+   BRANDS
+────────────────────────────────────────── */
+.bio-brands {
+  background: #0a0a0a;
+  padding: 36px 48px;
+}
+
+.bio-brands-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  margin-bottom: 16px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bio-brands-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bio-brand {
+  font-size: 16px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.15);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0 24px;
+  position: relative;
+  transition: color 0.15s;
+  cursor: default;
+}
+.bio-brand:hover { color: rgba(255,255,255,0.5); }
+.bio-brand + .bio-brand::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: rgba(255,255,255,0.08);
+}
+.bio-brand:first-child { padding-left: 0; }
+
+/* ──────────────────────────────────────────
+   WHY GOLDMINE
+────────────────────────────────────────── */
+.bio-why {
+  padding: 80px 48px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.bio-why-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bio-why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid #ebebeb;
+  margin-top: 32px;
+}
+
+.bio-why-item {
+  padding: 36px 40px 36px 0;
+  border-right: 1px solid #ebebeb;
+}
+.bio-why-item:last-child { border-right: none; padding-right: 0; }
+.bio-why-item:not(:first-child) { padding-left: 40px; }
+
+.bio-why-num {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #fca311;
+  margin-bottom: 16px;
+}
+
+.bio-why-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0a0a0a;
+  letter-spacing: -0.025em;
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+
+.bio-why-desc {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.7;
+}
+
+/* ──────────────────────────────────────────
+   CTA — Split layout
+────────────────────────────────────────── */
+.bio-cta {
+  background: #0a0a0a;
+  padding: 80px 48px;
+}
+
+.bio-cta-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.bio-cta-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 16px;
+}
+
+.bio-cta-headline {
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  margin-bottom: 16px;
+}
+
+.bio-cta-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.65;
+}
+
+.bio-cta-right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.bio-cta-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 32px;
+  background: #fca311;
+  color: #0a0a0a;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: background 0.15s, transform 0.15s;
+}
+.bio-cta-btn-primary:hover { background: #e6940a; transform: translateY(-1px); }
+
+.bio-cta-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 32px;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.7);
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s;
+}
+.bio-cta-btn-secondary:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+
+.bio-cta-note {
+  font-size: 12px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.02em;
+}
+
+/* ──────────────────────────────────────────
+   RESPONSIVE
+────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .bio-hero-inner    { grid-template-columns: 1fr; padding: 48px 24px 0; gap: 32px; }
+  .bio-hero-right    { padding-bottom: 0; }
+  .bio-hero-ctas     { padding-bottom: 32px; }
+  .bio-spec-strip    { grid-template-columns: repeat(2, 1fr); }
+  .bio-spec-item     { padding: 20px 24px; }
+  .bio-types         { padding: 56px 24px; }
+  .bio-sys-grid      { grid-template-columns: repeat(2, 1fr); }
+  .bio-brands        { padding: 32px 24px; }
+  .bio-why           { padding: 56px 24px; }
+  .bio-why-grid      { grid-template-columns: 1fr; }
+  .bio-why-item      { border-right: none; border-bottom: 1px solid #ebebeb; padding: 28px 0; }
+  .bio-why-item:last-child { border-bottom: none; }
+  .bio-why-item:not(:first-child) { padding-left: 0; }
+  .bio-cta           { padding: 56px 24px; }
+  .bio-cta-inner     { grid-template-columns: 1fr; gap: 36px; }
+}
+
+@media (max-width: 560px) {
+  .bio-sys-grid   { grid-template-columns: 1fr; }
+  .bio-spec-strip { grid-template-columns: repeat(2, 1fr); }
+}

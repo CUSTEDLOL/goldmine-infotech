@@ -1,0 +1,577 @@
+/* ─── Root ──────────────────────────────────────────────────────────────────── */
+
+.bc-root {
+  padding-top: 72px;
+  background: #fcfcfc;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #0a0a0a;
+}
+
+/* ─── Breadcrumb ─────────────────────────────────────────────────────────────── */
+
+.bc-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 40px 0;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .bc-breadcrumb {
+    padding: 16px 20px 0;
+  }
+}
+
+.bc-breadcrumb-link {
+  font-size: 13px;
+  color: #888;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.bc-breadcrumb-link:hover {
+  color: #fca311;
+}
+
+.bc-breadcrumb-sep {
+  font-size: 13px;
+  color: #ccc;
+}
+
+.bc-breadcrumb-current {
+  font-size: 13px;
+  color: #444;
+  font-weight: 500;
+}
+
+/* ─── Hero ──────────────────────────────────────────────────────────────────── */
+
+.bc-hero {
+  text-align: center;
+  padding: 48px 24px 40px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.bc-hero-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #fca311;
+  background: #fff8ed;
+  border: 1px solid #fde8bb;
+  border-radius: 999px;
+  padding: 4px 12px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.bc-hero-title {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 16px;
+  color: #0a0a0a;
+}
+
+.bc-hero-accent {
+  color: #fca311;
+}
+
+.bc-hero-sub {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ─── Main Container ─────────────────────────────────────────────────────────── */
+
+.bc-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 48px;
+}
+
+@media (max-width: 480px) {
+  .bc-container {
+    padding: 0 16px 40px;
+  }
+}
+
+/* ─── Cards ──────────────────────────────────────────────────────────────────── */
+
+.bc-card {
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.bc-preview-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ─── Section Title ──────────────────────────────────────────────────────────── */
+
+.bc-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0a0a0a;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+}
+
+/* ─── Form ───────────────────────────────────────────────────────────────────── */
+
+.bc-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.bc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.bc-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.bc-label strong {
+  color: #0a0a0a;
+  font-weight: 700;
+}
+
+.bc-input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #0a0a0a;
+  background: #fafafa;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s;
+  -webkit-appearance: none;
+  appearance: none;
+  font-family: inherit;
+}
+
+.bc-input:focus {
+  border-color: #fca311;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(252, 163, 17, 0.1);
+}
+
+.bc-select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23888' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px;
+  padding-right: 30px;
+}
+
+.bc-format-hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 12.5px;
+  color: #888;
+  background: #fff8ed;
+  border: 1px solid #fde8bb;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.bc-hint-icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ─── Slider rows ────────────────────────────────────────────────────────────── */
+
+.bc-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 480px) {
+  .bc-row-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bc-slider {
+  width: 100%;
+  cursor: pointer;
+  accent-color: #fca311;
+  height: 4px;
+}
+
+.bc-slider-range {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10.5px;
+  color: #bbb;
+  font-weight: 500;
+  margin-top: -2px;
+}
+
+/* ─── Colors row ─────────────────────────────────────────────────────────────── */
+
+.bc-row-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+@media (max-width: 480px) {
+  .bc-row-3 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.bc-color-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 7px 10px;
+  background: #fafafa;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.bc-color-field:hover {
+  border-color: #ccc;
+}
+
+.bc-color-input {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 4px;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  background: none;
+}
+
+.bc-color-hex {
+  font-size: 12px;
+  font-family: 'SF Mono', 'Fira Code', 'Menlo', monospace;
+  color: #555;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* ─── Toggle ─────────────────────────────────────────────────────────────────── */
+
+.bc-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  padding: 9px 0;
+}
+
+.bc-toggle input[type="checkbox"] {
+  display: none;
+}
+
+.bc-toggle-track {
+  width: 36px;
+  height: 20px;
+  background: #e0e0e0;
+  border-radius: 999px;
+  position: relative;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.bc-toggle input:checked + .bc-toggle-track {
+  background: #fca311;
+}
+
+.bc-toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.bc-toggle input:checked ~ .bc-toggle-label {
+  color: #0a0a0a;
+}
+
+.bc-toggle input:checked + .bc-toggle-track .bc-toggle-thumb {
+  transform: translateX(16px);
+}
+
+.bc-toggle-label {
+  font-size: 13px;
+  color: #888;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+/* ─── Preview Header ─────────────────────────────────────────────────────────── */
+
+.bc-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.bc-preview-header .bc-section-title {
+  margin-bottom: 0;
+}
+
+.bc-format-pill {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  background: #f0f0f0;
+  color: #555;
+  border-radius: 999px;
+  padding: 3px 10px;
+  text-transform: uppercase;
+}
+
+/* ─── Canvas ─────────────────────────────────────────────────────────────────── */
+
+.bc-canvas-wrap {
+  border-radius: 12px;
+  border: 1px solid #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 160px;
+  transition: opacity 0.2s;
+}
+
+.bc-canvas-wrap--hidden {
+  display: none;
+}
+
+.bc-canvas {
+  display: block;
+  max-width: 100%;
+}
+
+/* ─── Error state ────────────────────────────────────────────────────────────── */
+
+.bc-error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px 20px;
+  text-align: center;
+}
+
+.bc-error-icon {
+  margin-bottom: 4px;
+}
+
+.bc-error-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ef4444;
+  margin: 0;
+}
+
+.bc-error-msg {
+  font-size: 13px;
+  color: #666;
+  margin: 0;
+  max-width: 400px;
+}
+
+.bc-error-hint {
+  font-size: 12.5px;
+  color: #aaa;
+  margin: 0;
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+/* ─── Download Button ────────────────────────────────────────────────────────── */
+
+.bc-download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  width: 100%;
+  padding: 12px 20px;
+  background: #0a0a0a;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+  font-family: inherit;
+}
+
+.bc-download-btn:hover:not(:disabled) {
+  background: #1a1a1a;
+}
+
+.bc-download-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.bc-download-icon {
+  flex-shrink: 0;
+}
+
+/* ─── Format Reference ───────────────────────────────────────────────────────── */
+
+.bc-formats-section {
+  background: #f8f8f8;
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+  padding: 40px 24px;
+}
+
+.bc-formats-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.bc-formats-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0a0a0a;
+  margin: 0 0 20px;
+}
+
+.bc-formats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 640px) {
+  .bc-formats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 360px) {
+  .bc-formats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bc-format-card {
+  background: #ffffff;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 10px;
+  padding: 12px 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: inherit;
+}
+
+.bc-format-card:hover {
+  border-color: #fca311;
+  box-shadow: 0 2px 12px rgba(252, 163, 17, 0.1);
+}
+
+.bc-format-card--active {
+  background: #fff8ed;
+  border-color: #fca311;
+  box-shadow: 0 2px 12px rgba(252, 163, 17, 0.12);
+}
+
+.bc-format-card-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0a0a0a;
+  display: block;
+}
+
+.bc-format-card--active .bc-format-card-name {
+  color: #fca311;
+}
+
+.bc-format-card-hint {
+  font-size: 11.5px;
+  color: #999;
+  line-height: 1.45;
+  display: block;
+}
+
+/* ─── CTA ────────────────────────────────────────────────────────────────────── */
+
+.bc-cta {
+  text-align: center;
+  padding: 40px 24px 60px;
+}
+
+.bc-cta-text {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0a0a0a;
+  margin: 0 0 10px;
+}
+
+.bc-cta-link {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fca311;
+  text-decoration: none;
+  border-bottom: 1.5px solid #fca311;
+  padding-bottom: 1px;
+  transition: opacity 0.15s;
+}
+
+.bc-cta-link:hover {
+  opacity: 0.7;
+}

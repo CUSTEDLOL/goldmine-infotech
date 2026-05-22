@@ -1,0 +1,37 @@
+.dark-feature {
+  background: var(--black);
+  padding: 100px 0 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.dark-feature-content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 32px;
+  margin-bottom: 64px;
+}
+
+.dark-feature-badge { margin-bottom: 28px; }
+
+.dark-feature-title {
+  font-size: clamp(30px, 4.2vw, 56px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+
+.dark-feature-subtitle {
+  font-size: 17px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.65;
+  margin-bottom: 36px;
+}
+
+.dark-feature-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px 80px;
+}

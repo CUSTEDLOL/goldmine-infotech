@@ -1,0 +1,679 @@
+/* ============================================================
+   Billing & Invoicing Page  — prefix: bil-
+   ============================================================ */
+
+.bil-root {
+  padding-top: 72px;
+  background: #fff;
+  overflow-x: hidden;
+}
+
+/* ──────────────────────────────────────────
+   HERO — Full-bleed photo with overlays
+────────────────────────────────────────── */
+.bil-hero {
+  position: relative;
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Background photo layer */
+.bil-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bil-hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+}
+
+/* Multi-stop gradient overlay — left heavy, fades right */
+.bil-hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    108deg,
+    rgba(7, 9, 15, 0.97)   0%,
+    rgba(7, 9, 15, 0.92)  35%,
+    rgba(7, 9, 15, 0.78)  55%,
+    rgba(7, 9, 15, 0.55)  75%,
+    rgba(7, 9, 15, 0.38) 100%
+  );
+}
+
+/* Hero inner — 55 / 45 split */
+.bil-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 56px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 48px;
+  align-items: center;
+}
+
+/* ── Breadcrumb ── */
+.bil-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.24);
+  margin-bottom: 32px;
+  letter-spacing: 0.03em;
+}
+.bil-bc-link {
+  color: rgba(255, 255, 255, 0.24);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.bil-bc-link:hover { color: rgba(255, 255, 255, 0.52); }
+.bil-bc-sep { color: rgba(255, 255, 255, 0.12); }
+.bil-bc-seg { color: rgba(255, 255, 255, 0.24); }
+
+/* ── Headline ── */
+.bil-headline {
+  font-size: clamp(44px, 5.8vw, 84px);
+  font-weight: 400;
+  line-height: 1.03;
+  letter-spacing: -0.038em;
+  color: #fff;
+  margin-bottom: 22px;
+}
+
+.bil-sub {
+  font-size: clamp(14px, 1.4vw, 17px);
+  color: rgba(255, 255, 255, 0.36);
+  line-height: 1.72;
+  margin-bottom: 44px;
+  max-width: 480px;
+}
+
+.bil-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.bil-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 30px;
+  background: #fca311;
+  color: #0a0a0a;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 7px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.15s;
+}
+.bil-btn-primary:hover {
+  background: #e6940a;
+  transform: translateY(-1px);
+}
+
+.bil-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 7px;
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s;
+}
+.bil-btn-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.32);
+  color: #fff;
+}
+
+/* ──────────────────────────────────────────
+   INVOICE CARD MOCKUP
+────────────────────────────────────────── */
+.bil-hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bil-invoice-card {
+  width: 100%;
+  max-width: 380px;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 32px 80px rgba(0, 0, 0, 0.6),
+    0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Card header row */
+.bil-invoice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 22px 22px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fafafa;
+}
+
+.bil-invoice-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.bil-invoice-label {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #bbb;
+}
+
+.bil-invoice-id {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0a0a0a;
+  letter-spacing: -0.01em;
+}
+
+.bil-invoice-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.bil-invoice-date-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #bbb;
+}
+
+.bil-invoice-date {
+  font-size: 12px;
+  color: #555;
+  font-weight: 500;
+}
+
+/* Party info */
+.bil-invoice-party {
+  padding: 14px 22px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.bil-invoice-to-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ccc;
+  margin-bottom: 5px;
+}
+
+.bil-invoice-party-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0a0a0a;
+  margin-bottom: 3px;
+}
+
+.bil-invoice-party-gstin {
+  font-size: 10px;
+  color: #aaa;
+  font-weight: 500;
+}
+
+/* Line items header */
+.bil-invoice-items-header {
+  display: grid;
+  grid-template-columns: 1fr 40px 80px;
+  padding: 10px 22px 6px;
+  gap: 8px;
+}
+
+.bil-invoice-items-header span {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #ccc;
+}
+
+.bil-invoice-items-header span:not(:first-child) {
+  text-align: right;
+}
+
+/* Line item rows */
+.bil-invoice-item-row {
+  display: grid;
+  grid-template-columns: 1fr 40px 80px;
+  padding: 9px 22px;
+  gap: 8px;
+  border-bottom: 1px solid #f5f5f5;
+  align-items: baseline;
+}
+
+.bil-invoice-item-desc {
+  font-size: 11.5px;
+  color: #333;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.bil-invoice-item-qty {
+  font-size: 11.5px;
+  color: #999;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.bil-invoice-item-amt {
+  font-size: 11.5px;
+  color: #333;
+  font-weight: 600;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Divider */
+.bil-invoice-divider {
+  height: 1px;
+  background: #e8e8e8;
+  margin: 4px 22px;
+}
+
+/* Tax row */
+.bil-invoice-tax-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 22px 4px;
+  font-size: 11px;
+  color: #aaa;
+  font-weight: 500;
+}
+
+/* Total row */
+.bil-invoice-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 22px 14px;
+}
+
+.bil-invoice-total-row span:first-child {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0a0a0a;
+  letter-spacing: 0.01em;
+}
+
+.bil-invoice-total-amt {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fca311;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Footer — badge + due */
+.bil-invoice-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 22px;
+  background: #fafafa;
+  border-top: 1px solid #f0f0f0;
+}
+
+.bil-invoice-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  background: #fca311;
+  color: #0a0a0a;
+  font-size: 9px;
+  font-weight: 800;
+  letter-radius: 0;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+
+.bil-invoice-due {
+  font-size: 11px;
+  color: #aaa;
+  font-weight: 500;
+}
+
+/* ──────────────────────────────────────────
+   STATS ROW — Dark background
+────────────────────────────────────────── */
+.bil-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: #0a0a0a;
+  border-top: 4px solid #fca311;
+}
+
+.bil-stat {
+  padding: 56px 52px;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+}
+.bil-stat:last-child { border-right: none; }
+
+.bil-stat-num {
+  font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.bil-stat-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.32);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ──────────────────────────────────────────
+   FEATURES 2x2 GRID
+────────────────────────────────────────── */
+.bil-features-section {
+  background: #fff;
+  padding: 96px 0 80px;
+}
+
+.bil-features-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 56px;
+}
+
+.bil-features-header {
+  margin-bottom: 56px;
+  max-width: 620px;
+}
+
+.bil-features-eyebrow {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fca311;
+  margin-bottom: 16px;
+}
+
+.bil-features-title {
+  font-size: clamp(28px, 3.6vw, 48px);
+  font-weight: 800;
+  color: #0a0a0a;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.bil-features-sub {
+  font-size: 16px;
+  color: #777;
+  line-height: 1.68;
+}
+
+/* 2×2 feature grid */
+.bil-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.bil-feature-cell {
+  padding: 44px 40px;
+  border-right: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+  position: relative;
+  border-left: 3px solid #fca311;
+  transition: background 0.18s;
+}
+
+/* Remove right border on even cells (right column) */
+.bil-feature-cell:nth-child(2n) {
+  border-right: none;
+}
+
+/* Remove bottom border on last two cells */
+.bil-feature-cell:nth-child(3),
+.bil-feature-cell:nth-child(4) {
+  border-bottom: none;
+}
+
+.bil-feature-cell:hover {
+  background: #fafafa;
+}
+
+.bil-feature-cell-num {
+  font-size: 13px;
+  font-weight: 800;
+  color: #fca311;
+  letter-spacing: 0.02em;
+  margin-bottom: 14px;
+}
+
+.bil-feature-cell-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0a0a0a;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.bil-feature-cell-desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.68;
+}
+
+/* ──────────────────────────────────────────
+   TRUST STRIP
+────────────────────────────────────────── */
+.bil-trust {
+  background: #f5f5f5;
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 0;
+}
+
+.bil-trust-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 56px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.bil-trust-item {
+  padding: 44px 0;
+  border-right: 1px solid #e0e0e0;
+  padding-right: 32px;
+  padding-left: 32px;
+}
+.bil-trust-item:first-child { padding-left: 0; }
+.bil-trust-item:last-child { border-right: none; }
+
+.bil-trust-num {
+  font-size: clamp(28px, 3.2vw, 44px);
+  font-weight: 800;
+  color: #0a0a0a;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.bil-trust-label {
+  font-size: 12px;
+  color: #888;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+/* ──────────────────────────────────────────
+   CTA — Orange pop moment
+────────────────────────────────────────── */
+.bil-cta {
+  background: #fca311;
+  padding: 100px 48px;
+  text-align: center;
+}
+
+.bil-cta-inner {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.bil-cta-headline {
+  font-size: clamp(30px, 4.2vw, 56px);
+  font-weight: 800;
+  color: #0a0a0a;
+  letter-spacing: -0.04em;
+  line-height: 1.06;
+  margin-bottom: 16px;
+}
+
+.bil-cta-sub {
+  font-size: 16.5px;
+  color: rgba(10, 10, 10, 0.58);
+  line-height: 1.65;
+  margin-bottom: 44px;
+}
+
+.bil-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 15px 40px;
+  background: #0a0a0a;
+  color: #fff;
+  font-size: 14.5px;
+  font-weight: 700;
+  border-radius: 7px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.15s;
+}
+.bil-cta-btn:hover {
+  background: #1e1e1e;
+  transform: translateY(-1px);
+}
+
+/* ──────────────────────────────────────────
+   RESPONSIVE
+────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .bil-hero-inner {
+    grid-template-columns: 1fr;
+    padding: 60px 40px;
+    gap: 48px;
+  }
+  .bil-hero-visual {
+    justify-content: flex-start;
+  }
+  .bil-invoice-card {
+    max-width: 440px;
+  }
+  .bil-features-inner {
+    padding: 0 32px;
+  }
+  .bil-trust-inner {
+    padding: 0 32px;
+  }
+  .bil-trust-inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .bil-trust-item:nth-child(2) { border-right: none; }
+  .bil-trust-item:nth-child(3) { border-top: 1px solid #e0e0e0; }
+  .bil-trust-item:nth-child(4) { border-top: 1px solid #e0e0e0; border-right: none; }
+}
+
+@media (max-width: 768px) {
+  .bil-stats {
+    grid-template-columns: 1fr;
+  }
+  .bil-stat {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    padding: 40px 28px;
+  }
+  .bil-stat:last-child { border-bottom: none; }
+
+  .bil-features-grid {
+    grid-template-columns: 1fr;
+  }
+  .bil-feature-cell:nth-child(2n) {
+    border-right: none;
+  }
+  .bil-feature-cell:nth-child(3),
+  .bil-feature-cell:nth-child(4) {
+    border-bottom: 1px solid #e8e8e8;
+  }
+  .bil-feature-cell:last-child {
+    border-bottom: none;
+  }
+  .bil-feature-cell {
+    padding: 36px 28px;
+  }
+  .bil-features-section {
+    padding: 72px 0 60px;
+  }
+  .bil-features-inner {
+    padding: 0 24px;
+  }
+  .bil-hero-inner {
+    padding: 48px 24px;
+  }
+  .bil-cta {
+    padding: 72px 24px;
+  }
+  .bil-trust-inner {
+    padding: 0 24px;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .bil-trust-inner {
+    grid-template-columns: 1fr;
+  }
+  .bil-trust-item {
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 32px 0;
+  }
+  .bil-trust-item:first-child { padding-left: 0; }
+  .bil-trust-item:last-child { border-bottom: none; }
+  .bil-invoice-card {
+    max-width: 100%;
+  }
+}
