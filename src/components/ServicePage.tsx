@@ -1,4 +1,3 @@
-import { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import './ServicePage.css'
 
@@ -22,7 +21,6 @@ export default function ServicePage({
   category,
   title,
   tagline,
-  description,
   features,
   ctaText = 'Get a Free Quote',
   accentColor = '#FCA311',
