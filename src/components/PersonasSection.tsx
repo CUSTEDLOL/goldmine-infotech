@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import retailersImage from '../assets/retailers.png'
-import schoolsImage from '../assets/schools.png'
+import schoolsImage from '../assets/Schools.png'
 import corporationsImage from '../assets/corporation.png'
-import startupsImage from '../assets/Startups.png'
+import startupsImage from '../assets/startups.png'
 import manufacturersImage from '../assets/manufacturers.png'
 import './PersonasSection.css'
 
