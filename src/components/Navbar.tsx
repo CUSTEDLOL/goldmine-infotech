@@ -251,6 +251,7 @@ const NAV_ITEMS: NavItem[] = [
         {
           head: 'DOCUMENT TOOLS',
           links: [
+            { label: 'QR Code Generator', href: '/tools/qr-code' },
             { label: 'GST Invoice Generator', href: '/tools/gst-invoice' },
             { label: 'Payment Receipt Generator', href: '/tools/payment-receipt' },
           ],
