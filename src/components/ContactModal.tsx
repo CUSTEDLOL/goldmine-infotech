@@ -151,7 +151,7 @@ export default function ContactModal() {
                     <svg className="cm-info-icon" viewBox="0 0 20 20" fill="none">
                       <path d="M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm0 0l8 5 8-5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                    <span>goldmineinfotech@gmail.com</span>
+                    <span>contact@gischennai.com</span>
                   </div>
                   <div className="cm-info-row">
                     <svg className="cm-info-icon" viewBox="0 0 20 20" fill="none">

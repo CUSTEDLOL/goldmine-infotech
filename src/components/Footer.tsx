@@ -62,7 +62,7 @@ export default function Footer() {
           <div>
             <div className="footer-col-head">Contact</div>
             <ul className="footer-links footer-links--contact">
-              <li><a href="mailto:admin@goldmineinfotech.com">admin@goldmineinfotech.com</a></li>
+              <li><a href="mailto:contact@gischennai.com">contact@gischennai.com</a></li>
               <li><a href="tel:+919500036310">+91 9500036310</a></li>
               <li><a href="#">Pay Online (Razorpay)</a></li>
               <li className="footer-address">
