@@ -133,7 +133,11 @@
 /* Mobile responsiveness */
 @media (max-width: 1024px) {
   .tgrid-wrapper {
-    height: 600px;
+    height: auto;
+    overflow: visible;
+    mask-image: none;
+    -webkit-mask-image: none;
+    padding: 0;
   }
   .tgrid {
     flex-direction: column;
@@ -144,7 +148,7 @@
   .tgrid-column {
     width: 100%;
     max-width: 500px;
-    animation: none !important; /* Disable rolling on mobile for better UX initially, or keep it if preferred */
+    animation: none !important;
   }
   .tgrid-column:nth-child(2) {
     margin-top: 0;
