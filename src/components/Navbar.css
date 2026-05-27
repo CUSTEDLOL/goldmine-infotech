@@ -56,8 +56,6 @@
 }
 
 .navbar--scrolled .nav-logo-img          { height: 28px; }
-.navbar--scrolled .nav-logo-name__top    { font-size: 13px; }
-.navbar--scrolled .nav-logo-name__bottom { font-size: 13px; }
 .navbar--scrolled .nav-trigger           { font-size: 13px; padding: 5px 9px; }
 
 .nav-inner {
@@ -110,23 +108,23 @@
 }
 
 .nav-logo-name__top {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 800;
   color: #0a0a0a;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   white-space: nowrap;
 }
 
 .nav-logo-name__bottom {
-  font-size: 16px;
-  font-weight: 700;
-  color: #0a0a0a;
-  letter-spacing: 0.01em;
+  font-size: 10px;
+  font-weight: 600;
+  color: #555;
+  letter-spacing: 0.03em;
   white-space: nowrap;
 }
 
-.navbar--scrolled .nav-logo-name__top { font-size: 14px; }
-.navbar--scrolled .nav-logo-name__bottom { font-size: 14px; }
+.navbar--scrolled .nav-logo-name__top { font-size: 17px; }
+.navbar--scrolled .nav-logo-name__bottom { font-size: 9px; }
 
 /* ─── Nav list ───────────────────────────────────────────────────────────── */
 .nav-list {

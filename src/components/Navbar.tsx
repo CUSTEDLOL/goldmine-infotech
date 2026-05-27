@@ -552,8 +552,8 @@ export default function Navbar() {
         <Link to="/" className="nav-logo" onClick={() => { setOpen(null); setMobileOpen(false) }}>
           <img src={goldmineLogo} alt="Goldmine Infotech" className="nav-logo-img" />
           <span className="nav-logo-name">
-            <span className="nav-logo-name__top">Goldmine Infotech</span>
-            <span className="nav-logo-name__bottom">and Systems</span>
+            <span className="nav-logo-name__top">Goldmine</span>
+            <span className="nav-logo-name__bottom">Infotech and Systems</span>
           </span>
         </Link>
 

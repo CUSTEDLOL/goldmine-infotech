@@ -41,16 +41,18 @@
 }
 
 .footer-logo-top {
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 800;
   color: #fff;
+  letter-spacing: -0.03em;
   line-height: 1.2;
 }
 
 .footer-logo-sub {
-  font-size: 14px;
-  font-weight: 700;
-  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  color: #888;
+  letter-spacing: 0.03em;
   line-height: 1.2;
 }
 

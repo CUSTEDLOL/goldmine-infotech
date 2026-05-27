@@ -36,8 +36,8 @@ export default function Footer() {
             <Link to="/" className="footer-brand-logo">
               <img src={goldmineLogo} alt="Goldmine Infotech" className="footer-logo-img" />
               <div className="footer-logo-text">
-                <span className="footer-logo-top">Goldmine Infotech</span>
-                <span className="footer-logo-sub">and Systems</span>
+                <span className="footer-logo-top">Goldmine</span>
+                <span className="footer-logo-sub">Infotech and Systems</span>
               </div>
             </Link>
             <p className="footer-tagline">
