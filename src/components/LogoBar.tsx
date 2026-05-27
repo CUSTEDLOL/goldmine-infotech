@@ -9,6 +9,9 @@ const LOGOS = [
   { src: 'https://www.enrootdentistry.com/assets/img/logo.png',           label: 'Enroot Dentistry' },
   { src: 'https://www.vaniyarsangamam.in/images/src/logo.png',            label: 'Vaniyar Sangamam' },
   { src: 'https://www.aatralarakattalai.com/assets/img/logo/logo.png',    label: 'Aatralara Kattalai' },
+  { src: 'https://www.agrglobalschool.org/assets/img/core-img/logo-light.png', label: 'AGR Global School', imgFilter: 'brightness(0)' },
+  { src: 'https://i0.wp.com/rkmvc.ac.in/wp-content/uploads/2025/01/logo-rkmvc.png?fit=1106%2C300&ssl=1', label: 'RKM Vivekananda College' },
+  { src: 'https://www.noiseandgrains.com/_next/image?url=%2Fimages%2Fng_logo.png&w=256&q=75', label: 'Noise and Grains' },
 ]
 
 // Duplicate for seamless infinite scroll
