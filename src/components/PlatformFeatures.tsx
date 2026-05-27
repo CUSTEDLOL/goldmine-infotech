@@ -9,6 +9,12 @@ import {
   FashionAnim,
   HRAnim,
 } from '@/components/ui/cybernetic-bento-grid'
+import businessWebsiteImg from '@/assets/businesswebsite.png'
+import portfolioImg from '@/assets/Portfolio.png'
+import bookingImg from '@/assets/booking.png'
+import app1Img from '@/assets/app1.png'
+import fashionImg from '@/assets/fashion.png'
+import hrImg from '@/assets/HR.png'
 import './PlatformFeatures.css'
 
 interface Feature {
@@ -17,6 +23,7 @@ interface Feature {
   title: string
   description: string
   visual: ReactNode
+  mobileImg: string
   accent: string
 }
 
@@ -27,6 +34,7 @@ const features: Feature[] = [
     title: 'Business Websites',
     description: 'Professional, high-performance websites built to elevate your brand and drive growth.',
     visual: <BusinessWebsiteAnim />,
+    mobileImg: businessWebsiteImg,
     accent: '#FCA311',
   },
   {
@@ -35,6 +43,7 @@ const features: Feature[] = [
     title: 'Personal Portfolio Websites',
     description: 'Stand out with stunning portfolio sites designed to showcase your work and attract opportunities.',
     visual: <PortfolioAnim />,
+    mobileImg: portfolioImg,
     accent: '#6B5CE7',
   },
   {
@@ -43,6 +52,7 @@ const features: Feature[] = [
     title: 'Booking & Other Apps',
     description: 'Seamless booking systems and custom applications tailored to streamline your operations.',
     visual: <BookingAnim />,
+    mobileImg: bookingImg,
     accent: '#059669',
   },
   {
@@ -51,6 +61,7 @@ const features: Feature[] = [
     title: 'App Development',
     description: 'Native and cross-platform mobile experiences that engage users and deliver real value.',
     visual: <AppDevelopmentAnim />,
+    mobileImg: app1Img,
     accent: '#ec4899',
   },
   {
@@ -59,6 +70,7 @@ const features: Feature[] = [
     title: 'Fabric / Jewellery Business Software',
     description: 'Curated, industry-specific software solutions to manage inventory, sales, and customer relations.',
     visual: <FashionAnim />,
+    mobileImg: fashionImg,
     accent: '#eab308',
   },
   {
@@ -67,6 +79,7 @@ const features: Feature[] = [
     title: 'HR Software',
     description: 'Comprehensive human resources management systems to simplify payroll, attendance, and employee data.',
     visual: <HRAnim />,
+    mobileImg: hrImg,
     accent: '#3b82f6',
   }
 ]
@@ -135,6 +148,12 @@ export default function PlatformFeatures() {
                     <p className="pf-list-item-desc">
                       {f.description}
                     </p>
+                    <img
+                      src={f.mobileImg}
+                      alt={f.title}
+                      className="pf-mobile-img"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
               )
