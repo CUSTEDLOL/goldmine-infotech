@@ -732,4 +732,38 @@
   .nav-list    { display: none; }
   .nav-actions { display: none; }
   .nav-hamburger { display: flex; }
+
+  /* Keep pill navbar from clipping on tablets */
+  .navbar--scrolled {
+    width: calc(100% - 32px);
+    max-width: none;
+  }
+
+  /* Ensure mobile overlay is full-width regardless of scrolled pill state */
+  .mobile-overlay {
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 1rem 1rem;
+  }
+
+  .navbar--scrolled {
+    top: 8px;
+    width: calc(100% - 16px);
+    padding: 0.5rem 0.75rem;
+  }
+
+  .nav-logo {
+    margin-right: 0;
+  }
+
+  .mob-accordion {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 12px;
+  }
 }

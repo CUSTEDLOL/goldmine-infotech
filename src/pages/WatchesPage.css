@@ -704,6 +704,29 @@
   }
 }
 
+@media (max-width: 480px) {
+  .wtc-hero-inner {
+    padding: 40px 16px;
+  }
+  .wtc-hero {
+    min-height: auto;
+  }
+  .wtc-categories,
+  .wtc-products,
+  .wtc-why,
+  .wtc-cta,
+  .wtc-brands {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .wtc-hero-headline {
+    white-space: normal;
+  }
+  .wtc-collage-img {
+    height: 160px;
+  }
+}
+
 /* ================================================================
     ███████ ██     ██     (sw- prefix — Smartwatches)
    ██       ██     ██
@@ -1399,5 +1422,28 @@
   }
   .sw-brand-sep {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .sw-hero-inner {
+    padding: 40px 16px;
+  }
+  .sw-hero {
+    min-height: auto;
+  }
+  .sw-categories,
+  .sw-products,
+  .sw-why,
+  .sw-cta,
+  .sw-brands {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .sw-hero-headline {
+    white-space: normal;
+  }
+  .sw-collage-img {
+    height: 160px;
   }
 }

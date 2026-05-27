@@ -408,6 +408,45 @@
   }
 }
 
+@media (max-width: 480px) {
+  .dfs-search-bar {
+    flex-direction: column;
+    border-radius: 14px;
+    padding: 8px;
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  .dfs-search-icon {
+    display: none;
+  }
+
+  .dfs-search-input {
+    padding: 12px 14px;
+    font-size: 16px;
+    border-radius: 8px;
+    background: #f8f8f8;
+  }
+
+  .dfs-search-btn {
+    margin: 0;
+    padding: 13px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .dfs-tld-pills {
+    gap: 6px;
+  }
+
+  .dfs-tld-pill {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
 /* ─── Disclaimer ─────────────────────────────────────────────────────────────── */
 
 .dfs-disclaimer {

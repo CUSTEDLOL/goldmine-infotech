@@ -783,3 +783,29 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 480px) {
+  .dsk-hero-inner {
+    padding: 40px 16px;
+  }
+  .dsk-hero {
+    min-height: auto;
+  }
+  .dsk-categories,
+  .dsk-products,
+  .dsk-bulk,
+  .dsk-why,
+  .dsk-cta {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .dsk-hero-headline {
+    white-space: normal;
+  }
+  .dsk-collage-img {
+    height: 160px;
+  }
+  .dsk-bulk-big-num {
+    font-size: clamp(60px, 16vw, 90px);
+  }
+}

@@ -707,3 +707,26 @@
     display: none;
   }
 }
+
+@media (max-width: 480px) {
+  .tvs-hero-inner {
+    padding: 40px 16px;
+  }
+  .tvs-hero {
+    min-height: auto;
+  }
+  .tvs-categories,
+  .tvs-products,
+  .tvs-why,
+  .tvs-cta,
+  .tvs-brands {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .tvs-hero-headline {
+    white-space: normal;
+  }
+  .tvs-collage-img {
+    height: 160px;
+  }
+}
