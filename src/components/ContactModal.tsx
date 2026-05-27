@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import emailjs from '@emailjs/browser'
 import { useContactModal } from '../context/ContactModalContext'
 import './ContactModal.css'
 
@@ -80,11 +81,20 @@ export default function ContactModal() {
     if (Object.keys(errs).length) { setErrors(errs); return }
     setErrors({})
     setLoading(true)
-    // Placeholder: log to console until email is configured
-    console.log('Contact form submission:', { name, email, phone, message, context: config?.title })
-    await new Promise((r) => setTimeout(r, 1000))
-    setLoading(false)
-    setSuccess(true)
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        { name, email, phone, message, context: config?.title },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      )
+      setSuccess(true)
+    } catch (err) {
+      console.error('EmailJS error:', err)
+      setErrors({ email: 'Failed to send — please try again or call us directly.' })
+    } finally {
+      setLoading(false)
+    }
   }
 
   const accentColor = BADGE_COLORS[config?.badgeColor ?? 'default'] ?? BADGE_COLORS.default
