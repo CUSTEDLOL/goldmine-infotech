@@ -129,3 +129,30 @@
     line-height: 0.96;
   }
 }
+
+@media (max-width: 480px) {
+  .cta-banner-shell {
+    padding: 44px 16px;
+  }
+
+  .cta-banner .cta-email-row {
+    flex-direction: column;
+    border-radius: 12px;
+    padding: 12px;
+    gap: 10px;
+    max-width: 100%;
+  }
+
+  .cta-banner .cta-email-input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+  }
+
+  .cta-banner .cta-email-row button,
+  .cta-banner .cta-email-row a {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}

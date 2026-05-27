@@ -531,4 +531,10 @@
 @media (max-width: 560px) {
   .bio-sys-grid   { grid-template-columns: 1fr; }
   .bio-spec-strip { grid-template-columns: repeat(2, 1fr); }
+  .bio-hero-inner { padding: 48px 16px 0; }
+  .bio-spec-item  { padding: 16px; }
+  .bio-types      { padding: 40px 16px; }
+  .bio-brands     { padding: 24px 16px; }
+  .bio-why        { padding: 40px 16px; }
+  .bio-cta        { padding: 48px 16px; }
 }

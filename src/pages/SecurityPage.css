@@ -392,6 +392,11 @@
 }
 
 @media (max-width: 560px) {
-  .sec-cat-grid { grid-template-columns: 1fr; }
+  .sec-cat-grid  { grid-template-columns: 1fr; }
   .sec-hero-stat { flex: 0 0 100%; }
+  .sec-hero      { padding: 48px 16px 0; }
+  .sec-categories { padding: 40px 16px; }
+  .sec-services  { padding: 40px 16px; }
+  .sec-brands    { padding: 28px 16px; }
+  .sec-cta       { padding: 48px 16px; }
 }

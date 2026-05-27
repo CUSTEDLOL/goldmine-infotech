@@ -391,6 +391,11 @@
 }
 
 @media (max-width: 560px) {
-  .elp-cat-grid { grid-template-columns: 1fr; }
+  .elp-cat-grid  { grid-template-columns: 1fr; }
   .elp-hero-stat { flex: 0 0 100%; }
+  .elp-hero      { padding: 48px 16px 0; border-radius: 0; }
+  .elp-categories { padding: 40px 16px; }
+  .elp-services  { padding: 40px 16px; }
+  .elp-brands    { padding: 28px 16px; }
+  .elp-cta       { padding: 48px 16px; }
 }

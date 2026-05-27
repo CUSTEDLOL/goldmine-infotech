@@ -341,4 +341,8 @@
 
 @media (max-width: 560px) {
   .svp-hero-stat     { flex: 0 0 100%; }
+  .svp-hero          { padding: 48px 16px 0; }
+  .svp-categories    { padding: 40px 16px; }
+  .svp-cta           { padding: 48px 16px; }
+  .svp-cat-card      { padding: 24px 20px 20px; }
 }

@@ -707,3 +707,26 @@
     display: none;
   }
 }
+
+@media (max-width: 480px) {
+  .mob-hero-inner {
+    padding: 40px 16px;
+  }
+  .mob-hero {
+    min-height: auto;
+  }
+  .mob-categories,
+  .mob-products,
+  .mob-why,
+  .mob-cta,
+  .mob-brands {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .mob-hero-headline {
+    white-space: normal;
+  }
+  .mob-collage-img {
+    height: 160px;
+  }
+}
