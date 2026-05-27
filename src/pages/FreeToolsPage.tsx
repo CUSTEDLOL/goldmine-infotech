@@ -33,6 +33,18 @@ const TOOLS = [
     example: 'e.g. .in, .com, .co.in, .net',
     to: '/tools/domain-finder',
   },
+  {
+    name: 'Image Resize & Compress',
+    desc: 'Resize images to passport, stamp, or visa size. Compress JPEG quality to reduce file size.',
+    example: 'e.g. passport photos, ID card, stamp size',
+    to: '/tools/image-resize',
+  },
+  {
+    name: 'Image to PDF',
+    desc: 'Convert JPEG, PNG, and WebP images into a single downloadable PDF file.',
+    example: 'e.g. scan documents, combine photos',
+    to: '/tools/image-to-pdf',
+  },
 ]
 
 export default function FreeToolsPage() {

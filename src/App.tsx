@@ -76,6 +76,8 @@ import CompoundInterestTool from './pages/tools/CompoundInterestTool'
 import BarcodeTool from './pages/tools/BarcodeTool'
 import DomainFinderTool from './pages/tools/DomainFinderTool'
 import QRCodeTool from './pages/tools/QRCodeTool'
+import ImageResizeTool from './pages/tools/ImageResizeTool'
+import ImageToPdfTool from './pages/tools/ImageToPdfTool'
 
 // Home page components
 import DomainFinderSection from './components/DomainFinderSection'
@@ -163,6 +165,8 @@ export default function App() {
         <Route path="/tools/compound-interest" element={<CompoundInterestTool />} />
         <Route path="/tools/barcode"           element={<BarcodeTool />} />
         <Route path="/tools/domain-finder"     element={<DomainFinderTool />} />
+        <Route path="/tools/image-resize"      element={<ImageResizeTool />} />
+        <Route path="/tools/image-to-pdf"      element={<ImageToPdfTool />} />
       </Routes>
     </ContactModalProvider>
   )

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import retailersImage from '../assets/retailers.png'
 import schoolsImage from '../assets/Schools.png'
@@ -131,22 +131,81 @@ const PERSONAS: Persona[] = [
 
 export default function PersonasSection() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' ? window.innerWidth <= 640 : false
+  )
   const active = PERSONAS[activeIndex]
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 640px)')
+    setIsMobile(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+
+  const header = (
+    <div className="personas-header">
+      <div className="personas-badge">
+        <span className="personas-badge-dot" />
+        Who We Serve
+      </div>
+      <h2 className="personas-title">Technology that fits the way you work</h2>
+      <p className="personas-subtitle">
+        Explore the business profile closest to yours and see how Goldmine combines
+        software, hardware, security, and support into one working system.
+      </p>
+    </div>
+  )
+
+  if (isMobile) {
+    return (
+      <section className="personas-section">
+        <div className="personas-inner">
+          {header}
+          <div className="personas-mobile-stack">
+            {PERSONAS.map((persona) => (
+              <div key={persona.id} className="personas-mobile-item">
+                <div className="personas-mobile-label-row">
+                  <span className="personas-mobile-label">{persona.label}</span>
+                </div>
+                <h2 className="personas-mobile-headline">
+                  {persona.headline.split('\n').map((line, i, lines) => (
+                    <span key={line}>
+                      {line}
+                      {i < lines.length - 1 && <br />}
+                    </span>
+                  ))}
+                </h2>
+                <button type="button" className="personas-cta">{persona.cta}</button>
+                <div className="personas-mobile-details">
+                  {persona.features.map((feature) => (
+                    <article key={feature.title} className="personas-detail">
+                      <h3 className="personas-detail__title">{feature.title}</h3>
+                      <p className="personas-detail__desc">{feature.desc}</p>
+                    </article>
+                  ))}
+                </div>
+                <div className="personas-mobile-visual">
+                  <img
+                    src={persona.image}
+                    alt={persona.label}
+                    className="personas-mobile-visual-img"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section className="personas-section">
       <div className="personas-inner">
-        <div className="personas-header">
-          <div className="personas-badge">
-            <span className="personas-badge-dot" />
-            Who We Serve
-          </div>
-          <h2 className="personas-title">Technology that fits the way you work</h2>
-          <p className="personas-subtitle">
-            Explore the business profile closest to yours and see how Goldmine combines
-            software, hardware, security, and support into one working system.
-          </p>
-        </div>
+        {header}
 
         <div className="personas-shell">
           <div className="personas-tabs" role="tablist" aria-label="Who we serve personas">

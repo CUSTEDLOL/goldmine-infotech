@@ -234,6 +234,8 @@ const NAV_ITEMS: NavItem[] = [
             { label: 'Compound Interest Calculator', href: '/tools/compound-interest' },
             { label: 'Barcode Generator',            href: '/tools/barcode' },
             { label: 'Domain Finder',                href: '/tools/domain-finder' },
+            { label: 'Image Resize & Compress',      href: '/tools/image-resize' },
+            { label: 'Image to PDF',                 href: '/tools/image-to-pdf' },
           ],
         },
       ],
@@ -347,6 +349,29 @@ function Dropdown({ data }: { data: DropdownData }) {
   )
 }
 
+// ─── Mobile Quick Bar ─────────────────────────────────────────────────────────
+
+function MobileQuickBar() {
+  const location = useLocation()
+  return (
+    <div className="mob-quickbar">
+      {NAV_ITEMS.map((item) => {
+        const href = item.dropdown?.featuredCard?.href ?? item.href ?? '/'
+        const isActive = href !== '/' && location.pathname.startsWith(href)
+        return (
+          <Link
+            key={item.label}
+            to={href}
+            className={`mob-quickbar-chip${isActive ? ' mob-quickbar-chip--active' : ''}`}
+          >
+            {item.label}
+          </Link>
+        )
+      })}
+    </div>
+  )
+}
+
 // ─── Mobile Overlay ───────────────────────────────────────────────────────────
 
 function MobileOverlay({ onClose }: { onClose: () => void }) {
@@ -396,28 +421,48 @@ function MobileOverlay({ onClose }: { onClose: () => void }) {
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.22 }}
                 >
-                  {item.dropdown.columns.map((col) => (
-                    <div key={col.head} className="mob-col">
-                      <p className="mob-col-head">{col.head}</p>
-                      <ul className="mob-col-links">
-                        {col.links.map((link) => (
-                          <li key={link.label}>
-                            {link.href ? (
-                              <Link to={link.href} className="mob-link" onClick={onClose}>
-                                {link.label}
-                                {link.badge && <Badge label={link.badge.label} color={link.badge.color} />}
-                              </Link>
-                            ) : (
-                              <a href="#" className="mob-link" onClick={onClose}>
-                                {link.label}
-                                {link.badge && <Badge label={link.badge.label} color={link.badge.color} />}
-                              </a>
-                            )}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
+                  {item.dropdown.featuredCard?.href && (
+                    <Link
+                      to={item.dropdown.featuredCard.href}
+                      className="mob-featured-card"
+                      style={{ background: item.dropdown.featuredCard.bg }}
+                      onClick={onClose}
+                    >
+                      <div className="mob-featured-title">{item.dropdown.featuredCard.title}</div>
+                      <div className="mob-featured-desc">{item.dropdown.featuredCard.desc}</div>
+                      <div className="mob-featured-cta">{item.dropdown.featuredCard.cta} →</div>
+                    </Link>
+                  )}
+
+                  <div className="mob-accordion-cols">
+                    {item.dropdown.columns.map((col) => (
+                      <div key={col.head} className="mob-col">
+                        {col.headHref ? (
+                          <Link to={col.headHref} className="mob-col-head mob-col-head--link" onClick={onClose}>
+                            {col.head} →
+                          </Link>
+                        ) : (
+                          <p className="mob-col-head">{col.head}</p>
+                        )}
+                        <ul className="mob-col-links">
+                          {col.links.map((link) => (
+                            <li key={link.label}>
+                              {col.isList ? (
+                                <span className="mob-list-item">{link.label}</span>
+                              ) : link.href ? (
+                                <Link to={link.href} className="mob-link" onClick={onClose}>
+                                  {link.label}
+                                  {link.badge && <Badge label={link.badge.label} color={link.badge.color} />}
+                                </Link>
+                              ) : (
+                                <span className="mob-list-item">{link.label}</span>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -500,6 +545,7 @@ export default function Navbar() {
 
   return (
     <nav className={`navbar${scrolled ? ' navbar--scrolled' : ''}${isSubpage && !scrolled ? ' navbar--solid' : ''}`} ref={navRef}>
+      <MobileQuickBar />
       <div className="nav-inner">
 
         {/* Logo */}
