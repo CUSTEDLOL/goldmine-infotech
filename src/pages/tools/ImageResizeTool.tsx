@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 import './ImageResizeTool.css'
 
 const PRESETS = [
+  { label: 'Keep Original', sublabel: 'No resize — compress only', width: -1, height: -1 },
   { label: 'Passport Photo', sublabel: '35×45mm · 413×531px', width: 413, height: 531 },
   { label: 'Stamp Size',     sublabel: '1.5"×1.5" · 450×450px', width: 450, height: 450 },
   { label: 'Visa / OCI',     sublabel: '51×51mm · 600×600px', width: 600, height: 600 },
-  { label: 'ID Card',        sublabel: '85.6×53.98mm · 1012×638px', width: 1012, height: 638 },
   { label: 'Square (800)',   sublabel: '800×800px', width: 800, height: 800 },
   { label: 'Custom',         sublabel: 'Set your own size', width: 0, height: 0 },
 ]
@@ -49,25 +49,30 @@ export default function ImageResizeTool() {
   const handleProcess = () => {
     if (!originalUrl || !canvasRef.current) return
     const preset = PRESETS[activePreset]
-    const targetW = preset.width || customW
-    const targetH = preset.height || customH
+    const keepOriginal = preset.width === -1
     const img = new Image()
     img.onload = () => {
+      const targetW = keepOriginal ? img.naturalWidth : (preset.width || customW)
+      const targetH = keepOriginal ? img.naturalHeight : (preset.height || customH)
       const canvas = canvasRef.current!
       canvas.width = targetW
       canvas.height = targetH
       const ctx = canvas.getContext('2d')!
-      const srcAR = img.naturalWidth / img.naturalHeight
-      const dstAR = targetW / targetH
-      let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight
-      if (srcAR > dstAR) {
-        sw = Math.round(img.naturalHeight * dstAR)
-        sx = Math.round((img.naturalWidth - sw) / 2)
+      if (keepOriginal) {
+        ctx.drawImage(img, 0, 0)
       } else {
-        sh = Math.round(img.naturalWidth / dstAR)
-        sy = Math.round((img.naturalHeight - sh) / 2)
+        const srcAR = img.naturalWidth / img.naturalHeight
+        const dstAR = targetW / targetH
+        let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight
+        if (srcAR > dstAR) {
+          sw = Math.round(img.naturalHeight * dstAR)
+          sx = Math.round((img.naturalWidth - sw) / 2)
+        } else {
+          sh = Math.round(img.naturalWidth / dstAR)
+          sy = Math.round((img.naturalHeight - sh) / 2)
+        }
+        ctx.drawImage(img, sx, sy, sw, sh, 0, 0, targetW, targetH)
       }
-      ctx.drawImage(img, sx, sy, sw, sh, 0, 0, targetW, targetH)
       const mime = format === 'png' ? 'image/png' : 'image/jpeg'
       const q = format === 'png' ? undefined : quality / 100
       canvas.toBlob((blob) => {
@@ -90,8 +95,9 @@ export default function ImageResizeTool() {
   }
 
   const preset = PRESETS[activePreset]
-  const targetW = preset.width || customW
-  const targetH = preset.height || customH
+  const keepOriginal = preset.width === -1
+  const targetW = keepOriginal ? 0 : (preset.width || customW)
+  const targetH = keepOriginal ? 0 : (preset.height || customH)
 
   return (
     <div className="irt-root">
@@ -138,7 +144,7 @@ export default function ImageResizeTool() {
                 </div>
                 {resultUrl && (
                   <div className="irt-preview-box">
-                    <p className="irt-preview-label">Result ({targetW}×{targetH}px)</p>
+                    <p className="irt-preview-label">Result {keepOriginal ? '(original size)' : `(${targetW}×${targetH}px)`}</p>
                     <img src={resultUrl} alt="Result" className="irt-preview-img" />
                     <p className="irt-preview-meta">{formatBytes(resultSize)}</p>
                   </div>
@@ -238,7 +244,6 @@ export default function ImageResizeTool() {
               ['Stamp Size',       '1.5" × 1.5"', '450 × 450 px'],
               ['Visa / OCI',       '51 × 51 mm',  '600 × 600 px'],
               ['US Passport',      '2" × 2"',     '600 × 600 px'],
-              ['ID Card (CR80)',   '85.6 × 54 mm','1012 × 638 px'],
             ].map(([lbl, mm, px]) => (
               <div key={lbl} className="irt-info-row">
                 <span className="irt-info-label">{lbl}</span>
