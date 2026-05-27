@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import JsBarcode from 'jsbarcode'
+import { useContactModal } from '../../context/ContactModalContext'
 import './BarcodeTool.css'
 
 // ─── Types & Constants ────────────────────────────────────────────────────────
@@ -29,6 +30,7 @@ const FORMAT_OPTIONS: { value: BarcodeFormat; label: string; hint: string }[] = 
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function BarcodeTool() {
+  const { openModal } = useContactModal()
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   const [content, setContent]         = useState('123456789012')
@@ -298,9 +300,20 @@ export default function BarcodeTool() {
       </div>
 
       {/* CTA */}
-      <div className="bc-cta">
-        <p className="bc-cta-text">Need inventory or POS software with barcode support?</p>
-        <a href="tel:+919500036310" className="bc-cta-link">Talk to Goldmine Infotech →</a>
+      <div className="tool-cta-strip">
+        <p className="tool-cta-text">Need a custom solution for your business?</p>
+        <button
+          className="tool-cta-btn"
+          onClick={() => openModal({
+            badge: 'Free Tools',
+            badgeColor: 'orange',
+            title: 'Talk to our team',
+            subtitle: 'We build custom software and tools for businesses across Chennai.',
+            prefillMessage: 'Hi, I\'ve been using your free tools and I\'m interested in a custom solution for my business.',
+          })}
+        >
+          Talk to our team →
+        </button>
       </div>
     </div>
   )

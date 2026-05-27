@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useContactModal } from '../context/ContactModalContext'
 import './InventoryTracking.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -111,6 +112,7 @@ const BARCODE_PATTERN: Array<{ type: 'wide' | 'thin' | 'normal' }> = [
 
 export default function InventoryTracking() {
   const rootRef = useRef<HTMLDivElement>(null)
+  const { openModal } = useContactModal()
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -231,7 +233,16 @@ export default function InventoryTracking() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.65 }}
             >
-              <Link to="/contact" className="inv-btn-primary">Get a Free Demo</Link>
+              <button
+                className="inv-btn-primary"
+                onClick={() => openModal({
+                  badge: 'Inventory Tracking',
+                  badgeColor: 'orange',
+                  title: 'Get a Free Demo',
+                  subtitle: 'See how our inventory system tracks stock, alerts, and supplier orders in real time.',
+                  prefillMessage: 'Hi, I\'d like a free demo of the Inventory Tracking software.',
+                })}
+              >Get a Free Demo</button>
               <Link to="/software" className="inv-btn-ghost">View All Products</Link>
             </motion.div>
           </div>
@@ -512,7 +523,16 @@ export default function InventoryTracking() {
               We configure your inventory categories, opening stock, and alerts in one
               setup session. You are tracking from day one.
             </p>
-            <Link to="/contact" className="inv-btn-primary">Get Started</Link>
+            <button
+              className="inv-btn-primary"
+              onClick={() => openModal({
+                badge: 'Inventory Tracking',
+                badgeColor: 'orange',
+                title: 'Get a Free Demo',
+                subtitle: 'See how our inventory system tracks stock, alerts, and supplier orders in real time.',
+                prefillMessage: 'Hi, I\'d like a free demo of the Inventory Tracking software.',
+              })}
+            >Get Started</button>
           </div>
 
           {/* Right image strip */}

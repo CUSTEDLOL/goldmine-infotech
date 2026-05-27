@@ -1,5 +1,6 @@
 import { useRef, useState, useCallback } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import heroImg from '@/assets/heropage.png'
 import heroMp4 from '@/assets/Goldmine.mp4'
 import './Hero.css'
@@ -11,6 +12,15 @@ const rise = {
 }
 
 const TAGS = ['Web & Hosting', 'Software', 'Hardware', 'CCTV & Security']
+
+const EXPLORE = [
+  { category: 'Services',    sub: 'Web, hosting & IT support',     href: '/services' },
+  { category: 'Software',    sub: 'Custom billing & business apps', href: '/software' },
+  { category: 'Computers',   sub: 'Laptops, desktops & printers',   href: '/computers' },
+  { category: 'Electronics', sub: 'TVs, mobiles & smartwatches',    href: '/electronics' },
+  { category: 'Security',    sub: 'CCTV cameras & biometrics',      href: '/security' },
+  { category: 'Free Tools',  sub: 'QR codes, receipts & more',      href: '/tools' },
+]
 
 /* ── Video Player ─────────────────────────────────────────── */
 function HeroVideoPlayer() {
@@ -150,6 +160,27 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
         >
           <img src={heroImg} alt="" className="hero-split__img" />
+        </motion.div>
+
+        {/* Bottom — explore tiles */}
+        <motion.div
+          className="hero-split__explore"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.5, ease: 'easeOut' }}
+        >
+          {EXPLORE.map((item) => (
+            <Link key={item.href} to={item.href} className="hero-split__explore-tile">
+              <div className="hero-split__explore-tile-text">
+                <span className="hero-split__explore-label">Explore</span>
+                <span className="hero-split__explore-category">{item.category}</span>
+                <span className="hero-split__explore-sub">{item.sub}</span>
+              </div>
+              <svg className="hero-split__explore-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </Link>
+          ))}
         </motion.div>
 
       </section>

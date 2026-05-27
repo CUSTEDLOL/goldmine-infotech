@@ -14,7 +14,7 @@
    1. HERO
    ================================================================ */
 .mob-hero {
-  min-height: 100vh;
+  min-height: calc(100vh - 280px);
   background: #fcfcfc;
   display: flex;
   align-items: center;
@@ -25,7 +25,7 @@
 .mob-hero-inner {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 80px 48px;
+  padding: 40px 48px;
   display: grid;
   grid-template-columns: 55% 45%;
   align-items: center;

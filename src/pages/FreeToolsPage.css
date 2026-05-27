@@ -1,0 +1,234 @@
+/* ============================================================
+   Free Tools Page — prefix: ftp-
+   ============================================================ */
+
+.ftp-root {
+  padding-top: 72px;
+  background: #fcfcfc;
+}
+
+/* ──────────────────────────────────────────
+   HERO
+────────────────────────────────────────── */
+.ftp-hero {
+  background: #fcfcfc;
+  padding: 72px 48px 56px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.ftp-hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ftp-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fca311;
+  margin-bottom: 20px;
+}
+
+.ftp-hero-headline {
+  font-size: clamp(40px, 5.5vw, 72px);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  color: #0a0a0a;
+  white-space: pre-line;
+  margin-bottom: 18px;
+}
+
+.ftp-hero-sub {
+  font-size: clamp(15px, 1.4vw, 17px);
+  color: #888;
+  line-height: 1.65;
+  max-width: 500px;
+  margin-bottom: 28px;
+}
+
+.ftp-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ftp-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 14px;
+  background: #fff;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+  letter-spacing: 0.01em;
+}
+
+/* ──────────────────────────────────────────
+   TOOLS GRID
+────────────────────────────────────────── */
+.ftp-tools {
+  padding: 64px 48px;
+}
+
+.ftp-tools-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ftp-section-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 28px;
+}
+
+.ftp-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.ftp-tool-card {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 16px;
+  padding: 32px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.18s, transform 0.18s, border-color 0.18s;
+}
+.ftp-tool-card:hover {
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+  border-color: #d4d4d4;
+}
+
+.ftp-tool-name {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0a0a0a;
+  letter-spacing: -0.025em;
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+
+.ftp-tool-desc {
+  font-size: 13.5px;
+  color: #777;
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+
+.ftp-tool-example {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #bbb;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.ftp-tool-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 26px;
+  background: #0a0a0a;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.15s;
+  align-self: flex-start;
+}
+.ftp-tool-btn:hover {
+  background: #222;
+  transform: translateY(-1px);
+}
+
+/* ──────────────────────────────────────────
+   BOTTOM CTA
+────────────────────────────────────────── */
+.ftp-cta {
+  background: #0a0a0a;
+  padding: 80px 48px;
+}
+
+.ftp-cta-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ftp-cta-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 16px;
+}
+
+.ftp-cta-headline {
+  font-size: clamp(32px, 4.5vw, 54px);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.04em;
+  line-height: 1.06;
+  margin-bottom: 14px;
+}
+
+.ftp-cta-sub {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.65;
+  margin-bottom: 36px;
+}
+
+.ftp-cta-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ftp-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 30px;
+  background: #fca311;
+  color: #0a0a0a;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.15s;
+}
+.ftp-cta-btn:hover {
+  background: #e6940a;
+  transform: translateY(-1px);
+}
+
+/* ──────────────────────────────────────────
+   RESPONSIVE
+────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .ftp-hero        { padding: 56px 24px 44px; }
+  .ftp-tools       { padding: 52px 24px; }
+  .ftp-tools-grid  { grid-template-columns: repeat(2, 1fr); }
+  .ftp-cta         { padding: 56px 24px; }
+}
+
+@media (max-width: 560px) {
+  .ftp-tools-grid  { grid-template-columns: 1fr; }
+}

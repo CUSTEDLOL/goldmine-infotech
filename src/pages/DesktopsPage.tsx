@@ -1,5 +1,20 @@
 import { Link } from 'react-router-dom'
 import './DesktopsPage.css'
+import { useContactModal } from '../context/ContactModalContext'
+import LogoBarDark from '../components/LogoBarDark'
+
+/* ── Brand Logos ────────────────────────────────────────────────── */
+const COMPUTER_BRANDS = [
+  { name: 'HP',        url: 'https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg' },
+  { name: 'Dell',      url: 'https://upload.wikimedia.org/wikipedia/commons/4/48/Dell_Logo.svg' },
+  { name: 'Lenovo',    url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/lenovo.svg' },
+  { name: 'ASUS',      url: 'https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg' },
+  { name: 'Acer',      url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/acer.svg' },
+  { name: 'Apple',     url: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg' },
+  { name: 'Samsung',   url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/samsung.svg', className: 'logo-xlarge' },
+  { name: 'Microsoft', url: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg' },
+  { name: 'Intel',     url: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Intel_logo_%282006-2020%29.svg' },
+]
 
 /* ── Image URLs ────────────────────────────────────────────────── */
 const COLLAGE_IMGS = [
@@ -13,6 +28,9 @@ const PROD_IMGS = {
   hp: 'https://images.pexels.com/photos/9072379/pexels-photo-9072379.jpeg?auto=compress&cs=tinysrgb&w=600',
   dell: 'https://images.unsplash.com/photo-1723118460404-b9c59ec3dbe0?fm=jpg&q=80&w=600&auto=format&fit=crop',
   asus: 'https://images.pexels.com/photos/18304033/pexels-photo-18304033.jpeg?auto=compress&cs=tinysrgb&w=600',
+  lenovo: 'https://images.unsplash.com/photo-1593152167544-085d3b9c4938?auto=format&fit=crop&w=600&q=80',
+  workstation: 'https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=600',
+  gaming: 'https://images.pexels.com/photos/2399840/pexels-photo-2399840.jpeg?auto=compress&cs=tinysrgb&w=600',
 }
 
 /* ── Types ─────────────────────────────────────────────────────── */
@@ -66,7 +84,7 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(0,102,204,0.08)',
     name: 'HP Pavilion Desktop',
     specs: 'Core i5, 8GB RAM, 512GB SSD\nWindows 11 Home',
-    price: '₹44,999',
+    price: 'Starts from ₹44,999',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #003087 0%, #0066cc 100%)',
@@ -78,7 +96,7 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(68,68,68,0.07)',
     name: 'Dell OptiPlex 3000',
     specs: 'Core i5, 16GB RAM, 512GB SSD\nSmall Form Factor',
-    price: '₹58,999',
+    price: 'Starts from ₹58,999',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #222222 0%, #555555 100%)',
@@ -90,10 +108,11 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(227,24,55,0.08)',
     name: 'Lenovo IdeaCentre',
     specs: 'Core i7, 16GB RAM\n1TB HDD + 256GB SSD',
-    price: '₹64,999',
+    price: 'Starts from ₹64,999',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #e31837 0%, #8b0000 100%)',
+    img: PROD_IMGS.lenovo,
   },
   {
     brand: 'Asus',
@@ -101,7 +120,7 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(0,0,0,0.06)',
     name: 'Asus All-in-One PC',
     specs: 'Core i5, 8GB RAM, 512GB SSD\n23.8" FHD Display',
-    price: '₹72,999',
+    price: 'Starts from ₹72,999',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)',
@@ -113,10 +132,11 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(0,102,204,0.08)',
     name: 'HP Z2 Workstation',
     specs: 'Core i9, 32GB RAM, 1TB SSD\nRTX A2000 6GB',
-    price: '₹1,84,999',
+    price: 'Starts from ₹1,84,999',
     badge: 'blue',
     badgeLabel: 'On Order',
     gradient: 'linear-gradient(135deg, #001a4d 0%, #003399 100%)',
+    img: PROD_IMGS.workstation,
   },
   {
     brand: 'Custom',
@@ -124,15 +144,17 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(252,163,17,0.1)',
     name: 'Custom Gaming PC',
     specs: 'Ryzen 9, 32GB RAM, RTX 4070\n2TB NVMe SSD',
-    price: '₹1,20,000+',
+    price: 'Starts from ₹1,20,000+',
     badge: 'orange',
     badgeLabel: 'Build to Order',
     gradient: 'linear-gradient(135deg, #1a0d00 0%, #3d2100 50%, #7a4200 100%)',
+    img: PROD_IMGS.gaming,
   },
 ]
 
 /* ── Component ─────────────────────────────────────────────────── */
 export default function DesktopsPage() {
+  const { openModal } = useContactModal()
   return (
     <div className="dsk-root">
 
@@ -183,7 +205,10 @@ export default function DesktopsPage() {
         </div>
       </section>
 
-      {/* ── 2. CATEGORY CARDS ───────────────────────────────────── */}
+      {/* ── 2. BRAND STRIP ──────────────────────────────────────── */}
+      <LogoBarDark brands={COMPUTER_BRANDS} label="Brands we carry" />
+
+      {/* ── 3. CATEGORY CARDS ───────────────────────────────────── */}
       <section className="dsk-categories">
         <div className="dsk-categories-inner">
           <div className="dsk-section-header">
@@ -208,7 +233,7 @@ export default function DesktopsPage() {
         </div>
       </section>
 
-      {/* ── 3. FEATURED PRODUCTS ────────────────────────────────── */}
+      {/* ── 4. FEATURED PRODUCTS ────────────────────────────────── */}
       <section className="dsk-products">
         <div className="dsk-products-inner">
           <div className="dsk-section-header">
@@ -254,7 +279,18 @@ export default function DesktopsPage() {
                   <h3 className="dsk-prod-name">{prod.name}</h3>
                   <p className="dsk-prod-specs">{prod.specs}</p>
                   <p className="dsk-prod-price">{prod.price}</p>
-                  <button className="dsk-prod-quote-btn">Get Quote</button>
+                  <button
+                    className="dsk-prod-quote-btn"
+                    onClick={() => openModal({
+                      badge: prod.brand,
+                      badgeColor: 'blue',
+                      title: `Get a Quote — ${prod.name}`,
+                      subtitle: prod.specs.replace('\n', ' · '),
+                      prefillMessage: `Hi, I'm interested in the ${prod.name} (${prod.specs.replace('\n', ', ')}). Please share pricing and availability.`,
+                    })}
+                  >
+                    Get Quote
+                  </button>
                 </div>
               </div>
             ))}
@@ -262,7 +298,7 @@ export default function DesktopsPage() {
         </div>
       </section>
 
-      {/* ── 4. BULK ORDERS BANNER ───────────────────────────────── */}
+      {/* ── 5. BULK ORDERS BANNER ───────────────────────────────── */}
       <section className="dsk-bulk">
         <div className="dsk-bulk-inner">
           {/* Left */}
@@ -276,9 +312,18 @@ export default function DesktopsPage() {
               Volume discounts, guaranteed delivery timelines, and on-site installation — all
               covered under one quote.
             </p>
-            <a href="tel:+919500036310" className="dsk-bulk-btn">
+            <button
+              className="dsk-bulk-btn"
+              onClick={() => openModal({
+                badge: 'Bulk Orders',
+                badgeColor: 'orange',
+                title: 'Get a Bulk Quote',
+                subtitle: 'Volume discounts, guaranteed delivery, and on-site installation covered under one quote.',
+                prefillMessage: 'Hi, I need a bulk desktop order for my organisation. Qty: ___, Configuration: ___. Please share a quote.',
+              })}
+            >
               Get a Bulk Quote
-            </a>
+            </button>
           </div>
 
           {/* Right — Stats */}
@@ -305,7 +350,7 @@ export default function DesktopsPage() {
         </div>
       </section>
 
-      {/* ── 5. WHY BUY ──────────────────────────────────────────── */}
+      {/* ── 6. WHY BUY ──────────────────────────────────────────── */}
       <section className="dsk-why">
         <div className="dsk-why-inner">
           <div className="dsk-why-header">
@@ -346,7 +391,7 @@ export default function DesktopsPage() {
         </div>
       </section>
 
-      {/* ── 6. CTA STRIP ────────────────────────────────────────── */}
+      {/* ── 7. CTA STRIP ────────────────────────────────────────── */}
       <section className="dsk-cta">
         <div className="dsk-cta-inner">
           <span className="dsk-cta-eyebrow">Let's talk</span>

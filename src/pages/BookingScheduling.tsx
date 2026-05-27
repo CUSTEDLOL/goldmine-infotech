@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useContactModal } from '../context/ContactModalContext'
 import './BookingScheduling.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -70,6 +71,7 @@ const REMINDERS = [
 
 export default function BookingScheduling() {
   const rootRef = useRef<HTMLDivElement>(null)
+  const { openModal } = useContactModal()
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -171,7 +173,16 @@ export default function BookingScheduling() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.6 }}
           >
-            <Link to="/contact" className="bks-btn-primary">Get a Free Demo</Link>
+            <button
+              className="bks-btn-primary"
+              onClick={() => openModal({
+                badge: 'Booking & Scheduling',
+                badgeColor: 'green',
+                title: 'Book a Free Setup Call',
+                subtitle: 'We\'ll walk you through the booking system and set it up for your business.',
+                prefillMessage: 'Hi, I\'d like to book a free setup call for the Booking & Scheduling software.',
+              })}
+            >Get a Free Demo</button>
             <Link to="/software" className="bks-btn-ghost">View All Products</Link>
           </motion.div>
 
@@ -480,7 +491,16 @@ export default function BookingScheduling() {
             We set up your booking page, configure your services, and have you live within a day.
             No tech skills needed.
           </p>
-          <Link to="/contact" className="bks-btn-primary">Get Started Today</Link>
+          <button
+            className="bks-btn-primary"
+            onClick={() => openModal({
+              badge: 'Booking & Scheduling',
+              badgeColor: 'green',
+              title: 'Book a Free Setup Call',
+              subtitle: 'We\'ll walk you through the booking system and set it up for your business.',
+              prefillMessage: 'Hi, I\'d like to book a free setup call for the Booking & Scheduling software.',
+            })}
+          >Get Started Today</button>
         </div>
       </section>
     </div>

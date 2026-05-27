@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
+import { useContactModal } from '../../context/ContactModalContext'
 import {
   LineChart,
   Line,
@@ -72,6 +73,7 @@ function CustomTooltip({ active, payload, label }: {
 // ─── Main Component ────────────────────────────────────────────────────────────
 
 export default function CompoundInterestTool() {
+  const { openModal } = useContactModal()
   const [principal, setPrincipal] = useState('100000')
   const [rate, setRate] = useState('12')
   const [years, setYears] = useState('10')
@@ -341,9 +343,20 @@ export default function CompoundInterestTool() {
       </div>
 
       {/* CTA */}
-      <div className="ci-cta">
-        <p className="ci-cta-text">Need financial software for your business?</p>
-        <a href="tel:+919500036310" className="ci-cta-link">Talk to Goldmine Infotech →</a>
+      <div className="tool-cta-strip">
+        <p className="tool-cta-text">Need a custom solution for your business?</p>
+        <button
+          className="tool-cta-btn"
+          onClick={() => openModal({
+            badge: 'Free Tools',
+            badgeColor: 'orange',
+            title: 'Talk to our team',
+            subtitle: 'We build custom software and tools for businesses across Chennai.',
+            prefillMessage: 'Hi, I\'ve been using your free tools and I\'m interested in a custom solution for my business.',
+          })}
+        >
+          Talk to our team →
+        </button>
       </div>
     </div>
   )

@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react'
 import { Link } from 'react-router-dom'
+import { useContactModal } from '../../context/ContactModalContext'
 import './DomainFinderTool.css'
 
 // ─── Types & Constants ────────────────────────────────────────────────────────
@@ -87,6 +88,7 @@ function ResultRow({ result }: { result: DomainResult }) {
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function DomainFinderTool() {
+  const { openModal } = useContactModal()
   const [domainInput, setDomainInput]     = useState('')
   const [selectedTLDs, setSelectedTLDs]   = useState<string[]>(DEFAULT_TLDS)
   const [results, setResults]             = useState<DomainResult[]>([])
@@ -276,9 +278,20 @@ export default function DomainFinderTool() {
       )}
 
       {/* CTA */}
-      <div className="df-cta">
-        <p className="df-cta-text">Looking to register a domain? We handle everything.</p>
-        <a href="tel:+919500036310" className="df-cta-btn">Contact Us</a>
+      <div className="tool-cta-strip">
+        <p className="tool-cta-text">Need a custom solution for your business?</p>
+        <button
+          className="tool-cta-btn"
+          onClick={() => openModal({
+            badge: 'Free Tools',
+            badgeColor: 'orange',
+            title: 'Talk to our team',
+            subtitle: 'We build custom software and tools for businesses across Chennai.',
+            prefillMessage: 'Hi, I\'ve been using your free tools and I\'m interested in a custom solution for my business.',
+          })}
+        >
+          Talk to our team →
+        </button>
       </div>
 
     </div>

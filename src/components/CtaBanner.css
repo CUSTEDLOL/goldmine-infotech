@@ -1,6 +1,5 @@
 .cta-banner {
   background: var(--white);
-  padding: 72px 0;
 }
 
 .cta-banner-shell {
@@ -10,13 +9,9 @@
     radial-gradient(circle at 18% 24%, rgba(86, 198, 255, 0.10), transparent 26%),
     radial-gradient(circle at 84% 26%, rgba(120, 92, 255, 0.10), transparent 24%),
     linear-gradient(180deg, #090b12 0%, #050608 100%);
-  border-radius: 28px;
   overflow: hidden;
   text-align: center;
-  padding: clamp(72px, 8vw, 108px) 32px;
-  box-shadow:
-    0 24px 60px rgba(5, 6, 8, 0.18),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  padding: clamp(80px, 9vw, 120px) 32px;
 }
 
 .cta-banner-glow {
@@ -109,13 +104,8 @@
 }
 
 @media (max-width: 900px) {
-  .cta-banner {
-    padding: 52px 0;
-  }
-
   .cta-banner-shell {
-    border-radius: 24px;
-    padding: 56px 24px;
+    padding: 64px 24px;
   }
 
   .cta-banner-title {
@@ -126,8 +116,7 @@
 
 @media (max-width: 640px) {
   .cta-banner-shell {
-    border-radius: 20px;
-    padding: 44px 18px;
+    padding: 52px 18px;
   }
 
   .cta-stars {

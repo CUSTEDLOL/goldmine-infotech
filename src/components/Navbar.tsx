@@ -3,6 +3,7 @@ import goldmineLogo from '../assets/goldminelogo.png'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
 import './Navbar.css'
+import { useContactModal } from '../context/ContactModalContext'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -58,42 +59,41 @@ const NAV_ITEMS: NavItem[] = [
         desc: 'Your complete B2B and B2C technology partner — web, software, hardware and security under one roof.',
         bg: '#f4edf8',
         cta: 'Explore all services',
-      },
-      secondCard: {
-        title: 'Our Clients →',
-        icons: ['🏢', '🏗️', '🏪'],
+        href: '/services',
       },
       columns: [
         {
-          head: 'WEB & HOSTING',
+          head: 'Web & Hosting',
+          headHref: '/services/web-hosting',
+          isList: true,
           links: [
-            { label: 'Domain Registration', href: '/services/domain-registration' },
-            { label: 'Web Hosting & VPS',   href: '/services/web-hosting-vps' },
-            { label: 'SSL Certificates',    href: '/services/ssl-certificates' },
-            { label: 'Email Solutions',     href: '/services/email-solutions' },
-            { label: 'Website Design',      href: '/services/website-design' },
-            { label: 'Website Redesign',    href: '/services/website-redesign' },
+            { label: 'Domain Registration' },
+            { label: 'Web Hosting & VPS' },
+            { label: 'SSL Certificates' },
+            { label: 'Email Solutions' },
+            { label: 'Website Design & Redesign' },
           ],
         },
         {
-          head: 'BUILD & DEPLOY',
+          head: 'Build & Deploy',
+          headHref: '/services/build-deploy',
+          isList: true,
           links: [
-            { label: 'E-Commerce Websites', href: '/services/ecommerce-websites', badge: { label: 'Trending', color: 'orange' } },
-            { label: 'CMS Websites', href: '/services/cms-websites' },
-            { label: 'Mobile App Development', href: '/services/mobile-app-development' },
-            { label: 'Bulk SMS Service', href: '/services/bulk-sms-service' },
-            { label: 'Panoramic 360° View', href: '/services/panoramic-360-view' },
-            { label: 'eNACH Integration', href: '/services/enach-integration' },
+            { label: 'E-Commerce Websites' },
+            { label: 'CMS & Mobile Apps' },
+            { label: 'Bulk SMS Service' },
+            { label: 'Panoramic 360° View' },
+            { label: 'eNACH Integration' },
           ],
         },
         {
-          head: 'MANAGE & SUPPORT',
+          head: 'Manage & Support',
+          headHref: '/services/manage-support',
           isList: true,
           links: [
             { label: 'Website Maintenance' },
             { label: 'Annual Maintenance (AMC)' },
             { label: 'Payment Gateway Setup' },
-            { label: 'Online Quotation Tools' },
             { label: 'IT Consultation' },
             { label: 'Remote Support' },
           ],
@@ -105,31 +105,49 @@ const NAV_ITEMS: NavItem[] = [
     label: 'Software',
     dropdown: {
       featuredCard: {
-        title: 'Software Products →',
-        desc: 'Custom-built software for jewellers, rental businesses, photographers, and more.',
+        title: 'Software Solutions →',
+        desc: 'Custom-built software for billing, bookings, inventory, portals, and member management.',
         bg: '#edf3ff',
-        cta: 'Browse all software',
+        cta: 'See our software',
         href: '/software',
       },
       columns: [
         {
-          head: 'BY PRODUCT',
+          head: 'BY NEED',
           links: [
-            { label: 'Jewellery Business Suite', href: '/software/jewellery-suite', badge: { label: 'Popular', color: 'orange' } },
-            { label: 'Car Rental Software', href: '/software/car-rental-software', badge: { label: 'Popular', color: 'orange' } },
-            { label: 'Quotation Software', href: '/software/quotation-software' },
-            { label: 'Photographers Community Portal', href: '/software/photographer-portal' },
-            { label: 'Designs Stock Software', href: '/software/designs-stock' },
+            { label: 'Billing & Invoicing',  href: '/software/billing-invoicing' },
+            { label: 'Booking & Scheduling', href: '/software/booking-scheduling' },
+            { label: 'Inventory Tracking',   href: '/software/inventory-tracking' },
+            { label: 'Client Portals',       href: '/software/client-portals' },
+            { label: 'Member Management',    href: '/software/member-management' },
           ],
         },
         {
-          head: 'BY NEED',
+          head: 'PRODUCTS BY US',
           links: [
-            { label: 'Member Management',   href: '/software/member-management' },
-            { label: 'Billing & Invoicing', href: '/software/billing-invoicing' },
-            { label: 'Booking & Scheduling', href: '/software/booking-scheduling' },
-            { label: 'Inventory Tracking',  href: '/software/inventory-tracking' },
-            { label: 'Client Portals',      href: '/software/client-portals' },
+            { label: 'All Our Products', href: '/products' },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    label: 'Computers',
+    dropdown: {
+      featuredCard: {
+        title: 'Computers & Peripherals →',
+        desc: 'Laptops, desktops, and printers from top brands — in stock across Chennai.',
+        bg: '#eaf4ff',
+        cta: 'Browse computers',
+        href: '/computers',
+      },
+      columns: [
+        {
+          head: 'CATEGORIES',
+          links: [
+            { label: 'Laptops',             href: '/electronics/laptops' },
+            { label: 'Desktop Computers',   href: '/electronics/desktops' },
+            { label: 'Printers & Scanners', href: '/electronics/printers' },
           ],
         },
       ],
@@ -139,46 +157,19 @@ const NAV_ITEMS: NavItem[] = [
     label: 'Electronics',
     dropdown: {
       featuredCard: {
-        title: 'Systems & Electronics →',
-        desc: 'Laptops, desktops, printers, TVs and phones — sales, repair and AMC across Chennai.',
+        title: 'Electronics →',
+        desc: 'Mobile phones, TVs, and smartwatches — all brands, always in stock.',
         bg: '#fff1df',
-        cta: 'Shop products',
+        cta: 'Shop electronics',
         href: '/electronics',
       },
       columns: [
         {
           head: 'PRODUCTS',
           links: [
-            { label: 'Laptops',             href: '/electronics/laptops' },
-            { label: 'Desktop Computers',   href: '/electronics/desktops' },
-            { label: 'Printers & Scanners', href: '/electronics/printers' },
-            { label: 'Televisions',         href: '/electronics/televisions' },
-            { label: 'Mobile Phones',       href: '/electronics/mobiles' },
-            { label: 'Computer Peripherals' },
-          ],
-        },
-        {
-          head: 'BRANDS',
-          isList: true,
-          links: [
-            { label: 'HP' },
-            { label: 'Dell' },
-            { label: 'Samsung' },
-            { label: 'Lenovo' },
-            { label: 'Canon' },
-            { label: 'TVS' },
-          ],
-        },
-        {
-          head: 'SERVICES',
-          isList: true,
-          links: [
-            { label: 'Hardware Sales' },
-            { label: 'Annual Maintenance (AMC)' },
-            { label: 'Repair & Servicing' },
-            { label: 'Pre-order & Delivery' },
-            { label: 'Trade-in & Upgrade' },
-            { label: 'Corporate Bulk Orders' },
+            { label: 'Mobile Phones',  href: '/electronics/mobiles' },
+            { label: 'Televisions',    href: '/electronics/televisions' },
+            { label: 'Smartwatches',   href: '/electronics/smartwatches' },
           ],
         },
       ],
@@ -196,7 +187,7 @@ const NAV_ITEMS: NavItem[] = [
       },
       columns: [
         {
-          head: 'CCTV CAMERAS',
+          head: 'CCTV Cameras',
           headHref: '/security/cctv-cameras',
           isList: true,
           links: [
@@ -209,20 +200,7 @@ const NAV_ITEMS: NavItem[] = [
           ],
         },
         {
-          head: 'INSTALLATIONS',
-          headHref: '/security/installations',
-          isList: true,
-          links: [
-            { label: 'Home Security' },
-            { label: 'Office Security' },
-            { label: 'School & College' },
-            { label: 'Factory & Warehouse' },
-            { label: 'Retail Shops' },
-            { label: 'Apartment Complexes' },
-          ],
-        },
-        {
-          head: 'BIOMETRIC',
+          head: 'Biometric',
           headHref: '/security/biometric',
           isList: true,
           links: [
@@ -244,24 +222,18 @@ const NAV_ITEMS: NavItem[] = [
         title: 'Free Business Tools →',
         desc: 'Free tools built for Indian businesses. No login, no cost, no catch.',
         bg: '#fff8ec',
-        cta: 'Browse all tools',
+        cta: 'Explore tools',
         href: '/tools',
       },
       columns: [
         {
-          head: 'DOCUMENT TOOLS',
+          head: 'TOOLS',
           links: [
-            { label: 'QR Code Generator', href: '/tools/qr-code' },
-            { label: 'GST Invoice Generator', href: '/tools/gst-invoice' },
-            { label: 'Payment Receipt Generator', href: '/tools/payment-receipt' },
-          ],
-        },
-        {
-          head: 'FINANCE & UTILITIES',
-          links: [
+            { label: 'QR Code Generator',            href: '/tools/qr-code' },
+            { label: 'Payment Receipt Generator',    href: '/tools/payment-receipt' },
             { label: 'Compound Interest Calculator', href: '/tools/compound-interest' },
-            { label: 'Barcode Generator', href: '/tools/barcode' },
-            { label: 'Domain Finder', href: '/tools/domain-finder' },
+            { label: 'Barcode Generator',            href: '/tools/barcode' },
+            { label: 'Domain Finder',                href: '/tools/domain-finder' },
           ],
         },
       ],
@@ -307,7 +279,7 @@ function Dropdown({ data }: { data: DropdownData }) {
         {data.featuredCard.href ? (
           <Link
             to={data.featuredCard.href}
-            className="dd-featured"
+            className="dd-featured dd-featured--link"
             style={{ background: data.featuredCard.bg }}
             onClick={() => {}}
           >
@@ -316,14 +288,11 @@ function Dropdown({ data }: { data: DropdownData }) {
             <div className="dd-featured-cta">{data.featuredCard.cta} →</div>
           </Link>
         ) : (
-          <a href="#" className="dd-featured" style={{ background: data.featuredCard.bg }}>
+          <div className="dd-featured dd-featured--static" style={{ background: data.featuredCard.bg }}>
             <div className="dd-featured-title">{data.featuredCard.title}</div>
-            <div className="dd-featured-vp">
-              <div className="dd-vp-inner">Visual Missing</div>
-            </div>
             <div className="dd-featured-desc">{data.featuredCard.desc}</div>
             <div className="dd-featured-cta">{data.featuredCard.cta} →</div>
-          </a>
+          </div>
         )}
 
         {data.secondCard && (
@@ -343,8 +312,9 @@ function Dropdown({ data }: { data: DropdownData }) {
         {data.columns.map((col) => (
           <div key={col.head} className="dd-col">
             {col.headHref ? (
-              <Link to={col.headHref} className="dd-col-head dd-col-head--link" onClick={() => {}}>
-                {col.head} →
+              <Link to={col.headHref} className="dd-col-head--link" onClick={() => {}}>
+                <span>{col.head}</span>
+                <span className="dd-link-arrow">→</span>
               </Link>
             ) : (
               <p className="dd-col-head">{col.head}</p>
@@ -358,11 +328,13 @@ function Dropdown({ data }: { data: DropdownData }) {
                     <Link to={link.href} className="dd-link" onClick={() => {}}>
                       <span>{link.label}</span>
                       {link.badge && <Badge label={link.badge.label} color={link.badge.color} />}
+                      <span className="dd-link-arrow">→</span>
                     </Link>
                   ) : (
                     <a href="#" className="dd-link">
                       <span>{link.label}</span>
                       {link.badge && <Badge label={link.badge.label} color={link.badge.color} />}
+                      <span className="dd-link-arrow">→</span>
                     </a>
                   )}
                 </li>
@@ -379,6 +351,7 @@ function Dropdown({ data }: { data: DropdownData }) {
 
 function MobileOverlay({ onClose }: { onClose: () => void }) {
   const [openAccordion, setOpenAccordion] = useState<string | null>(null)
+  const { openModal } = useContactModal()
 
   return (
     <motion.div
@@ -453,7 +426,12 @@ function MobileOverlay({ onClose }: { onClose: () => void }) {
 
         <div className="mob-footer">
           <a href="tel:+919500036310" className="mob-phone">+91 95000 36310</a>
-          <a href="#" className="mob-cta-btn">Contact Us</a>
+          <button
+            className="mob-cta-btn"
+            onClick={() => { onClose(); openModal({ badge: 'Get in Touch', badgeColor: 'purple', title: 'How can we help you?', subtitle: 'Tell us what you need and we\'ll get back to you within 2 hours.', prefillMessage: 'Hi, I\'d like to learn more about your services.' }) }}
+          >
+            Contact Us
+          </button>
         </div>
       </div>
     </motion.div>
@@ -469,6 +447,7 @@ export default function Navbar() {
   const navRef = useRef<HTMLElement>(null)
   const location = useLocation()
   const isSubpage = location.pathname !== '/'
+  const { openModal } = useContactModal()
 
   // Close dropdowns on navigation
   useEffect(() => {
@@ -526,6 +505,10 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" className="nav-logo" onClick={() => { setOpen(null); setMobileOpen(false) }}>
           <img src={goldmineLogo} alt="Goldmine Infotech" className="nav-logo-img" />
+          <span className="nav-logo-name">
+            <span className="nav-logo-name__top">Goldmine Infotech</span>
+            <span className="nav-logo-name__bottom">and Systems</span>
+          </span>
         </Link>
 
         {/* Desktop nav items */}
@@ -570,7 +553,18 @@ export default function Navbar() {
 
         {/* Desktop actions */}
         <div className="nav-actions">
-          <a href="tel:+919500036310" className="nav-contact-btn">Contact Us</a>
+          <button
+            className="nav-contact-btn"
+            onClick={() => openModal({
+              badge: 'Get in Touch',
+              badgeColor: 'purple',
+              title: 'How can we help you?',
+              subtitle: 'Tell us what you need and our team will get back to you within 2 hours.',
+              prefillMessage: 'Hi, I\'d like to learn more about your services. Please get in touch.',
+            })}
+          >
+            Contact Us
+          </button>
         </div>
 
         {/* Mobile hamburger */}

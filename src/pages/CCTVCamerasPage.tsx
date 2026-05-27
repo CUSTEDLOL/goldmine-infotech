@@ -1,6 +1,20 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useContactModal } from '../context/ContactModalContext'
+import LogoBarDark from '../components/LogoBarDark'
 import './CCTVCamerasPage.css'
+
+/* ── Brand Logos ────────────────────────────────────────────────── */
+const CCTV_BRANDS = [
+  { name: 'Hikvision', url: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Hikvision_logo.svg' },
+  { name: 'Dahua',     url: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Dahua_Technology_logo.svg' },
+  { name: 'CP Plus' },
+  { name: 'Samsung',   url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/samsung.svg', className: 'logo-xlarge' },
+  { name: 'Sony',      url: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg' },
+  { name: 'Bosch',     url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/bosch.svg' },
+  { name: 'Axis' },
+  { name: 'Hanwha' },
+]
 
 const CAMERAS = [
   {
@@ -9,7 +23,7 @@ const CAMERAS = [
     resolution: '1080p / 2MP',
     tag: 'Most Installed',
     desc: 'Crystal-clear 1080p footage for homes, offices, and retail. Day and night coverage with wide-angle lenses.',
-    img: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=85',
+    img: 'https://images.pexels.com/photos/13072973/pexels-photo-13072973.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
   {
     id: 'ip',
@@ -17,7 +31,7 @@ const CAMERAS = [
     resolution: '4MP–8MP / 4K',
     tag: 'Enterprise Grade',
     desc: 'Network-based cameras with remote access, cloud storage, and AI-powered motion detection.',
-    img: 'https://images.unsplash.com/photo-1622782914767-404fb9ab3f57?auto=format&fit=crop&w=600&q=85',
+    img: 'https://images.pexels.com/photos/27505236/pexels-photo-27505236.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
   {
     id: 'wifi',
@@ -25,7 +39,7 @@ const CAMERAS = [
     resolution: '1080p',
     tag: 'Easy Setup',
     desc: 'Wireless installation, mobile-app viewing, and two-way audio. No cable runs required.',
-    img: 'https://images.pexels.com/photos/3829227/pexels-photo-3829227.jpeg?auto=compress&cs=tinysrgb&w=600&q=85',
+    img: 'https://images.pexels.com/photos/33104381/pexels-photo-33104381.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
   {
     id: 'dome',
@@ -33,7 +47,7 @@ const CAMERAS = [
     resolution: '2MP–4MP',
     tag: 'Vandal-Proof',
     desc: 'Tamper-resistant ceiling mount. Discreet design for indoor lobbies, corridors, and retail floors.',
-    img: 'https://images.pexels.com/photos/430208/pexels-photo-430208.jpeg?auto=compress&cs=tinysrgb&w=600&q=85',
+    img: 'https://images.pexels.com/photos/7508684/pexels-photo-7508684.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
   {
     id: 'bullet',
@@ -41,7 +55,7 @@ const CAMERAS = [
     resolution: '2MP–5MP',
     tag: 'Long Range',
     desc: 'Visible deterrent with long-range focus. Ideal for perimeters, gates, and outdoor coverage.',
-    img: 'https://images.pexels.com/photos/3862627/pexels-photo-3862627.jpeg?auto=compress&cs=tinysrgb&w=600&q=85',
+    img: 'https://images.pexels.com/photos/7635126/pexels-photo-7635126.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
   {
     id: 'ptz',
@@ -49,7 +63,7 @@ const CAMERAS = [
     resolution: '2MP–4K',
     tag: 'Full Control',
     desc: 'Pan, tilt, zoom — remotely controlled. One camera covers what six fixed cameras cannot.',
-    img: 'https://images.unsplash.com/photo-1609429019995-8c40f49535a5?auto=format&fit=crop&w=600&q=85',
+    img: 'https://images.pexels.com/photos/32516148/pexels-photo-32516148.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
 ]
 
@@ -59,8 +73,6 @@ const SPECS = [
   { value: '100m IR', label: 'Range' },
   { value: '30 fps', label: 'Frame Rate' },
 ]
-
-const BRANDS = ['Hikvision', 'Dahua', 'CP Plus', 'Bosch', 'Honeywell', 'Axis', 'Hanwha']
 
 const WHY = [
   {
@@ -84,6 +96,8 @@ const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } }
 const rise = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' as const } } }
 
 export default function CCTVCamerasPage() {
+  const { openModal } = useContactModal()
+
   return (
     <div className="cctv-root">
 
@@ -114,7 +128,18 @@ export default function CCTVCamerasPage() {
             </motion.p>
 
             <motion.div className="cctv-hero-ctas" variants={rise}>
-              <a href="tel:+919500036310" className="cctv-btn-primary">Get a Free Survey</a>
+              <button
+                className="cctv-btn-primary"
+                onClick={() => openModal({
+                  badge: 'CCTV Cameras',
+                  badgeColor: 'green',
+                  title: 'Get a Free Survey',
+                  subtitle: 'Our team will visit your premises and recommend the right camera setup.',
+                  prefillMessage: 'Hi, I\'d like a free CCTV survey for my premises. Please schedule a visit.',
+                })}
+              >
+                Get a Free Survey
+              </button>
               <a href="https://wa.me/919500036310" target="_blank" rel="noopener noreferrer" className="cctv-btn-secondary">
                 WhatsApp Us
               </a>
@@ -129,8 +154,8 @@ export default function CCTVCamerasPage() {
           >
             <div className="cctv-hero-img-wrap">
               <img
-                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=900&q=85"
-                alt="CCTV surveillance camera"
+                src="https://images.pexels.com/photos/430208/pexels-photo-430208.jpeg?auto=compress&cs=tinysrgb&w=900"
+                alt="CCTV surveillance camera installed on wall"
                 className="cctv-hero-img"
               />
               <div className="cctv-hero-img-overlay" />
@@ -188,12 +213,7 @@ export default function CCTVCamerasPage() {
       </section>
 
       {/* ── BRANDS ── */}
-      <div className="cctv-brands">
-        <p className="cctv-brands-label">Brands we install</p>
-        <div className="cctv-brands-row">
-          {BRANDS.map(b => <span key={b} className="cctv-brand">{b}</span>)}
-        </div>
-      </div>
+      <LogoBarDark brands={CCTV_BRANDS} label="Brands we install" />
 
       {/* ── WHY GOLDMINE ── */}
       <section className="cctv-why">
@@ -231,7 +251,18 @@ export default function CCTVCamerasPage() {
             </p>
           </div>
           <div className="cctv-cta-right">
-            <a href="tel:+919500036310" className="cctv-cta-btn-primary">+91 95000 36310</a>
+            <button
+              className="cctv-cta-btn-primary"
+              onClick={() => openModal({
+                badge: 'CCTV Cameras',
+                badgeColor: 'green',
+                title: 'Get a Free Survey',
+                subtitle: 'Our team will visit your premises and recommend the right camera setup.',
+                prefillMessage: 'Hi, I\'d like a free CCTV survey for my premises. Please schedule a visit.',
+              })}
+            >
+              Get a Free Survey
+            </button>
             <a href="https://wa.me/919500036310" target="_blank" rel="noopener noreferrer" className="cctv-cta-btn-secondary">
               WhatsApp Us
             </a>

@@ -1,28 +1,23 @@
 import { Link } from 'react-router-dom'
+import { useContactModal } from '../context/ContactModalContext'
+import LogoBarDark from '../components/LogoBarDark'
 import './ElectronicsPage.css'
 
+const ELECTRONICS_BRANDS = [
+  { name: 'Samsung',  url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/samsung.svg', className: 'logo-xlarge' },
+  { name: 'Apple',    url: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg' },
+  { name: 'Sony',     url: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg' },
+  { name: 'LG',       url: 'https://upload.wikimedia.org/wikipedia/commons/2/20/LG_symbol.svg' },
+  { name: 'OnePlus',  url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/oneplus.svg' },
+  { name: 'Xiaomi',   url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/xiaomi.svg', className: 'logo-xlarge' },
+  { name: 'Motorola', url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/motorola.svg', className: 'logo-xlarge' },
+  { name: 'Panasonic', url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/panasonic.svg', className: 'logo-xlarge' },
+  { name: 'Philips',  url: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Philips_logo_new.svg' },
+  { name: 'Nokia',    url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/nokia.svg', className: 'logo-xlarge' },
+  { name: 'Garmin',   url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/garmin.svg', className: 'logo-xlarge' },
+]
+
 const CATEGORIES = [
-  {
-    name: 'Laptops',
-    desc: 'HP, Dell, Lenovo, Asus & more — ultrabooks to gaming rigs, all in stock.',
-    tag: 'Most Popular',
-    accent: '#0066cc',
-    to: '/electronics/laptops',
-  },
-  {
-    name: 'Desktop Computers',
-    desc: 'Office towers, all-in-ones, and custom builds for every budget.',
-    tag: 'In Stock',
-    accent: '#e31837',
-    to: '/electronics/desktops',
-  },
-  {
-    name: 'Printers & Scanners',
-    desc: 'Laser, inkjet, and multifunction printers from HP, Epson, and Canon.',
-    tag: 'Fast Delivery',
-    accent: '#059669',
-    to: '/electronics/printers',
-  },
   {
     name: 'Televisions',
     desc: 'Smart TVs, 4K panels, and commercial displays — all screen sizes.',
@@ -38,15 +33,13 @@ const CATEGORIES = [
     to: '/electronics/mobiles',
   },
   {
-    name: 'Computer Peripherals',
-    desc: 'Keyboards, mice, webcams, headsets, UPS units and accessories.',
-    tag: 'Wide Range',
-    accent: '#475569',
-    to: '#',
+    name: 'Smartwatches',
+    desc: 'Apple Watch, Samsung Galaxy Watch, Garmin, Fitbit & more — fitness and lifestyle wearables.',
+    tag: 'New Arrivals',
+    accent: '#7c3aed',
+    to: '/electronics/smartwatches',
   },
 ]
-
-const BRANDS = ['HP', 'Dell', 'Lenovo', 'Asus', 'Acer', 'Samsung', 'Canon', 'Epson', 'Apple', 'TVS', 'MSI', 'D-Link']
 
 const SERVICES = [
   {
@@ -67,6 +60,8 @@ const SERVICES = [
 ]
 
 export default function ElectronicsPage() {
+  const { openModal } = useContactModal()
+
   return (
     <div className="elp-root">
 
@@ -82,7 +77,18 @@ export default function ElectronicsPage() {
             Walk in or order online. Same-day pickup available.
           </p>
           <div className="elp-hero-ctas">
-            <a href="tel:+919500036310" className="elp-btn-primary">Call +91 95000 36310</a>
+            <button
+              className="elp-btn-primary"
+              onClick={() => openModal({
+                badge: 'Electronics',
+                badgeColor: 'orange',
+                title: 'Get a Quote',
+                subtitle: 'Tell us what you\'re looking for and we\'ll check availability and pricing.',
+                prefillMessage: 'Hi, I\'m looking for electronics. Please share availability and pricing for: ',
+              })}
+            >
+              Get a Quote
+            </button>
             <a href="https://wa.me/919500036310" target="_blank" rel="noopener noreferrer" className="elp-btn-ghost">
               WhatsApp Us
             </a>
@@ -120,13 +126,8 @@ export default function ElectronicsPage() {
         </div>
       </section>
 
-      {/* ── BRANDS ── */}
-      <div className="elp-brands">
-        <p className="elp-brands-label">Brands we carry</p>
-        <div className="elp-brands-row">
-          {BRANDS.map(b => <span key={b} className="elp-brand">{b}</span>)}
-        </div>
-      </div>
+      {/* ── BRAND STRIP ── */}
+      <LogoBarDark brands={ELECTRONICS_BRANDS} label="Brands we carry" />
 
       {/* ── SERVICES ── */}
       <section className="elp-services">
@@ -137,7 +138,18 @@ export default function ElectronicsPage() {
               <div key={s.label} className="elp-service-card">
                 <h3 className="elp-service-title">{s.label}</h3>
                 <p className="elp-service-desc">{s.desc}</p>
-                <a href="tel:+919500036310" className="elp-service-cta">{s.cta} →</a>
+                <button
+                  className="elp-service-cta"
+                  onClick={() => openModal({
+                    badge: 'Electronics',
+                    badgeColor: 'orange',
+                    title: 'Get a Quote',
+                    subtitle: 'Tell us what you\'re looking for and we\'ll check availability and pricing.',
+                    prefillMessage: 'Hi, I\'m looking for electronics. Please share availability and pricing for: ',
+                  })}
+                >
+                  {s.cta} →
+                </button>
               </div>
             ))}
           </div>
@@ -151,7 +163,18 @@ export default function ElectronicsPage() {
           <h2 className="elp-cta-headline">In-store pickup.<br />Same day.</h2>
           <p className="elp-cta-sub">We're in T.Nagar, Chennai. Come see the products in person or call us to check availability.</p>
           <div className="elp-cta-actions">
-            <a href="tel:+919500036310" className="elp-cta-btn-dark">+91 95000 36310</a>
+            <button
+              className="elp-cta-btn-dark"
+              onClick={() => openModal({
+                badge: 'Electronics',
+                badgeColor: 'orange',
+                title: 'Get a Quote',
+                subtitle: 'Tell us what you\'re looking for and we\'ll check availability and pricing.',
+                prefillMessage: 'Hi, I\'m looking for electronics. Please share availability and pricing for: ',
+              })}
+            >
+              Get a Quote
+            </button>
             <a href="https://wa.me/919500036310" target="_blank" rel="noopener noreferrer" className="elp-cta-btn-outline">
               WhatsApp
             </a>

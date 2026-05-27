@@ -545,3 +545,37 @@
     transition: none;
   }
 }
+
+/* ── Contact Modal CTA Strip ────────────────────────────────────────────────── */
+.tool-cta-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: #0f0f0f;
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin: 32px auto 0;
+  max-width: 680px;
+  flex-wrap: wrap;
+}
+.tool-cta-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  margin: 0;
+}
+.tool-cta-btn {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 9px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.tool-cta-btn:hover { background: rgba(255,255,255,0.2); }

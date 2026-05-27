@@ -1,0 +1,394 @@
+/* ============================================================
+   Computers Page — prefix: cmp-
+   ============================================================ */
+
+.cmp-root {
+  padding-top: 72px;
+  background: #fcfcfc;
+}
+
+/* ──────────────────────────────────────────
+   HERO
+────────────────────────────────────────── */
+.cmp-hero {
+  background: #0a0a0a;
+  padding: 72px 48px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 0 0 24px 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.cmp-hero-inner {
+  max-width: 680px;
+}
+
+.cmp-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fca311;
+  margin-bottom: 20px;
+}
+
+.cmp-hero-headline {
+  font-size: clamp(44px, 6vw, 80px);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  color: #fff;
+  margin-bottom: 18px;
+}
+
+.cmp-hero-sub {
+  font-size: clamp(15px, 1.4vw, 17px);
+  color: rgba(255,255,255,0.45);
+  line-height: 1.65;
+  max-width: 480px;
+  margin-bottom: 32px;
+}
+
+.cmp-hero-ctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 56px;
+}
+
+.cmp-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 28px;
+  background: #fca311;
+  color: #0a0a0a;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.15s;
+}
+.cmp-btn-primary:hover { background: #e6940a; transform: translateY(-1px); }
+
+.cmp-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 24px;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.65);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s;
+}
+.cmp-btn-ghost:hover { border-color: rgba(255,255,255,0.35); color: #fff; }
+
+/* Stats strip at bottom of hero */
+.cmp-hero-stats {
+  display: flex;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.cmp-hero-stat {
+  flex: 1;
+  padding: 28px 32px;
+  border-right: 1px solid rgba(255,255,255,0.07);
+}
+.cmp-hero-stat:last-child { border-right: none; }
+
+.cmp-hero-stat-num {
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.cmp-hero-stat-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.02em;
+}
+
+/* ──────────────────────────────────────────
+   SHARED LABEL
+────────────────────────────────────────── */
+.cmp-section-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 28px;
+}
+
+/* ──────────────────────────────────────────
+   CATEGORIES
+────────────────────────────────────────── */
+.cmp-categories {
+  padding: 64px 48px;
+}
+
+.cmp-categories-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cmp-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.cmp-cat-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 14px;
+  padding: 28px 28px 24px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.18s, transform 0.18s, border-color 0.18s;
+  overflow: hidden;
+}
+.cmp-cat-card:hover {
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+  border-color: #d0d0d0;
+}
+
+/* Colored top bar */
+.cmp-cat-accent {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: 14px 14px 0 0;
+}
+
+.cmp-cat-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 14px;
+}
+
+.cmp-cat-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0a0a0a;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+
+.cmp-cat-desc {
+  font-size: 13px;
+  color: #777;
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.cmp-cat-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0a0a0a;
+  letter-spacing: 0.01em;
+}
+
+/* ──────────────────────────────────────────
+   BRANDS
+────────────────────────────────────────── */
+.cmp-brands {
+  background: #0a0a0a;
+  padding: 40px 48px;
+}
+
+.cmp-brands-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  margin-bottom: 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cmp-brands-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cmp-brand {
+  font-size: 18px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.12);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0 28px;
+  position: relative;
+  transition: color 0.15s;
+  cursor: default;
+}
+.cmp-brand:hover { color: rgba(255,255,255,0.5); }
+.cmp-brand::after {
+  content: '·';
+  position: absolute;
+  right: 0;
+  color: rgba(255,255,255,0.08);
+}
+.cmp-brand:last-child::after { display: none; }
+
+/* ──────────────────────────────────────────
+   SERVICES
+────────────────────────────────────────── */
+.cmp-services {
+  background: #f5f5f5;
+  padding: 64px 48px;
+}
+
+.cmp-services-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cmp-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.cmp-service-card {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 14px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cmp-service-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0a0a0a;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.cmp-service-desc {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.65;
+  flex: 1;
+  margin-bottom: 24px;
+}
+
+.cmp-service-cta {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fca311;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.cmp-service-cta:hover { opacity: 0.75; }
+
+/* ──────────────────────────────────────────
+   CTA
+────────────────────────────────────────── */
+.cmp-cta {
+  background: #fca311;
+  padding: 72px 48px;
+}
+
+.cmp-cta-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cmp-cta-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.35);
+  margin-bottom: 16px;
+}
+
+.cmp-cta-headline {
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 800;
+  color: #0a0a0a;
+  letter-spacing: -0.04em;
+  line-height: 1.04;
+  margin-bottom: 14px;
+}
+
+.cmp-cta-sub {
+  font-size: 15px;
+  color: rgba(0,0,0,0.5);
+  line-height: 1.65;
+  margin-bottom: 36px;
+}
+
+.cmp-cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+.cmp-cta-btn-dark {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 28px;
+  background: #0a0a0a;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.15s;
+}
+.cmp-cta-btn-dark:hover { background: #222; transform: translateY(-1px); }
+
+.cmp-cta-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 24px;
+  border: 2px solid rgba(0,0,0,0.2);
+  color: #0a0a0a;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: border-color 0.15s;
+}
+.cmp-cta-btn-outline:hover { border-color: rgba(0,0,0,0.4); }
+
+/* ──────────────────────────────────────────
+   RESPONSIVE
+────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .cmp-hero          { padding: 56px 24px 0; border-radius: 0; }
+  .cmp-hero-stats    { flex-wrap: wrap; }
+  .cmp-hero-stat     { flex: 0 0 50%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .cmp-categories    { padding: 48px 24px; }
+  .cmp-cat-grid      { grid-template-columns: 1fr; }
+  .cmp-brands        { padding: 36px 24px; }
+  .cmp-services      { padding: 48px 24px; }
+  .cmp-services-grid { grid-template-columns: 1fr; }
+  .cmp-cta           { padding: 56px 24px; }
+}
+
+@media (max-width: 560px) {
+  .cmp-hero-stat { flex: 0 0 100%; }
+}

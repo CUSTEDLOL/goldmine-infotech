@@ -6,17 +6,17 @@
 .hero-split {
   display: grid;
   grid-template-columns: 44% 56%;
-  min-height: calc(100vh - 72px);
+  grid-template-rows: 1fr auto;
+  height: 100vh;
   background: #fcfcfc;
-  overflow: hidden;
 }
 
 /* ── Left panel ── */
 .hero-split__left {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 72px 48px 72px 8vw;
+  justify-content: flex-end;
+  padding: 40px 48px 12px 8vw;
 }
 
 .hero-split__badge {
@@ -98,6 +98,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-bottom: 30px;
 }
 
 .hero-split__tag {
@@ -115,17 +116,116 @@
   position: relative;
   overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
 }
 
 .hero-split__img {
-  width: 115%;
-  height: 115%;
+  width: 110%;
+  height: 100%;
   object-fit: contain;
-  object-position: center center;
+  object-position: center bottom;
   display: block;
-  margin-left: -7%;
+  margin-left: -5%;
+}
+
+/* ── Explore tile grid ── */
+.hero-split__explore {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  border-top: 1px solid #e8e8e8;
+}
+
+.hero-split__explore-tile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
+  text-decoration: none;
+  border-right: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+  position: relative;
+  transition: background 0.18s;
+  overflow: hidden;
+}
+
+.hero-split__explore-tile::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: #fca311;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-split__explore-tile:hover {
+  background: #fafafa;
+}
+
+.hero-split__explore-tile:hover::before {
+  transform: scaleY(1);
+}
+
+/* Remove right border on last column */
+.hero-split__explore-tile:nth-child(3n) {
+  border-right: none;
+}
+
+/* Remove bottom border on last row */
+.hero-split__explore-tile:nth-child(4),
+.hero-split__explore-tile:nth-child(5),
+.hero-split__explore-tile:nth-child(6) {
+  border-bottom: none;
+}
+
+.hero-split__explore-tile-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero-split__explore-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #bbb;
+}
+
+.hero-split__explore-category {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0a0a0a;
+  letter-spacing: -0.03em;
+  transition: color 0.18s;
+}
+
+.hero-split__explore-tile:hover .hero-split__explore-category {
+  color: #fca311;
+}
+
+.hero-split__explore-sub {
+  font-size: 12px;
+  color: #aaa;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.hero-split__explore-arrow {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: #ccc;
+  transition: transform 0.18s, color 0.18s;
+}
+
+.hero-split__explore-tile:hover .hero-split__explore-arrow {
+  transform: translateX(4px);
+  color: #fca311;
 }
 
 /* ── Video section below hero ── */
@@ -262,4 +362,11 @@
   .hero-split__right { height: 300px; }
   .hero-split__img { object-fit: contain; }
   .hero-viz-wrapper { width: calc(100% - 16px); margin-top: 24px; }
+  .hero-split__explore { grid-template-columns: repeat(2, 1fr); }
+  .hero-split__explore-tile:nth-child(3n) { border-right: 1px solid #e8e8e8; }
+  .hero-split__explore-tile:nth-child(2n) { border-right: none; }
+  .hero-split__explore-tile:nth-child(4), .hero-split__explore-tile:nth-child(5) { border-bottom: 1px solid #e8e8e8; }
+  .hero-split__explore-tile:nth-child(5), .hero-split__explore-tile:nth-child(6) { border-bottom: none; }
+  .hero-split__explore-category { font-size: 17px; }
+  .hero-split__explore-tile { padding: 18px 20px; }
 }

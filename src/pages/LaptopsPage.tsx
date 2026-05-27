@@ -1,5 +1,20 @@
 import { Link } from 'react-router-dom'
+import { useContactModal } from '../context/ContactModalContext'
+import LogoBarDark from '../components/LogoBarDark'
 import './LaptopsPage.css'
+
+/* ── Brand Logos ────────────────────────────────────────────────── */
+const COMPUTER_BRANDS = [
+  { name: 'HP',        url: 'https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg' },
+  { name: 'Dell',      url: 'https://upload.wikimedia.org/wikipedia/commons/4/48/Dell_Logo.svg' },
+  { name: 'Lenovo',    url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/lenovo.svg' },
+  { name: 'ASUS',      url: 'https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg' },
+  { name: 'Acer',      url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/acer.svg' },
+  { name: 'Apple',     url: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg' },
+  { name: 'Samsung',   url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/samsung.svg', className: 'logo-xlarge' },
+  { name: 'Microsoft', url: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg' },
+  { name: 'Intel',     url: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Intel_logo_%282006-2020%29.svg' },
+]
 
 /* ── Image URLs ────────────────────────────────────────────────── */
 const COLLAGE_IMGS = [
@@ -13,6 +28,9 @@ const PROD_IMGS = {
   hp: 'https://images.pexels.com/photos/6968164/pexels-photo-6968164.jpeg?auto=compress&cs=tinysrgb&w=600',
   dell: 'https://images.unsplash.com/photo-1536528679846-3c5a38e3026b?fm=jpg&q=80&w=600&auto=format&fit=crop',
   lenovo: 'https://images.pexels.com/photos/8533592/pexels-photo-8533592.jpeg?auto=compress&cs=tinysrgb&w=600',
+  hpelite: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=600',
+  asus: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=600&q=80',
+  dellxps: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=600&q=80',
 }
 
 /* ── Types ─────────────────────────────────────────────────────── */
@@ -66,7 +84,7 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(0,102,204,0.1)',
     name: 'HP Pavilion 15',
     specs: 'Core i5, 8GB RAM, 512GB SSD\n15.6" FHD Display',
-    price: '₹52,999',
+    price: 'Starts from ₹52,999',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #003087 0%, #0066cc 100%)',
@@ -78,7 +96,7 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(68,68,68,0.08)',
     name: 'Dell Inspiron 14',
     specs: 'Core i7, 16GB RAM, 512GB SSD\n14" FHD Display',
-    price: '₹68,499',
+    price: 'Starts from ₹68,499',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #333333 0%, #555555 100%)',
@@ -90,7 +108,7 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(227,24,55,0.08)',
     name: 'Lenovo IdeaPad Gaming',
     specs: 'Ryzen 7, 16GB RAM, RTX 3050\n15.6" FHD 144Hz',
-    price: '₹74,999',
+    price: 'Starts from ₹74,999',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #e31837 0%, #cc0000 100%)',
@@ -102,10 +120,11 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(0,102,204,0.1)',
     name: 'HP EliteBook 840',
     specs: 'Core i7, 16GB RAM, 512GB SSD\n14" FHD Sure View',
-    price: '₹89,999',
+    price: 'Starts from ₹89,999',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #003087 0%, #0066cc 100%)',
+    img: PROD_IMGS.hpelite,
   },
   {
     brand: 'Asus',
@@ -113,10 +132,11 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(0,0,0,0.06)',
     name: 'Asus VivoBook 15',
     specs: 'Core i3, 8GB RAM, 256GB SSD\n15.6" FHD Display',
-    price: '₹38,999',
+    price: 'Starts from ₹38,999',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #000000 0%, #222222 100%)',
+    img: PROD_IMGS.asus,
   },
   {
     brand: 'Dell',
@@ -124,15 +144,17 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(68,68,68,0.08)',
     name: 'Dell XPS 13',
     specs: 'Core i7, 16GB RAM, 1TB SSD\n13.4" FHD+ InfinityEdge',
-    price: '₹1,12,999',
+    price: 'Starts from ₹1,12,999',
     badge: 'orange',
     badgeLabel: 'Limited Stock',
     gradient: 'linear-gradient(135deg, #1a1a1a 0%, #444444 100%)',
+    img: PROD_IMGS.dellxps,
   },
 ]
 
 /* ── Component ─────────────────────────────────────────────────── */
 export default function LaptopsPage() {
+  const { openModal } = useContactModal()
   return (
     <div className="lap-root">
 
@@ -154,6 +176,18 @@ export default function LaptopsPage() {
               <Link to="/electronics" className="lap-btn-primary">
                 Browse Collection
               </Link>
+              <button
+                className="lap-btn-primary"
+                onClick={() => openModal({
+                  badge: 'Laptops',
+                  badgeColor: 'blue',
+                  title: 'Need help choosing?',
+                  subtitle: 'Tell us your budget and use case — we\'ll recommend the best laptop for you.',
+                  prefillMessage: 'Hi, I need help choosing a laptop. My budget is ₹___ and I need it for ___.',
+                })}
+              >
+                Get Expert Help
+              </button>
               <a href="tel:+919500036310" className="lap-btn-ghost">
                 Call +91 95000 36310
               </a>
@@ -184,20 +218,7 @@ export default function LaptopsPage() {
       </section>
 
       {/* ── 2. BRAND STRIP ──────────────────────────────────────── */}
-      <section className="lap-brands">
-        <div className="lap-brands-inner">
-          {['HP', 'Dell', 'Lenovo', 'Asus', 'Acer', 'Apple', 'MSI', 'Samsung'].map(
-            (brand, i, arr) => (
-              <span key={brand} style={{ display: 'contents' }}>
-                <span className="lap-brand-name">{brand}</span>
-                {i < arr.length - 1 && (
-                  <span className="lap-brand-sep" aria-hidden="true">·</span>
-                )}
-              </span>
-            )
-          )}
-        </div>
-      </section>
+      <LogoBarDark brands={COMPUTER_BRANDS} label="Brands we carry" />
 
       {/* ── 3. CATEGORY CARDS ───────────────────────────────────── */}
       <section className="lap-categories">
@@ -216,7 +237,6 @@ export default function LaptopsPage() {
                     <h3 className="lap-cat-title">{cat.title}</h3>
                     <p className="lap-cat-desc">{cat.desc}</p>
                   </div>
-                  <span className="lap-cat-link">Shop</span>
                 </div>
               </div>
             ))}
@@ -273,7 +293,18 @@ export default function LaptopsPage() {
                   <h3 className="lap-prod-name">{prod.name}</h3>
                   <p className="lap-prod-specs">{prod.specs}</p>
                   <p className="lap-prod-price">{prod.price}</p>
-                  <button className="lap-prod-quote-btn">Get Quote</button>
+                  <button
+                    className="lap-prod-quote-btn"
+                    onClick={() => openModal({
+                      badge: prod.brand,
+                      badgeColor: 'blue',
+                      title: `Get a Quote — ${prod.name}`,
+                      subtitle: prod.specs.replace('\n', ' · '),
+                      prefillMessage: `Hi, I'm interested in the ${prod.name} (${prod.specs.replace('\n', ', ')}). Please share pricing and availability.`,
+                    })}
+                  >
+                    Get Quote
+                  </button>
                 </div>
               </div>
             ))}

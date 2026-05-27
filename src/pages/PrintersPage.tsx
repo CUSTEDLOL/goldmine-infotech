@@ -1,5 +1,17 @@
 import { Link } from 'react-router-dom'
 import './PrintersPage.css'
+import { useContactModal } from '../context/ContactModalContext'
+import LogoBarDark from '../components/LogoBarDark'
+
+/* ── Brand Logos ────────────────────────────────────────────────── */
+const PRINTER_BRANDS = [
+  { name: 'HP',      url: 'https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg' },
+  { name: 'Epson',   url: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Epson_logo.svg' },
+  { name: 'Canon',   url: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Canon_wordmark.svg' },
+  { name: 'Brother', url: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Brother_logo.svg' },
+  { name: 'Samsung', url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/samsung.svg', className: 'logo-xlarge' },
+  { name: 'Ricoh',   url: 'https://upload.wikimedia.org/wikipedia/commons/1/1c/Ricoh_logo.svg' },
+]
 
 /* ── Image URLs ────────────────────────────────────────────────── */
 const COLLAGE_IMGS = [
@@ -10,9 +22,12 @@ const COLLAGE_IMGS = [
 ]
 
 const PROD_IMGS = {
-  hp: 'https://images.pexels.com/photos/4065892/pexels-photo-4065892.jpeg?auto=compress&cs=tinysrgb&w=600',
-  epson: 'https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=600&q=80',
-  canon: 'https://images.pexels.com/photos/5632381/pexels-photo-5632381.jpeg?auto=compress&cs=tinysrgb&w=600',
+  hp:         'https://images.pexels.com/photos/4065892/pexels-photo-4065892.jpeg?auto=compress&cs=tinysrgb&w=600',
+  epson:      'https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=600&q=80',
+  canon:      'https://images.pexels.com/photos/5632381/pexels-photo-5632381.jpeg?auto=compress&cs=tinysrgb&w=600',
+  hpofficejet:'https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=600&q=80',
+  brother:    'https://images.pexels.com/photos/4065892/pexels-photo-4065892.jpeg?auto=compress&cs=tinysrgb&w=600',
+  canonlaser: 'https://images.pexels.com/photos/5632381/pexels-photo-5632381.jpeg?auto=compress&cs=tinysrgb&w=600',
 }
 
 /* ── Types ─────────────────────────────────────────────────────── */
@@ -66,7 +81,7 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(0,102,204,0.08)',
     name: 'HP LaserJet Pro M404dn',
     specs: 'A4 Mono Laser, 40ppm\nAuto Duplex, LAN + USB',
-    price: '₹19,999',
+    price: 'Starts from ₹19,999',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #003087 0%, #0066cc 100%)',
@@ -78,7 +93,7 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(0,48,135,0.08)',
     name: 'Epson EcoTank L3252',
     specs: 'A4 Inkjet, Wi-Fi Direct\n4-Colour Refillable Tank',
-    price: '₹14,499',
+    price: 'Starts from ₹14,499',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #001a5e 0%, #003087 100%)',
@@ -90,7 +105,7 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(204,0,0,0.07)',
     name: 'Canon PIXMA G3060',
     specs: 'A4 Inkjet MFP, Wi-Fi\nPrint · Scan · Copy',
-    price: '₹12,999',
+    price: 'Starts from ₹12,999',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #8b0000 0%, #cc0000 100%)',
@@ -102,10 +117,11 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(0,102,204,0.08)',
     name: 'HP OfficeJet Pro 9020',
     specs: 'A4 Inkjet All-in-One\nADF, Auto Duplex, Wi-Fi',
-    price: '₹22,999',
+    price: 'Starts from ₹22,999',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #003087 0%, #0066cc 100%)',
+    img: PROD_IMGS.hpofficejet,
   },
   {
     brand: 'Brother',
@@ -113,10 +129,11 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(0,107,184,0.08)',
     name: 'Brother DCP-L2541DW',
     specs: 'A4 Mono Laser MFP\nWi-Fi, Auto Duplex, ADF',
-    price: '₹17,499',
+    price: 'Starts from ₹17,499',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #003d6e 0%, #006bb8 100%)',
+    img: PROD_IMGS.brother,
   },
   {
     brand: 'Canon',
@@ -124,15 +141,17 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(204,0,0,0.07)',
     name: 'Canon imageCLASS MF745Cdw',
     specs: 'A4 Colour Laser MFP\nCloud Print, ADF, 28ppm',
-    price: '₹52,999',
+    price: 'Starts from ₹52,999',
     badge: 'orange',
     badgeLabel: 'Limited Stock',
     gradient: 'linear-gradient(135deg, #1a0000 0%, #8b0000 100%)',
+    img: PROD_IMGS.canonlaser,
   },
 ]
 
 /* ── Component ─────────────────────────────────────────────────── */
 export default function PrintersPage() {
+  const { openModal } = useContactModal()
   return (
     <div className="prt-root">
 
@@ -184,20 +203,7 @@ export default function PrintersPage() {
       </section>
 
       {/* ── 2. BRAND STRIP ──────────────────────────────────────── */}
-      <section className="prt-brands">
-        <div className="prt-brands-inner">
-          {['HP', 'Epson', 'Canon', 'Brother', 'Samsung', 'TVS', 'Ricoh', 'Xerox'].map(
-            (brand, i, arr) => (
-              <span key={brand} style={{ display: 'contents' }}>
-                <span className="prt-brand-name">{brand}</span>
-                {i < arr.length - 1 && (
-                  <span className="prt-brand-sep" aria-hidden="true">·</span>
-                )}
-              </span>
-            )
-          )}
-        </div>
-      </section>
+      <LogoBarDark brands={PRINTER_BRANDS} label="Brands we carry" />
 
       {/* ── 3. CATEGORY CARDS ───────────────────────────────────── */}
       <section className="prt-categories">
@@ -267,7 +273,18 @@ export default function PrintersPage() {
                   <h3 className="prt-prod-name">{prod.name}</h3>
                   <p className="prt-prod-specs">{prod.specs}</p>
                   <p className="prt-prod-price">{prod.price}</p>
-                  <button className="prt-prod-quote-btn">Get Quote</button>
+                  <button
+                    className="prt-prod-quote-btn"
+                    onClick={() => openModal({
+                      badge: prod.brand,
+                      badgeColor: 'blue',
+                      title: `Get a Quote — ${prod.name}`,
+                      subtitle: prod.specs.replace('\n', ' · '),
+                      prefillMessage: `Hi, I'm interested in the ${prod.name} (${prod.specs.replace('\n', ', ')}). Please share the price and availability.`,
+                    })}
+                  >
+                    Get Quote
+                  </button>
                 </div>
               </div>
             ))}

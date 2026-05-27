@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useContactModal } from '../context/ContactModalContext'
 import './ClientPortals.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -39,6 +40,7 @@ const FEATURES = [
 
 export default function ClientPortals() {
   const rootRef = useRef<HTMLDivElement>(null)
+  const { openModal } = useContactModal()
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -144,8 +146,26 @@ export default function ClientPortals() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
           >
-            <a href="tel:+919500036310" className="cp-btn-primary">Book a Demo</a>
-            <a href="tel:+919500036310" className="cp-btn-ghost">See How It Works</a>
+            <button
+              className="cp-btn-primary"
+              onClick={() => openModal({
+                badge: 'Client Portals',
+                badgeColor: 'purple',
+                title: 'Book a Free Setup Call',
+                subtitle: 'We\'ll show you how client portals work and set one up tailored to your business.',
+                prefillMessage: 'Hi, I\'d like to book a free setup call for the Client Portals software.',
+              })}
+            >Book a Demo</button>
+            <button
+              className="cp-btn-ghost"
+              onClick={() => openModal({
+                badge: 'Client Portals',
+                badgeColor: 'purple',
+                title: 'Book a Free Setup Call',
+                subtitle: 'We\'ll show you how client portals work and set one up tailored to your business.',
+                prefillMessage: 'Hi, I\'d like to book a free setup call for the Client Portals software.',
+              })}
+            >See How It Works</button>
           </motion.div>
         </div>
 
@@ -232,7 +252,16 @@ export default function ClientPortals() {
           <p className="cp-cta-sub">
             Branded, fast, and built to impress. Your clients deserve better than email threads and shared folders.
           </p>
-          <a href="tel:+919500036310" className="cp-cta-btn">Book a Demo</a>
+          <button
+            className="cp-cta-btn"
+            onClick={() => openModal({
+              badge: 'Client Portals',
+              badgeColor: 'purple',
+              title: 'Book a Free Setup Call',
+              subtitle: 'We\'ll show you how client portals work and set one up tailored to your business.',
+              prefillMessage: 'Hi, I\'d like to book a free setup call for the Client Portals software.',
+            })}
+          >Book a Demo</button>
         </div>
       </section>
 

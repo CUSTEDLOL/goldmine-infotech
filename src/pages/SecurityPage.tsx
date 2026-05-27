@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import { useContactModal } from '../context/ContactModalContext'
+import LogoBarDark from '../components/LogoBarDark'
 import './SecurityPage.css'
 
 const CATEGORIES = [
@@ -7,48 +9,56 @@ const CATEGORIES = [
     desc: 'Clear 1080p/4K footage for homes, offices, and retail — day and night coverage.',
     tag: 'Most Popular',
     accent: '#0066cc',
-    to: '#',
+    to: '/security/cctv-cameras',
   },
   {
     name: 'IP Cameras',
     desc: 'PoE-powered, remote access, and cloud storage — enterprise-grade surveillance.',
     tag: 'Network Ready',
     accent: '#0a0a0a',
-    to: '#',
+    to: '/security/cctv-cameras',
   },
   {
     name: 'WiFi Cameras',
     desc: 'Wireless setup with mobile app viewing. No cable runs needed.',
     tag: 'Easy Install',
     accent: '#059669',
-    to: '#',
+    to: '/security/cctv-cameras',
   },
   {
     name: 'Dome Cameras',
     desc: 'Discreet ceiling-mount cameras for indoor surveillance. Tamper-resistant housing.',
     tag: 'Vandal-Proof',
     accent: '#7c3aed',
-    to: '#',
+    to: '/security/cctv-cameras',
   },
   {
     name: 'Biometric Attendance',
     desc: 'Fingerprint, face, and card-based attendance with auto-payroll integration.',
     tag: 'Time & Attendance',
     accent: '#e31837',
-    to: '#',
+    to: '/security/biometric',
   },
   {
     name: 'Access Control',
     desc: 'Restrict and log access to rooms, floors, and buildings — all controlled from one panel.',
     tag: 'Secure Entry',
     accent: '#fca311',
-    to: '#',
+    to: '/security/biometric',
   },
 ]
 
-const BRANDS = [
-  'Hikvision', 'Dahua', 'CP Plus', 'Bosch', 'Honeywell',
-  'ZKTeco', 'Godrej', 'Samsung', 'Axis', 'Hanwha',
+const SECURITY_BRANDS = [
+  { name: 'Hikvision', url: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Hikvision_logo.svg' },
+  { name: 'Dahua',     url: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Dahua_Technology_logo.svg' },
+  { name: 'CP Plus' },
+  { name: 'Bosch',     url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/bosch.svg' },
+  { name: 'Honeywell', url: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Honeywell_logo.svg' },
+  { name: 'ZKTeco' },
+  { name: 'Godrej' },
+  { name: 'Samsung',   url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/samsung.svg', className: 'logo-xlarge' },
+  { name: 'Axis' },
+  { name: 'Hanwha' },
 ]
 
 const SERVICES = [
@@ -70,6 +80,8 @@ const SERVICES = [
 ]
 
 export default function SecurityPage() {
+  const { openModal } = useContactModal()
+
   return (
     <div className="sec-root">
 
@@ -85,7 +97,18 @@ export default function SecurityPage() {
             installed and maintained across Chennai.
           </p>
           <div className="sec-hero-ctas">
-            <a href="tel:+919500036310" className="sec-btn-primary">Get a Free Quote</a>
+            <button
+              className="sec-btn-primary"
+              onClick={() => openModal({
+                badge: 'Security',
+                badgeColor: 'green',
+                title: 'Get a Free Survey',
+                subtitle: 'Our security experts will assess your premises and recommend the ideal CCTV and biometric setup.',
+                prefillMessage: 'Hi, I\'d like a free security survey for my premises.',
+              })}
+            >
+              Get a Free Survey
+            </button>
             <a
               href="https://wa.me/919500036310"
               target="_blank"
@@ -129,12 +152,7 @@ export default function SecurityPage() {
       </section>
 
       {/* ── BRANDS ── */}
-      <div className="sec-brands">
-        <p className="sec-brands-label">Brands we install</p>
-        <div className="sec-brands-row">
-          {BRANDS.map(b => <span key={b} className="sec-brand">{b}</span>)}
-        </div>
-      </div>
+      <LogoBarDark brands={SECURITY_BRANDS} label="Brands we install" />
 
       {/* ── SERVICES ── */}
       <section className="sec-services">
@@ -145,7 +163,18 @@ export default function SecurityPage() {
               <div key={s.label} className="sec-service-card">
                 <h3 className="sec-service-title">{s.label}</h3>
                 <p className="sec-service-desc">{s.desc}</p>
-                <a href="tel:+919500036310" className="sec-service-cta">{s.cta} →</a>
+                <button
+                  className="sec-service-cta"
+                  onClick={() => openModal({
+                    badge: 'Security',
+                    badgeColor: 'green',
+                    title: 'Get a Free Survey',
+                    subtitle: 'Our security experts will assess your premises and recommend the ideal CCTV and biometric setup.',
+                    prefillMessage: 'Hi, I\'d like a free security survey for my premises.',
+                  })}
+                >
+                  {s.cta} →
+                </button>
               </div>
             ))}
           </div>
@@ -161,7 +190,18 @@ export default function SecurityPage() {
             We survey, supply, install, and maintain — all from our T.Nagar base in Chennai.
           </p>
           <div className="sec-cta-actions">
-            <a href="tel:+919500036310" className="sec-cta-btn-dark">Call +91 95000 36310</a>
+            <button
+              className="sec-cta-btn-dark"
+              onClick={() => openModal({
+                badge: 'Security',
+                badgeColor: 'green',
+                title: 'Get a Free Survey',
+                subtitle: 'Our security experts will assess your premises and recommend the ideal CCTV and biometric setup.',
+                prefillMessage: 'Hi, I\'d like a free security survey for my premises.',
+              })}
+            >
+              Get a Free Survey
+            </button>
             <a
               href="https://wa.me/919500036310"
               target="_blank"

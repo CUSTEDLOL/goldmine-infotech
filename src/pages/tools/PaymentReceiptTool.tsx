@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { jsPDF } from 'jspdf'
+import { useContactModal } from '../../context/ContactModalContext'
 import './PaymentReceiptTool.css'
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -55,6 +56,7 @@ function amountToWords(n: number): string {
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function PaymentReceiptTool() {
+  const { openModal } = useContactModal()
   const [receiptNumber, setReceiptNumber] = useState('REC-001')
   const [date, setDate]                   = useState(today())
   const [receivedFrom, setReceivedFrom]   = useState('')
@@ -442,11 +444,20 @@ export default function PaymentReceiptTool() {
       </div>
 
       {/* CTA */}
-      <div className="rcpt-cta">
-        <p className="rcpt-cta-text">Need a complete billing solution?</p>
-        <Link to="/software/billing-invoicing" className="rcpt-cta-link">
-          Explore our Billing &amp; Invoicing Software
-        </Link>
+      <div className="tool-cta-strip">
+        <p className="tool-cta-text">Need a custom solution for your business?</p>
+        <button
+          className="tool-cta-btn"
+          onClick={() => openModal({
+            badge: 'Free Tools',
+            badgeColor: 'orange',
+            title: 'Talk to our team',
+            subtitle: 'We build custom software and tools for businesses across Chennai.',
+            prefillMessage: 'Hi, I\'ve been using your free tools and I\'m interested in a custom solution for my business.',
+          })}
+        >
+          Talk to our team →
+        </button>
       </div>
     </div>
   )

@@ -1,0 +1,460 @@
+/* ─── Section wrapper ────────────────────────────────────────────────────────── */
+
+.dfs-section {
+  background: #fcfcfc;
+  border-top: 1px solid #efefef;
+  padding: 80px 48px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #0a0a0a;
+}
+
+@media (max-width: 768px) {
+  .dfs-section {
+    padding: 48px 24px;
+  }
+}
+
+/* ─── Inner container ────────────────────────────────────────────────────────── */
+
+.dfs-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ─── Section heading ────────────────────────────────────────────────────────── */
+
+.dfs-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.dfs-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #fca311;
+  background: #fff8ed;
+  border: 1px solid #fde8bb;
+  border-radius: 999px;
+  padding: 4px 12px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.dfs-headline {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  color: #0a0a0a;
+  margin: 0 0 14px;
+}
+
+.dfs-subtext {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ─── Search bar ─────────────────────────────────────────────────────────────── */
+
+.dfs-search-bar-wrap {
+  margin-bottom: 24px;
+}
+
+.dfs-search-bar {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+}
+
+.dfs-search-bar:focus-within {
+  border-color: #fca311;
+  box-shadow: 0 0 0 4px rgba(252, 163, 17, 0.12), 0 2px 16px rgba(0, 0, 0, 0.06);
+}
+
+.dfs-search-bar--error {
+  border-color: #f87171;
+}
+
+.dfs-search-icon {
+  flex-shrink: 0;
+  margin-left: 18px;
+  margin-right: 4px;
+}
+
+.dfs-search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 17px;
+  font-weight: 500;
+  color: #0a0a0a;
+  padding: 18px 16px;
+  font-family: inherit;
+  min-width: 0;
+}
+
+.dfs-search-input::placeholder {
+  color: #bbb;
+  font-weight: 400;
+}
+
+.dfs-search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+  margin: 6px;
+  padding: 13px 28px;
+  background: #fca311;
+  color: #0a0a0a;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s, transform 0.1s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.dfs-search-btn:hover:not(:disabled) {
+  background: #e6920a;
+}
+
+.dfs-search-btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.dfs-search-btn:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.dfs-input-error {
+  font-size: 13px;
+  color: #dc2626;
+  margin: 8px 4px 0;
+  font-weight: 500;
+}
+
+/* ─── Button spinner ─────────────────────────────────────────────────────────── */
+
+.dfs-btn-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(10, 10, 10, 0.25);
+  border-top-color: #0a0a0a;
+  border-radius: 50%;
+  animation: dfs-spin 0.65s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes dfs-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── TLD pills ──────────────────────────────────────────────────────────────── */
+
+.dfs-tld-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.dfs-tld-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+
+.dfs-tld-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dfs-tld-pill {
+  padding: 7px 16px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 999px;
+  background: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s, box-shadow 0.15s;
+  font-family: inherit;
+  user-select: none;
+}
+
+.dfs-tld-pill:hover {
+  border-color: #fca311;
+  color: #fca311;
+  background: #fff8ed;
+}
+
+.dfs-tld-pill--active {
+  background: #fca311;
+  border-color: #fca311;
+  color: #0a0a0a;
+  box-shadow: 0 2px 8px rgba(252, 163, 17, 0.25);
+}
+
+.dfs-tld-pill--active:hover {
+  background: #e6920a;
+  border-color: #e6920a;
+  color: #0a0a0a;
+}
+
+/* ─── Results section ────────────────────────────────────────────────────────── */
+
+.dfs-results-section {
+  margin-top: 8px;
+}
+
+.dfs-results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dfs-results-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0a0a0a;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.dfs-results-count {
+  font-size: 12px;
+  font-weight: 600;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dfs-results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ─── Result row ─────────────────────────────────────────────────────────────── */
+
+.dfs-result-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #ffffff;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 12px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  gap: 12px;
+  min-height: 60px;
+}
+
+.dfs-result-row--available {
+  border-color: #bbf7d0;
+  background: #f0fdf4;
+}
+
+.dfs-result-row--registered {
+  background: #fff5f5;
+  border-color: #fecaca;
+}
+
+.dfs-result-row--checking {
+  opacity: 0.8;
+}
+
+.dfs-result-domain {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0a0a0a;
+  font-family: 'SF Mono', 'Fira Code', 'Menlo', monospace;
+  letter-spacing: -0.01em;
+  min-width: 0;
+  word-break: break-all;
+}
+
+.dfs-result-row--registered .dfs-result-domain {
+  color: #666;
+}
+
+.dfs-result-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* ─── Status badges ──────────────────────────────────────────────────────────── */
+
+.dfs-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 4px 11px;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+.dfs-badge--available {
+  background: #dcfce7;
+  color: #16a34a;
+  border-color: #bbf7d0;
+}
+
+.dfs-badge--registered {
+  background: #fee2e2;
+  color: #dc2626;
+  border-color: #fecaca;
+}
+
+.dfs-badge--checking {
+  background: #f5f5f5;
+  color: #888;
+  border-color: #ebebeb;
+}
+
+.dfs-badge--unknown {
+  background: #f5f5f5;
+  color: #888;
+  border-color: #e0e0e0;
+}
+
+/* ─── Row spinner ────────────────────────────────────────────────────────────── */
+
+.dfs-spinner {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid #ccc;
+  border-top-color: #888;
+  border-radius: 50%;
+  animation: dfs-spin 0.65s linear infinite;
+  flex-shrink: 0;
+}
+
+/* ─── Result CTA ─────────────────────────────────────────────────────────────── */
+
+.dfs-result-cta {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0a0a0a;
+  text-decoration: none;
+  background: #fca311;
+  padding: 7px 14px;
+  border-radius: 8px;
+  transition: background 0.15s, opacity 0.15s;
+  white-space: nowrap;
+}
+
+.dfs-result-cta:hover {
+  background: #e6920a;
+}
+
+.dfs-result-cta--muted {
+  background: transparent;
+  color: #bbb;
+  padding: 7px 0;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: default;
+}
+
+.dfs-result-cta--ghost {
+  display: inline-block;
+  width: 80px;
+}
+
+@media (max-width: 520px) {
+  .dfs-result-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .dfs-result-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .dfs-result-cta--ghost {
+    display: none;
+  }
+}
+
+/* ─── Disclaimer ─────────────────────────────────────────────────────────────── */
+
+.dfs-disclaimer {
+  font-size: 12.5px;
+  color: #aaa;
+  line-height: 1.6;
+  margin: 20px 0 0;
+  text-align: center;
+}
+
+/* ─── Empty state ────────────────────────────────────────────────────────────── */
+
+.dfs-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 24px 8px;
+  text-align: center;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.dfs-empty-icon {
+  opacity: 0.5;
+}
+
+.dfs-empty-text {
+  font-size: 14px;
+  color: #aaa;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .dfs-spinner,
+  .dfs-btn-spinner {
+    animation: none;
+    opacity: 0.5;
+  }
+  .dfs-search-bar,
+  .dfs-tld-pill,
+  .dfs-result-row,
+  .dfs-search-btn,
+  .dfs-result-cta {
+    transition: none;
+  }
+}

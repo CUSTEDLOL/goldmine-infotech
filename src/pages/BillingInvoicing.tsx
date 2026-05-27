@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useContactModal } from '../context/ContactModalContext'
 import './BillingInvoicing.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -38,6 +39,7 @@ const rise = {
 
 export default function BillingInvoicing() {
   const rootRef = useRef<HTMLDivElement>(null)
+  const { openModal } = useContactModal()
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -141,7 +143,16 @@ export default function BillingInvoicing() {
             </motion.p>
 
             <motion.div className="bil-actions" variants={rise}>
-              <a href="tel:+919500036310" className="bil-btn-primary">Get a Free Demo</a>
+              <button
+                className="bil-btn-primary"
+                onClick={() => openModal({
+                  badge: 'Billing & Invoicing',
+                  badgeColor: 'blue',
+                  title: 'Get a Free Demo',
+                  subtitle: 'See how our billing software handles GST invoices, payment tracking, and reports.',
+                  prefillMessage: 'Hi, I\'d like a free demo of the Billing & Invoicing software.',
+                })}
+              >Get a Free Demo</button>
               <a href="tel:+919500036310" className="bil-btn-ghost">+91 95000 36310</a>
             </motion.div>
           </motion.div>
@@ -278,7 +289,16 @@ export default function BillingInvoicing() {
           <p className="bil-cta-sub">
             Our team configures your invoicing workflow from scratch. Go live in 48 hours — no tech team needed.
           </p>
-          <a href="tel:+919500036310" className="bil-cta-btn">Book a Free Setup Call</a>
+          <button
+            className="bil-cta-btn"
+            onClick={() => openModal({
+              badge: 'Billing & Invoicing',
+              badgeColor: 'blue',
+              title: 'Get a Free Demo',
+              subtitle: 'See how our billing software handles GST invoices, payment tracking, and reports.',
+              prefillMessage: 'Hi, I\'d like a free demo of the Billing & Invoicing software.',
+            })}
+          >Book a Free Setup Call</button>
         </div>
       </section>
 

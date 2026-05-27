@@ -1,5 +1,18 @@
 import { Link } from 'react-router-dom'
 import './MobilesPage.css'
+import { useContactModal } from '../context/ContactModalContext'
+import LogoBarDark from '../components/LogoBarDark'
+
+/* ── Brand Logos ────────────────────────────────────────────────── */
+const MOBILE_BRANDS = [
+  { name: 'Samsung',  url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/samsung.svg', className: 'logo-xlarge' },
+  { name: 'Apple',    url: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg' },
+  { name: 'OnePlus',  url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/oneplus.svg' },
+  { name: 'Xiaomi',   url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/xiaomi.svg', className: 'logo-xlarge' },
+  { name: 'Motorola', url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/motorola.svg', className: 'logo-xlarge' },
+  { name: 'Sony',     url: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg' },
+  { name: 'Nokia',    url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/nokia.svg', className: 'logo-xlarge' },
+]
 
 /* ── Image URLs ────────────────────────────────────────────────── */
 const COLLAGE_IMGS = [
@@ -13,6 +26,9 @@ const PROD_IMGS = {
   samsung: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=600&q=80',
   iphone: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80',
   oneplus: 'https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&w=600',
+  xiaomi: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80',
+  realme: 'https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=600&q=80',
+  samsungs24: 'https://images.unsplash.com/photo-1610945264803-c22b62831e6b?auto=format&fit=crop&w=600&q=80',
 }
 
 /* ── Types ─────────────────────────────────────────────────────── */
@@ -66,7 +82,7 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(20,40,160,0.08)',
     name: 'Samsung Galaxy A55 5G',
     specs: '6.6" AMOLED, 50MP Camera\n5000mAh, 5G Ready',
-    price: '₹34,999',
+    price: 'Starts from ₹34,999',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #0d1a6e 0%, #1428A0 100%)',
@@ -78,7 +94,7 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(29,29,31,0.07)',
     name: 'iPhone 15 128GB',
     specs: '6.1" OLED, A16 Bionic\n48MP Camera, USB-C',
-    price: '₹69,999',
+    price: 'Starts from ₹69,999',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #111111 0%, #3a3a3c 100%)',
@@ -90,7 +106,7 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(245,1,12,0.07)',
     name: 'OnePlus 12R',
     specs: '6.78" AMOLED, Snapdragon 8 Gen 2\n100W SuperVOOC Charging',
-    price: '₹42,999',
+    price: 'Starts from ₹42,999',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #8b0000 0%, #F5010C 100%)',
@@ -102,10 +118,11 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(255,105,0,0.08)',
     name: 'Redmi Note 13 Pro+',
     specs: '6.67" AMOLED, 200MP Camera\n120W HyperCharge',
-    price: '₹29,999',
+    price: 'Starts from ₹29,999',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #8b3700 0%, #ff6900 100%)',
+    img: PROD_IMGS.xiaomi,
   },
   {
     brand: 'Realme',
@@ -113,10 +130,11 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(194,160,0,0.09)',
     name: 'Realme 12 Pro+',
     specs: '6.7" AMOLED, 50MP Periscope\n67W SuperDart Charging',
-    price: '₹26,999',
+    price: 'Starts from ₹26,999',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #6b5800 0%, #c2a000 100%)',
+    img: PROD_IMGS.realme,
   },
   {
     brand: 'Samsung',
@@ -124,15 +142,17 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(20,40,160,0.08)',
     name: 'Samsung Galaxy S24',
     specs: '6.2" Dynamic AMOLED\nSnapdragon 8 Gen 3, 50MP AI Cam',
-    price: '₹74,999',
+    price: 'Starts from ₹74,999',
     badge: 'orange',
     badgeLabel: 'Limited Stock',
     gradient: 'linear-gradient(135deg, #060e40 0%, #0d1a6e 100%)',
+    img: PROD_IMGS.samsungs24,
   },
 ]
 
 /* ── Component ─────────────────────────────────────────────────── */
 export default function MobilesPage() {
+  const { openModal } = useContactModal()
   return (
     <div className="mob-root">
 
@@ -184,20 +204,7 @@ export default function MobilesPage() {
       </section>
 
       {/* ── 2. BRAND STRIP ──────────────────────────────────────── */}
-      <section className="mob-brands">
-        <div className="mob-brands-inner">
-          {['Samsung', 'Apple', 'OnePlus', 'Xiaomi', 'Realme', 'Motorola', 'Vivo', 'OPPO'].map(
-            (brand, i, arr) => (
-              <span key={brand} style={{ display: 'contents' }}>
-                <span className="mob-brand-name">{brand}</span>
-                {i < arr.length - 1 && (
-                  <span className="mob-brand-sep" aria-hidden="true">·</span>
-                )}
-              </span>
-            )
-          )}
-        </div>
-      </section>
+      <LogoBarDark brands={MOBILE_BRANDS} label="Brands we carry" />
 
       {/* ── 3. CATEGORY CARDS ───────────────────────────────────── */}
       <section className="mob-categories">
@@ -216,7 +223,6 @@ export default function MobilesPage() {
                     <h3 className="mob-cat-title">{cat.title}</h3>
                     <p className="mob-cat-desc">{cat.desc}</p>
                   </div>
-                  <span className="mob-cat-link">Shop</span>
                 </div>
               </div>
             ))}
@@ -267,7 +273,18 @@ export default function MobilesPage() {
                   <h3 className="mob-prod-name">{prod.name}</h3>
                   <p className="mob-prod-specs">{prod.specs}</p>
                   <p className="mob-prod-price">{prod.price}</p>
-                  <button className="mob-prod-quote-btn">Get Quote</button>
+                  <button
+                    className="mob-prod-quote-btn"
+                    onClick={() => openModal({
+                      badge: prod.brand,
+                      badgeColor: 'blue',
+                      title: `Get a Quote — ${prod.name}`,
+                      subtitle: prod.specs.replace('\n', ' · '),
+                      prefillMessage: `Hi, I'm interested in the ${prod.name} (${prod.specs.replace('\n', ', ')}). Please share pricing and availability.`,
+                    })}
+                  >
+                    Get Quote
+                  </button>
                 </div>
               </div>
             ))}

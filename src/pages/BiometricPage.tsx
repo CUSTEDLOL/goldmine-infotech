@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useContactModal } from '../context/ContactModalContext'
+import LogoBarDark from '../components/LogoBarDark'
 import './BiometricPage.css'
 
 const SYSTEMS = [
@@ -9,7 +11,7 @@ const SYSTEMS = [
     tag: 'Most Popular',
     badge: 'High Precision',
     desc: 'Capacitive fingerprint sensors with 1:N matching. Works for 10,000+ enrolled users without slowdown.',
-    img: 'https://images.pexels.com/photos/207580/pexels-photo-207580.jpeg?auto=compress&cs=tinysrgb&w=600&q=85',
+    img: 'https://images.pexels.com/photos/4125683/pexels-photo-4125683.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
   {
     id: 'face',
@@ -17,7 +19,7 @@ const SYSTEMS = [
     tag: 'New',
     badge: 'Contactless',
     desc: '3D facial recognition with liveness detection. Works in low light and with masks.',
-    img: 'https://images.unsplash.com/photo-1591280063444-d3c514eb6e13?auto=format&fit=crop&w=600&q=85',
+    img: 'https://images.pexels.com/photos/5473955/pexels-photo-5473955.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
   {
     id: 'access',
@@ -25,7 +27,7 @@ const SYSTEMS = [
     tag: 'Secure Entry',
     badge: 'Multi-layer',
     desc: 'Restrict and log access to rooms, floors, and buildings. Card, PIN, and biometric combinations.',
-    img: 'https://images.pexels.com/photos/4481259/pexels-photo-4481259.jpeg?auto=compress&cs=tinysrgb&w=600&q=85',
+    img: 'https://images.pexels.com/photos/4481323/pexels-photo-4481323.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
   {
     id: 'attendance',
@@ -33,7 +35,7 @@ const SYSTEMS = [
     tag: 'HR Ready',
     badge: 'Auto-Payroll',
     desc: 'Time and attendance tracking with direct integration to payroll software. Eliminates manual entry.',
-    img: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600&q=85',
+    img: 'https://images.pexels.com/photos/3825578/pexels-photo-3825578.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
   {
     id: 'card',
@@ -41,7 +43,7 @@ const SYSTEMS = [
     tag: 'Fast Access',
     badge: 'RFID/NFC',
     desc: 'Proximity and smart card systems for high-traffic entry points. Fast, reliable, and tamper-proof.',
-    img: 'https://images.pexels.com/photos/5380792/pexels-photo-5380792.jpeg?auto=compress&cs=tinysrgb&w=600&q=85',
+    img: 'https://images.pexels.com/photos/5699502/pexels-photo-5699502.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
   {
     id: 'amc',
@@ -49,7 +51,7 @@ const SYSTEMS = [
     tag: 'Support Plan',
     badge: 'Priority',
     desc: 'Annual maintenance covering calibration, updates, database backup, and emergency callouts.',
-    img: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=600&q=85',
+    img: 'https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
 ]
 
@@ -60,7 +62,16 @@ const SPECS = [
   { value: '24/7', label: 'System Uptime' },
 ]
 
-const BRANDS = ['ZKTeco', 'Honeywell', 'Godrej', 'Matrix', 'ESSL', 'HID', 'Suprema', 'Anviz']
+const BIOMETRIC_BRANDS = [
+  { name: 'ZKTeco' },
+  { name: 'Honeywell', url: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Honeywell_logo.svg' },
+  { name: 'Godrej' },
+  { name: 'Matrix' },
+  { name: 'ESSL' },
+  { name: 'HID' },
+  { name: 'Suprema' },
+  { name: 'Anviz' },
+]
 
 const WHY = [
   {
@@ -84,6 +95,8 @@ const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } }
 const rise = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' as const } } }
 
 export default function BiometricPage() {
+  const { openModal } = useContactModal()
+
   return (
     <div className="bio-root">
 
@@ -114,7 +127,18 @@ export default function BiometricPage() {
             </motion.p>
 
             <motion.div className="bio-hero-ctas" variants={rise}>
-              <a href="tel:+919500036310" className="bio-btn-primary">Get a Free Demo</a>
+              <button
+                className="bio-btn-primary"
+                onClick={() => openModal({
+                  badge: 'Biometric Systems',
+                  badgeColor: 'blue',
+                  title: 'Get a Free Survey',
+                  subtitle: 'We\'ll assess your access control needs and recommend the right biometric solution.',
+                  prefillMessage: 'Hi, I\'d like a free biometric survey. We need attendance/access control for ___ employees.',
+                })}
+              >
+                Get a Free Survey
+              </button>
               <a href="https://wa.me/919500036310" target="_blank" rel="noopener noreferrer" className="bio-btn-secondary">
                 WhatsApp Us
               </a>
@@ -129,8 +153,8 @@ export default function BiometricPage() {
           >
             <div className="bio-hero-img-wrap">
               <img
-                src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=900&q=85"
-                alt="Biometric fingerprint access control system"
+                src="https://images.pexels.com/photos/4125683/pexels-photo-4125683.jpeg?auto=compress&cs=tinysrgb&w=900"
+                alt="Biometric fingerprint scanner device"
                 className="bio-hero-img"
               />
               <div className="bio-hero-img-overlay" />
@@ -187,12 +211,7 @@ export default function BiometricPage() {
       </section>
 
       {/* ── BRANDS ── */}
-      <div className="bio-brands">
-        <p className="bio-brands-label">Brands we install</p>
-        <div className="bio-brands-row">
-          {BRANDS.map(b => <span key={b} className="bio-brand">{b}</span>)}
-        </div>
-      </div>
+      <LogoBarDark brands={BIOMETRIC_BRANDS} label="Brands we install" />
 
       {/* ── WHY GOLDMINE ── */}
       <section className="bio-why">
@@ -230,7 +249,18 @@ export default function BiometricPage() {
             </p>
           </div>
           <div className="bio-cta-right">
-            <a href="tel:+919500036310" className="bio-cta-btn-primary">+91 95000 36310</a>
+            <button
+              className="bio-cta-btn-primary"
+              onClick={() => openModal({
+                badge: 'Biometric Systems',
+                badgeColor: 'blue',
+                title: 'Get a Free Survey',
+                subtitle: 'We\'ll assess your access control needs and recommend the right biometric solution.',
+                prefillMessage: 'Hi, I\'d like a free biometric survey. We need attendance/access control for ___ employees.',
+              })}
+            >
+              Get a Free Survey
+            </button>
             <a href="https://wa.me/919500036310" target="_blank" rel="noopener noreferrer" className="bio-cta-btn-secondary">
               WhatsApp Us
             </a>

@@ -1,5 +1,17 @@
 import { Link } from 'react-router-dom'
 import './TelevisionsPage.css'
+import { useContactModal } from '../context/ContactModalContext'
+import LogoBarDark from '../components/LogoBarDark'
+
+/* ── Brand Logos ────────────────────────────────────────────────── */
+const TV_BRANDS = [
+  { name: 'Samsung',  url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/samsung.svg', className: 'logo-xlarge' },
+  { name: 'LG',       url: 'https://upload.wikimedia.org/wikipedia/commons/2/20/LG_symbol.svg' },
+  { name: 'Sony',     url: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg' },
+  { name: 'Panasonic', url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/panasonic.svg', className: 'logo-xlarge' },
+  { name: 'Philips',  url: 'https://upload.wikimedia.org/wikipedia/commons/5/52/Philips_logo_new.svg' },
+  { name: 'Xiaomi',   url: 'https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/xiaomi.svg', className: 'logo-xlarge' },
+]
 
 /* ── Image URLs ────────────────────────────────────────────────── */
 const COLLAGE_IMGS = [
@@ -11,8 +23,11 @@ const COLLAGE_IMGS = [
 
 const PROD_IMGS = {
   samsung: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=600&q=80',
-  lg: 'https://images.pexels.com/photos/5721869/pexels-photo-5721869.jpeg?auto=compress&cs=tinysrgb&w=600',
+  lg: 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=600&q=80',
   sony: 'https://images.unsplash.com/photo-1461151304267-38535e780c79?auto=format&fit=crop&w=600&q=80',
+  tcl: 'https://images.pexels.com/photos/4009402/pexels-photo-4009402.jpeg?auto=compress&cs=tinysrgb&w=600',
+  mi: 'https://images.pexels.com/photos/6373305/pexels-photo-6373305.jpeg?auto=compress&cs=tinysrgb&w=600',
+  frame: 'https://images.pexels.com/photos/6802052/pexels-photo-6802052.jpeg?auto=compress&cs=tinysrgb&w=600',
 }
 
 /* ── Types ─────────────────────────────────────────────────────── */
@@ -66,7 +81,7 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(20,40,160,0.08)',
     name: 'Samsung Crystal 4K 43"',
     specs: '4K UHD Smart TV, HDR10+\nTizen OS, 3× HDMI',
-    price: '₹39,999',
+    price: 'Starts from ₹39,999',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #0d1a6e 0%, #1428A0 100%)',
@@ -78,7 +93,7 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(165,0,52,0.08)',
     name: 'LG OLED 55" C3',
     specs: 'OLED evo, 4K, 120Hz\nDolby Vision, webOS 23',
-    price: '₹1,29,999',
+    price: 'Starts from ₹1,29,999',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #6b0022 0%, #a50034 100%)',
@@ -90,7 +105,7 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(0,0,0,0.07)',
     name: 'Sony Bravia 50"',
     specs: '4K HDR, Google TV\nDolby Atmos, HDMI 2.1',
-    price: '₹64,999',
+    price: 'Starts from ₹64,999',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #111111 0%, #333333 100%)',
@@ -102,10 +117,11 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(224,0,52,0.07)',
     name: 'TCL 65" Q-Series QLED',
     specs: 'QLED 4K, HDR10+\nGoogle TV, Dolby Vision IQ',
-    price: '₹54,999',
+    price: 'Starts from ₹54,999',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #8b0000 0%, #e00034 100%)',
+    img: PROD_IMGS.tcl,
   },
   {
     brand: 'Mi',
@@ -113,10 +129,11 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(255,105,0,0.08)',
     name: 'Mi TV 4X 43"',
     specs: '4K Ultra HD, Android TV\nDolby Vision, 20W Speakers',
-    price: '₹28,999',
+    price: 'Starts from ₹28,999',
     badge: 'green',
     badgeLabel: 'In Stock',
     gradient: 'linear-gradient(135deg, #8b3700 0%, #ff6900 100%)',
+    img: PROD_IMGS.mi,
   },
   {
     brand: 'Samsung',
@@ -124,15 +141,17 @@ const PRODUCTS: Product[] = [
     brandBg: 'rgba(20,40,160,0.08)',
     name: 'Samsung 75" The Frame',
     specs: 'QLED 4K, Art Mode\nBezel-less Design, Wi-Fi 5',
-    price: '₹1,94,999',
+    price: 'Starts from ₹1,94,999',
     badge: 'blue',
     badgeLabel: 'On Order',
     gradient: 'linear-gradient(135deg, #060e40 0%, #0d1a6e 100%)',
+    img: PROD_IMGS.frame,
   },
 ]
 
 /* ── Component ─────────────────────────────────────────────────── */
 export default function TelevisionsPage() {
+  const { openModal } = useContactModal()
   return (
     <div className="tvs-root">
 
@@ -154,9 +173,18 @@ export default function TelevisionsPage() {
               <Link to="/electronics" className="tvs-btn-primary">
                 Browse Collection
               </Link>
-              <a href="tel:+919500036310" className="tvs-btn-ghost">
-                Call +91 95000 36310
-              </a>
+              <button
+                className="tvs-btn-ghost"
+                onClick={() => openModal({
+                  badge: 'Televisions',
+                  badgeColor: 'purple',
+                  title: 'Get Expert Help',
+                  subtitle: 'Tell us your room size and budget — we\'ll find the right TV for you.',
+                  prefillMessage: 'Hi, I need help choosing a TV. Please recommend the best option for my room and budget.',
+                })}
+              >
+                Get Expert Help
+              </button>
             </div>
 
             <div className="tvs-hero-trust">
@@ -184,20 +212,7 @@ export default function TelevisionsPage() {
       </section>
 
       {/* ── 2. BRAND STRIP ──────────────────────────────────────── */}
-      <section className="tvs-brands">
-        <div className="tvs-brands-inner">
-          {['Samsung', 'LG', 'Sony', 'TCL', 'Mi', 'OnePlus', 'Vu', 'Hisense'].map(
-            (brand, i, arr) => (
-              <span key={brand} style={{ display: 'contents' }}>
-                <span className="tvs-brand-name">{brand}</span>
-                {i < arr.length - 1 && (
-                  <span className="tvs-brand-sep" aria-hidden="true">·</span>
-                )}
-              </span>
-            )
-          )}
-        </div>
-      </section>
+      <LogoBarDark brands={TV_BRANDS} label="Brands we carry" />
 
       {/* ── 3. CATEGORY CARDS ───────────────────────────────────── */}
       <section className="tvs-categories">
@@ -216,7 +231,6 @@ export default function TelevisionsPage() {
                     <h3 className="tvs-cat-title">{cat.title}</h3>
                     <p className="tvs-cat-desc">{cat.desc}</p>
                   </div>
-                  <span className="tvs-cat-link">Shop</span>
                 </div>
               </div>
             ))}
@@ -267,7 +281,18 @@ export default function TelevisionsPage() {
                   <h3 className="tvs-prod-name">{prod.name}</h3>
                   <p className="tvs-prod-specs">{prod.specs}</p>
                   <p className="tvs-prod-price">{prod.price}</p>
-                  <button className="tvs-prod-quote-btn">Get Quote</button>
+                  <button
+                    className="tvs-prod-quote-btn"
+                    onClick={() => openModal({
+                      badge: prod.brand,
+                      badgeColor: 'purple',
+                      title: `Get a Quote — ${prod.name}`,
+                      subtitle: prod.specs.replace('\n', ' · '),
+                      prefillMessage: `Hi, I'm interested in the ${prod.name} (${prod.specs.replace('\n', ', ')}). Please share pricing and availability.`,
+                    })}
+                  >
+                    Get Quote
+                  </button>
                 </div>
               </div>
             ))}

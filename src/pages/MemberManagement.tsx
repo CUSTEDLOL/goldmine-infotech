@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useContactModal } from '../context/ContactModalContext'
 import './MemberManagement.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -58,6 +59,7 @@ const rise = {
 
 export default function MemberManagement() {
   const rootRef = useRef<HTMLDivElement>(null)
+  const { openModal } = useContactModal()
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -157,7 +159,16 @@ export default function MemberManagement() {
           </motion.p>
 
           <motion.div className="mm-actions" variants={rise}>
-            <a href="tel:+919500036310" className="mm-btn-primary">Book a Demo</a>
+            <button
+              className="mm-btn-primary"
+              onClick={() => openModal({
+                badge: 'Member Management',
+                badgeColor: 'blue',
+                title: 'Get a Free Demo',
+                subtitle: 'See how our member management system handles memberships, renewals, and communications.',
+                prefillMessage: 'Hi, I\'d like a free demo of the Member Management software.',
+              })}
+            >Book a Demo</button>
             <a href="tel:+919500036310" className="mm-btn-ghost">+91 95000 36310</a>
           </motion.div>
         </motion.div>
@@ -351,7 +362,16 @@ export default function MemberManagement() {
           <p className="mm-cta-sub">
             We set up your member database in under 48 hours.
           </p>
-          <a href="tel:+919500036310" className="mm-cta-btn">Book a Demo</a>
+          <button
+            className="mm-cta-btn"
+            onClick={() => openModal({
+              badge: 'Member Management',
+              badgeColor: 'blue',
+              title: 'Get a Free Demo',
+              subtitle: 'See how our member management system handles memberships, renewals, and communications.',
+              prefillMessage: 'Hi, I\'d like a free demo of the Member Management software.',
+            })}
+          >Book a Demo</button>
         </div>
       </section>
 

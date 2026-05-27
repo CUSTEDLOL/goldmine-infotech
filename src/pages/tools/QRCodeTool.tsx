@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { QRCodeSVG } from 'qrcode.react'
+import { useContactModal } from '../../context/ContactModalContext'
 import './QRCodeTool.css'
 
 const PRESETS = [
@@ -15,6 +16,7 @@ const SIZES = [128, 192, 256, 320, 400]
 const ERROR_LEVELS = ['L', 'M', 'Q', 'H'] as const
 
 export default function QRCodeTool() {
+  const { openModal } = useContactModal()
   const [value, setValue] = useState('https://goldmineinfotech.com')
   const [size, setSize] = useState(256)
   const [fgColor, setFgColor] = useState('#0a0a0a')
@@ -205,9 +207,20 @@ export default function QRCodeTool() {
       </div>
 
       {/* Footer CTA */}
-      <div className="qr-footer-cta">
-        <p>Need a custom QR code solution for your business?</p>
-        <a href="tel:+919500036310" className="qr-footer-link">Talk to our team →</a>
+      <div className="tool-cta-strip">
+        <p className="tool-cta-text">Need a custom solution for your business?</p>
+        <button
+          className="tool-cta-btn"
+          onClick={() => openModal({
+            badge: 'Free Tools',
+            badgeColor: 'orange',
+            title: 'Talk to our team',
+            subtitle: 'We build custom software and tools for businesses across Chennai.',
+            prefillMessage: 'Hi, I\'ve been using your free tools and I\'m interested in a custom solution for my business.',
+          })}
+        >
+          Talk to our team →
+        </button>
       </div>
 
     </div>

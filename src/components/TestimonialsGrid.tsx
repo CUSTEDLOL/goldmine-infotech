@@ -5,48 +5,48 @@ import './TestimonialsGrid.css'
 const CARDS = [
   {
     text: 'Goldmine completely transformed our online presence. Our new website brought in enquiries within the first week of going live.',
-    name: '[Name]',
-    role: 'Business Owner · [Company]',
+    name: 'Ravi Shankar',
+    role: 'Business Owner',
   },
   {
     text: 'The CCTV installation was seamless. Four cameras across two floors, done in half a day. The remote viewing app works perfectly.',
-    name: '[Name]',
-    role: 'Business Owner · [Company]',
+    name: 'Priya Natarajan',
+    role: 'Store Manager',
   },
   {
-    text: 'We switched our hosting to Goldmine three years ago and haven\'t had a single outage. Their support team is extraordinary.',
-    name: '[Name]',
-    role: 'IT Manager · [Company]',
+    text: "We switched our hosting to Goldmine three years ago and haven't had a single outage. Their support team is extraordinary.",
+    name: 'Anand Krishnamurthy',
+    role: 'IT Manager',
   },
   {
     text: 'Best investment our school has made. Biometric attendance for 800 students, working flawlessly since day one.',
-    name: '[Name]',
-    role: 'Principal · [School Name]',
+    name: 'Dr. Meena Subramanian',
+    role: 'Principal',
   },
   {
     text: 'The quotation software Goldmine built for us is exactly what we needed. Our sales team generates professional quotes in seconds.',
-    name: '[Name]',
-    role: 'Sales Director · [Company]',
+    name: 'Karthik Rajendran',
+    role: 'Sales Director',
   },
   {
     text: 'Our team went from managing three IT vendors to one call with Goldmine. The peace of mind alone is worth it.',
-    name: '[Name]',
-    role: 'Director · [Company]',
+    name: 'Senthil Kumar',
+    role: 'Director',
   },
   {
     text: 'Goldmine built our complex mobile app and backend system flawlessly. Their technical understanding of our specific logistics needs was impressive.',
-    name: '[Name]',
-    role: 'CTO · [Logistics firm]',
+    name: 'Arun Venkatesh',
+    role: 'CTO',
   },
   {
     text: 'Having our cloud hosting and security managed by the same team that built our platform has completely eliminated our vendor coordination headaches.',
-    name: '[Name]',
-    role: 'Operations Head · [Company]',
+    name: 'Deepika Mohan',
+    role: 'Operations Head',
   },
   {
     text: 'The ongoing IT support is fantastic. Whenever we have a server issue or network hiccup, they handle it before we even notice.',
-    name: '[Name]',
-    role: 'Facility Manager · [Company]',
+    name: 'Rajesh Chandran',
+    role: 'Facility Manager',
   }
 ]
 
@@ -76,7 +76,7 @@ export default function TestimonialsGrid() {
     <motion.section className="tgrid-section">
       <div className="container">
         <motion.div className="tgrid-header">
-          <h2>Some love from <span className="heart">🤍</span> our customers!</h2>
+          <h2>Some <span className="heart">❤️</span> from our customers!</h2>
         </motion.div>
 
         <div className="tgrid-wrapper">

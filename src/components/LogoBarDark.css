@@ -1,11 +1,11 @@
+/* ── Logo Bar Dark ─────────────────────────────────────────────────────────── */
+/* Solid black brand strip — all logos rendered white via brightness/invert    */
+
 .logo-bar-dark {
-  background: transparent;
-  padding: 3rem 0;
+  background: #0a0a0a;
+  padding: 2.75rem 0;
   overflow: hidden;
   position: relative;
-  /* Add matching borders */
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .logo-bar-dark::before,
@@ -14,34 +14,33 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 15vw;
+  width: 100px;
   z-index: 2;
   pointer-events: none;
 }
 
 .logo-bar-dark::before {
   left: 0;
-  background: linear-gradient(to right, #000, transparent);
+  background: linear-gradient(to right, #0a0a0a, transparent);
 }
 
 .logo-bar-dark::after {
   right: 0;
-  background: linear-gradient(to left, #000, transparent);
+  background: linear-gradient(to left, #0a0a0a, transparent);
 }
 
 .marquee-outer {
-  max-width: 1400px;
-  margin: 0 auto;
   overflow: hidden;
+  overflow-x: clip;
 }
 
-/* Ensure spacing is correct to loop continuously */
 .marquee-track {
   display: flex;
-  gap: 3rem;
+  align-items: center;
+  gap: 3.5rem;
   width: max-content;
-  animation: scroll-left 40s linear infinite;
-  padding-left: 3rem;
+  animation: lbd-scroll 40s linear infinite;
+  padding: 0 3.5rem;
 }
 
 .logo-pill--dark {
@@ -49,65 +48,89 @@
   align-items: center;
   justify-content: center;
   height: 80px;
-  min-width: 160px;
-  padding: 0 1.5rem;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  transition: all 0.3s ease;
   flex-shrink: 0;
 }
 
-.logo-pill--dark:hover {
-  background: transparent;
-  transform: translateY(-4px);
-  box-shadow: none;
-}
-
 .logo-img {
-  height: 40px;
-  width: 120px;
+  height: 52px;
+  max-width: 180px;
+  width: auto;
   object-fit: contain;
-  opacity: 0.7;
-  transition: all 0.3s ease;
-}
-
-.logo-img.logo-invert {
+  opacity: 0.75;
   filter: brightness(0) invert(1);
+  transition: opacity 0.3s ease;
 }
 
 .logo-img.logo-large {
-  transform: scale(1.5);
+  height: 64px;
 }
 
 .logo-img.logo-xlarge {
-  transform: scale(2.2);
+  height: 72px;
+}
+
+/* Backward-compat: logo-invert was the old way to get white logos */
+.logo-img.logo-invert {
+  filter: brightness(0) invert(1);
 }
 
 .logo-pill--dark:hover .logo-img {
   opacity: 1;
 }
 
-@keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-50% - 1.5rem)); }
+.logo-text {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.logo-pill--dark:hover .logo-text {
+  color: #fff;
+}
+
+@keyframes lbd-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 1.75rem)); }
+}
+
+.lbd-label {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 10px;
+  padding: 0 24px;
 }
 
 @media (max-width: 768px) {
   .logo-bar-dark {
     padding: 2rem 0;
   }
+
   .logo-pill--dark {
+    height: 60px;
+  }
+
+  .logo-img {
+    height: 38px;
+  }
+
+  .logo-img.logo-xlarge {
     height: 50px;
-    min-width: 120px;
-    padding: 0 1rem;
   }
+
   .marquee-track {
-    gap: 2rem;
-    padding-left: 2rem;
+    gap: 2.5rem;
+    padding: 0 2.5rem;
   }
-  @keyframes scroll-left {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-50% - 1rem)); }
+
+  @keyframes lbd-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 1.25rem)); }
   }
 }

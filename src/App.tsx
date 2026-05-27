@@ -7,23 +7,27 @@ function ScrollToTop() {
   return null
 }
 import Navbar from './components/Navbar'
+import ContactModal from './components/ContactModal'
+import { ContactModalProvider } from './context/ContactModalContext'
 import Hero from './components/Hero'
 import LogoBar from './components/LogoBar'
 import PersonasSection from './components/PersonasSection'
 import CtaBanner from './components/CtaBanner'
-import BadgesStrip from './components/BadgesStrip'
 import TestimonialsGrid from './components/TestimonialsGrid'
 import Footer from './components/Footer'
 
-// Service pages — Web & Hosting
+// Service overview pages
+import WebHostingPage from './pages/WebHostingPage'
+import BuildDeployPage from './pages/BuildDeployPage'
+import ManageSupportPage from './pages/ManageSupportPage'
+
+// Service sub-pages (kept for direct URL access)
 import DomainRegistration from './pages/DomainRegistration'
 import WebHostingVPS from './pages/WebHostingVPS'
 import SSLCertificates from './pages/SSLCertificates'
 import EmailSolutions from './pages/EmailSolutions'
 import WebsiteDesign from './pages/WebsiteDesign'
 import WebsiteRedesign from './pages/WebsiteRedesign'
-
-// Service pages — Build & Deploy
 import ECommerceWebsites from './pages/ECommerceWebsites'
 import CMSWebsites from './pages/CMSWebsites'
 import MobileAppDevelopment from './pages/MobileAppDevelopment'
@@ -32,9 +36,13 @@ import Panoramic360View from './pages/Panoramic360View'
 import ENACHIntegration from './pages/ENACHIntegration'
 
 // Overview pages
+import ServicesPage from './pages/ServicesPage'
+import FreeToolsPage from './pages/FreeToolsPage'
 import SoftwareOverview from './pages/SoftwareOverview'
 import ElectronicsPage from './pages/ElectronicsPage'
 import SecurityPage from './pages/SecurityPage'
+import ComputersPage from './pages/ComputersPage'
+import ProductsPage from './pages/ProductsPage'
 
 // Electronics product pages
 import LaptopsPage from './pages/LaptopsPage'
@@ -42,32 +50,35 @@ import DesktopsPage from './pages/DesktopsPage'
 import PrintersPage from './pages/PrintersPage'
 import TelevisionsPage from './pages/TelevisionsPage'
 import MobilesPage from './pages/MobilesPage'
+import SmartwatchesPage from './pages/SmartwatchesPage'
 
 // Software pages
-import JewellerySuite from './pages/JewellerySuite'
-import CarRentalSoftware from './pages/CarRentalSoftware'
-import QuotationSoftware from './pages/QuotationSoftware'
-import PhotographerPortal from './pages/PhotographerPortal'
-import DesignsStock from './pages/DesignsStock'
 import MemberManagement from './pages/MemberManagement'
 import BillingInvoicing from './pages/BillingInvoicing'
 import BookingScheduling from './pages/BookingScheduling'
 import InventoryTracking from './pages/InventoryTracking'
 import ClientPortals from './pages/ClientPortals'
 
+// Products by Us (individual pages kept for direct access)
+import JewellerySuite from './pages/JewellerySuite'
+import CarRentalSoftware from './pages/CarRentalSoftware'
+import QuotationSoftware from './pages/QuotationSoftware'
+import PhotographerPortal from './pages/PhotographerPortal'
+import DesignsStock from './pages/DesignsStock'
+
 // Security sub-pages
 import CCTVCamerasPage from './pages/CCTVCamerasPage'
-import InstallationsPage from './pages/InstallationsPage'
 import BiometricPage from './pages/BiometricPage'
 
 // Free Tools
-import ToolsPage from './pages/ToolsPage'
-import GSTInvoiceTool from './pages/tools/GSTInvoiceTool'
 import PaymentReceiptTool from './pages/tools/PaymentReceiptTool'
 import CompoundInterestTool from './pages/tools/CompoundInterestTool'
 import BarcodeTool from './pages/tools/BarcodeTool'
 import DomainFinderTool from './pages/tools/DomainFinderTool'
 import QRCodeTool from './pages/tools/QRCodeTool'
+
+// Home page components
+import DomainFinderSection from './components/DomainFinderSection'
 
 function HomePage() {
   return (
@@ -76,8 +87,8 @@ function HomePage() {
       <LogoBar />
       <PersonasSection />
       <CtaBanner />
-      <BadgesStrip />
       <TestimonialsGrid />
+      <DomainFinderSection />
       <Footer />
     </>
   )
@@ -85,32 +96,40 @@ function HomePage() {
 
 export default function App() {
   return (
-    <>
+    <ContactModalProvider>
       <ScrollToTop />
       <Navbar />
+      <ContactModal />
       <Routes>
         <Route path="/" element={<HomePage />} />
 
-        {/* Web & Hosting */}
-        <Route path="/services/domain-registration" element={<DomainRegistration />} />
-        <Route path="/services/web-hosting-vps" element={<WebHostingVPS />} />
-        <Route path="/services/ssl-certificates" element={<SSLCertificates />} />
-        <Route path="/services/email-solutions" element={<EmailSolutions />} />
-        <Route path="/services/website-design" element={<WebsiteDesign />} />
-        <Route path="/services/website-redesign" element={<WebsiteRedesign />} />
+        {/* Service overview pages */}
+        <Route path="/services/web-hosting"    element={<WebHostingPage />} />
+        <Route path="/services/build-deploy"   element={<BuildDeployPage />} />
+        <Route path="/services/manage-support" element={<ManageSupportPage />} />
 
-        {/* Build & Deploy */}
-        <Route path="/services/ecommerce-websites" element={<ECommerceWebsites />} />
-        <Route path="/services/cms-websites" element={<CMSWebsites />} />
+        {/* Service sub-pages (kept for direct URL access) */}
+        <Route path="/services/domain-registration"    element={<DomainRegistration />} />
+        <Route path="/services/web-hosting-vps"        element={<WebHostingVPS />} />
+        <Route path="/services/ssl-certificates"       element={<SSLCertificates />} />
+        <Route path="/services/email-solutions"        element={<EmailSolutions />} />
+        <Route path="/services/website-design"         element={<WebsiteDesign />} />
+        <Route path="/services/website-redesign"       element={<WebsiteRedesign />} />
+        <Route path="/services/ecommerce-websites"     element={<ECommerceWebsites />} />
+        <Route path="/services/cms-websites"           element={<CMSWebsites />} />
         <Route path="/services/mobile-app-development" element={<MobileAppDevelopment />} />
-        <Route path="/services/bulk-sms-service" element={<BulkSMSService />} />
-        <Route path="/services/panoramic-360-view" element={<Panoramic360View />} />
-        <Route path="/services/enach-integration" element={<ENACHIntegration />} />
+        <Route path="/services/bulk-sms-service"       element={<BulkSMSService />} />
+        <Route path="/services/panoramic-360-view"     element={<Panoramic360View />} />
+        <Route path="/services/enach-integration"      element={<ENACHIntegration />} />
 
         {/* Overview pages */}
-        <Route path="/software"      element={<SoftwareOverview />} />
-        <Route path="/electronics"   element={<ElectronicsPage />} />
-        <Route path="/security"      element={<SecurityPage />} />
+        <Route path="/services"    element={<ServicesPage />} />
+        <Route path="/tools"       element={<FreeToolsPage />} />
+        <Route path="/software"    element={<SoftwareOverview />} />
+        <Route path="/electronics" element={<ElectronicsPage />} />
+        <Route path="/security"    element={<SecurityPage />} />
+        <Route path="/computers"   element={<ComputersPage />} />
+        <Route path="/products"    element={<ProductsPage />} />
 
         {/* Electronics product pages */}
         <Route path="/electronics/laptops"      element={<LaptopsPage />} />
@@ -118,33 +137,33 @@ export default function App() {
         <Route path="/electronics/printers"     element={<PrintersPage />} />
         <Route path="/electronics/televisions"  element={<TelevisionsPage />} />
         <Route path="/electronics/mobiles"      element={<MobilesPage />} />
+        <Route path="/electronics/smartwatches" element={<SmartwatchesPage />} />
 
         {/* Software */}
-        <Route path="/software/jewellery-suite" element={<JewellerySuite />} />
-        <Route path="/software/car-rental-software" element={<CarRentalSoftware />} />
-        <Route path="/software/quotation-software" element={<QuotationSoftware />} />
-        <Route path="/software/photographer-portal" element={<PhotographerPortal />} />
-        <Route path="/software/designs-stock" element={<DesignsStock />} />
-        <Route path="/software/member-management" element={<MemberManagement />} />
-        <Route path="/software/billing-invoicing" element={<BillingInvoicing />} />
+        <Route path="/software/billing-invoicing"  element={<BillingInvoicing />} />
         <Route path="/software/booking-scheduling" element={<BookingScheduling />} />
         <Route path="/software/inventory-tracking" element={<InventoryTracking />} />
-        <Route path="/software/client-portals" element={<ClientPortals />} />
+        <Route path="/software/client-portals"     element={<ClientPortals />} />
+        <Route path="/software/member-management"  element={<MemberManagement />} />
+
+        {/* Products by Us (individual pages kept for direct access) */}
+        <Route path="/software/jewellery-suite"     element={<JewellerySuite />} />
+        <Route path="/software/car-rental-software" element={<CarRentalSoftware />} />
+        <Route path="/software/quotation-software"  element={<QuotationSoftware />} />
+        <Route path="/software/photographer-portal" element={<PhotographerPortal />} />
+        <Route path="/software/designs-stock"       element={<DesignsStock />} />
 
         {/* Security sub-pages */}
-        <Route path="/security/cctv-cameras"  element={<CCTVCamerasPage />} />
-        <Route path="/security/installations" element={<InstallationsPage />} />
-        <Route path="/security/biometric"     element={<BiometricPage />} />
+        <Route path="/security/cctv-cameras" element={<CCTVCamerasPage />} />
+        <Route path="/security/biometric"    element={<BiometricPage />} />
 
         {/* Free Tools */}
-        <Route path="/tools" element={<ToolsPage />} />
-        <Route path="/tools/gst-invoice" element={<GSTInvoiceTool />} />
-        <Route path="/tools/payment-receipt" element={<PaymentReceiptTool />} />
+        <Route path="/tools/qr-code"           element={<QRCodeTool />} />
+        <Route path="/tools/payment-receipt"   element={<PaymentReceiptTool />} />
         <Route path="/tools/compound-interest" element={<CompoundInterestTool />} />
-        <Route path="/tools/barcode" element={<BarcodeTool />} />
-        <Route path="/tools/domain-finder" element={<DomainFinderTool />} />
-        <Route path="/tools/qr-code" element={<QRCodeTool />} />
+        <Route path="/tools/barcode"           element={<BarcodeTool />} />
+        <Route path="/tools/domain-finder"     element={<DomainFinderTool />} />
       </Routes>
-    </>
+    </ContactModalProvider>
   )
 }
