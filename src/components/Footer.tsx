@@ -85,9 +85,9 @@ export default function Footer() {
         <div className="footer-bottom">
           <p className="footer-copy">© 2025 Goldmine Infotech Pvt Ltd. All rights reserved.</p>
           <div className="footer-social">
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" title="LinkedIn">in</a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram">&#9679;</a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" title="YouTube">▶</a>
+            <a href="https://www.linkedin.com/company/goldmine-infotech-pvt-ltd/posts/?feedView=all" target="_blank" rel="noopener noreferrer" title="LinkedIn">in</a>
+            <a href="https://www.instagram.com/goldmine.infotech/" target="_blank" rel="noopener noreferrer" title="Instagram">&#9679;</a>
+            <a href="https://www.facebook.com/goldmineinfotechpvtltd/" target="_blank" rel="noopener noreferrer" title="Facebook">f</a>
           </div>
           <div className="footer-legal">
             <a href="#">Privacy Policy</a>
