@@ -545,7 +545,6 @@ export default function Navbar() {
 
   return (
     <nav className={`navbar${scrolled ? ' navbar--scrolled' : ''}${isSubpage && !scrolled ? ' navbar--solid' : ''}`} ref={navRef}>
-      <MobileQuickBar />
       <div className="nav-inner">
 
         {/* Logo */}
