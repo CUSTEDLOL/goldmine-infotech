@@ -65,6 +65,30 @@ const CAMERAS = [
     desc: 'Pan, tilt, zoom — remotely controlled. One camera covers what six fixed cameras cannot.',
     img: 'https://images.pexels.com/photos/32516148/pexels-photo-32516148.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
+  {
+    id: 'dvr',
+    name: 'DVR / NVR',
+    resolution: '4–64 Channels',
+    tag: 'Central Recording',
+    desc: 'Digital and network video recorders for continuous or motion-triggered recording. Remote playback via mobile app.',
+    img: 'https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=600',
+  },
+  {
+    id: 'hdd',
+    name: 'Surveillance Hard Disk',
+    resolution: '1TB – 8TB',
+    tag: '24×7 Rated',
+    desc: 'Purpose-built HDDs rated for continuous write cycles. Longer lifespan and higher reliability than standard drives.',
+    img: 'https://images.pexels.com/photos/33278/disc-reader-reading-arm-hard-drive.jpg?auto=compress&cs=tinysrgb&w=600',
+  },
+  {
+    id: 'cabling',
+    name: 'Cabling & Accessories',
+    resolution: 'Cat6 / Coax / Fibre',
+    tag: 'Clean Install',
+    desc: 'Structured cabling, conduit routing, junction boxes, and power adaptors — all included in our installations.',
+    img: 'https://images.pexels.com/photos/2881229/pexels-photo-2881229.jpeg?auto=compress&cs=tinysrgb&w=600',
+  },
 ]
 
 const SPECS = [
@@ -184,7 +208,7 @@ export default function CCTVCamerasPage() {
         <div className="cctv-types-inner">
           <div className="cctv-section-header">
             <p className="cctv-section-label">Camera range</p>
-            <h2 className="cctv-section-title">Six types. Every scenario covered.</h2>
+            <h2 className="cctv-section-title">Everything you need. Under one roof.</h2>
           </div>
 
           <div className="cctv-cam-grid">

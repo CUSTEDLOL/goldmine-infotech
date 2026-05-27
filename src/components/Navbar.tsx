@@ -197,6 +197,9 @@ const NAV_ITEMS: NavItem[] = [
             { label: 'Dome Cameras' },
             { label: 'Bullet Cameras' },
             { label: 'PTZ Cameras' },
+            { label: 'DVR / NVR' },
+            { label: 'Hard Disk' },
+            { label: 'Cabling & Accessories' },
           ],
         },
         {
