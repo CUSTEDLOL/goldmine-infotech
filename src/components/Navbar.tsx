@@ -349,29 +349,6 @@ function Dropdown({ data }: { data: DropdownData }) {
   )
 }
 
-// ─── Mobile Quick Bar ─────────────────────────────────────────────────────────
-
-function MobileQuickBar() {
-  const location = useLocation()
-  return (
-    <div className="mob-quickbar">
-      {NAV_ITEMS.map((item) => {
-        const href = item.dropdown?.featuredCard?.href ?? item.href ?? '/'
-        const isActive = href !== '/' && location.pathname.startsWith(href)
-        return (
-          <Link
-            key={item.label}
-            to={href}
-            className={`mob-quickbar-chip${isActive ? ' mob-quickbar-chip--active' : ''}`}
-          >
-            {item.label}
-          </Link>
-        )
-      })}
-    </div>
-  )
-}
-
 // ─── Mobile Overlay ───────────────────────────────────────────────────────────
 
 function MobileOverlay({ onClose }: { onClose: () => void }) {
@@ -436,15 +413,16 @@ function MobileOverlay({ onClose }: { onClose: () => void }) {
 
                   <div className="mob-accordion-cols">
                     {item.dropdown.columns.map((col) => (
-                      <div key={col.head} className="mob-col">
+                      <div key={col.head} className={`mob-col${col.headHref ? ' mob-col--nav' : ''}`}>
                         {col.headHref ? (
                           <Link to={col.headHref} className="mob-col-head mob-col-head--link" onClick={onClose}>
-                            {col.head} →
+                            <span>{col.head}</span>
+                            <span className="mob-col-head-arrow">→</span>
                           </Link>
                         ) : (
                           <p className="mob-col-head">{col.head}</p>
                         )}
-                        <ul className="mob-col-links">
+                        <ul className={`mob-col-links${col.isList ? ' mob-col-links--tags' : ''}`}>
                           {col.links.map((link) => (
                             <li key={link.label}>
                               {col.isList ? (

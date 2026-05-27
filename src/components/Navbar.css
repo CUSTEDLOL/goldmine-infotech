@@ -699,7 +699,7 @@
   gap: 16px 12px;
 }
 
-/* ─── Mobile Column Head as Link ─────────────────────────────────────────── */
+/* ─── Mobile Column Head as Link (global base — overridden on mobile) ───── */
 .mob-col-head--link {
   display: flex;
   align-items: center;
@@ -716,7 +716,9 @@
 
 .mob-col-head--link:hover { color: rgba(35, 2, 46, 0.9); }
 
-/* ─── Mobile List Items (non-clickable bullets) ──────────────────────────── */
+.mob-col-head-arrow { flex-shrink: 0; }
+
+/* ─── Mobile List Items (non-clickable bullets — base) ───────────────────── */
 .mob-list-item {
   display: flex;
   align-items: center;
@@ -875,6 +877,85 @@
   }
 }
 
+/* ─── Mobile nav-section tiles (Services sub-sections, Security sub-sections) */
+@media (max-width: 900px) {
+  /* Nav-section columns fill the accordion cols grid as proper tiles */
+  .mob-col--nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* The section-head link becomes a full-width tappable tile */
+  .mob-col--nav .mob-col-head--link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 14px 16px;
+    background: #fff;
+    border: 1.5px solid rgba(35, 2, 46, 0.1);
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: rgba(35, 2, 46, 0.88);
+    margin-bottom: 8px;
+    min-height: 50px;
+    box-shadow: 0 1px 4px rgba(35, 2, 46, 0.05);
+    transition: background 0.14s, border-color 0.14s, box-shadow 0.14s;
+  }
+
+  .mob-col--nav .mob-col-head--link:hover,
+  .mob-col--nav .mob-col-head--link:active {
+    background: rgba(35, 2, 46, 0.04);
+    border-color: rgba(35, 2, 46, 0.18);
+    box-shadow: 0 2px 8px rgba(35, 2, 46, 0.08);
+  }
+
+  .mob-col--nav .mob-col-head-arrow {
+    font-size: 14px;
+    color: rgba(35, 2, 46, 0.35);
+    flex-shrink: 0;
+    transition: transform 0.14s;
+  }
+
+  .mob-col--nav .mob-col-head--link:hover .mob-col-head-arrow {
+    transform: translateX(3px);
+  }
+
+  /* Sub-items become small inline tag chips below the tile */
+  .mob-col-links--tags {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px 5px;
+    padding: 0 2px 4px;
+  }
+
+  .mob-col-links--tags li {
+    list-style: none;
+  }
+
+  .mob-col-links--tags .mob-list-item {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 9px;
+    background: rgba(35, 2, 46, 0.04);
+    border: 1px solid rgba(35, 2, 46, 0.08);
+    border-radius: 999px;
+    font-size: 10.5px;
+    font-weight: 500;
+    color: rgba(35, 2, 46, 0.42);
+    line-height: 1.4;
+    position: static;
+  }
+
+  .mob-col-links--tags .mob-list-item::before {
+    display: none;
+  }
+}
+
 @media (max-width: 480px) {
   .navbar {
     padding: 1rem 1rem;
@@ -901,6 +982,6 @@
 
   .mob-accordion-cols {
     grid-template-columns: 1fr 1fr;
-    gap: 14px 10px;
+    gap: 10px 8px;
   }
 }
