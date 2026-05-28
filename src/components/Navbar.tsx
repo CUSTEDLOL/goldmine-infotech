@@ -239,6 +239,7 @@ const NAV_ITEMS: NavItem[] = [
             { label: 'Domain Finder',                href: '/tools/domain-finder' },
             { label: 'Image Resize & Compress',      href: '/tools/image-resize' },
             { label: 'Image to PDF',                 href: '/tools/image-to-pdf' },
+            { label: 'Estimate Generator',           href: '/tools/estimate' },
           ],
         },
       ],
