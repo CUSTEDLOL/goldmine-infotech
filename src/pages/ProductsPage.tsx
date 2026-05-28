@@ -1,5 +1,25 @@
+import { useState } from 'react'
 import { useContactModal } from '../context/ContactModalContext'
 import './ProductsPage.css'
+
+import fleet1 from '../../screenshots/fleet-management/img1.jpg'
+import fleet2 from '../../screenshots/fleet-management/img2.jpg'
+import fleet3 from '../../screenshots/fleet-management/img3.jpg'
+import quote1 from '../../screenshots/online-quotation-software/quote1.jpg'
+import quote2 from '../../screenshots/online-quotation-software/quote2.jpg'
+import quote3 from '../../screenshots/online-quotation-software/quote3.jpg'
+import member1 from '../../screenshots/member-management/img1.jpg'
+import member2 from '../../screenshots/member-management/img2.jpg'
+import member3 from '../../screenshots/member-management/img3.jpg'
+import matrimony1 from '../../screenshots/matrimony/img1.jpg'
+import matrimony2 from '../../screenshots/matrimony/img2.jpg'
+import matrimony3 from '../../screenshots/matrimony/img3.jpg'
+import cable1 from '../../screenshots/cabletv-ott-internet/img1.jpg'
+import cable2 from '../../screenshots/cabletv-ott-internet/img2.jpg'
+import cable3 from '../../screenshots/cabletv-ott-internet/img3.jpg'
+import cctv1 from '../../screenshots/cctv-quote/img1.jpg'
+import cctv2 from '../../screenshots/cctv-quote/img2.jpg'
+import cctv3 from '../../screenshots/cctv-quote/img3.jpg'
 
 /* ── Mock UIs ─────────────────────────────────────────────────────────────── */
 
@@ -138,57 +158,6 @@ function CarRentalMock() {
   )
 }
 
-function QuotationMock() {
-  const items = [
-    { label: 'Website Design & Development', qty: 1, amt: '₹35,000' },
-    { label: 'Cloud Hosting Setup (Annual)', qty: 1, amt: '₹8,500' },
-    { label: 'SSL Certificate + Domain', qty: 2, amt: '₹3,200' },
-    { label: 'Mobile App (Android + iOS)', qty: 1, amt: '₹75,000' },
-  ]
-  return (
-    <div className="mock mock--quote">
-      <div className="mock-doc">
-        <div className="mock-doc-header">
-          <div className="mock-doc-logo">
-            <span className="mock-doc-logo-text">Goldmine</span>
-          </div>
-          <div className="mock-doc-meta">
-            <div className="mock-doc-tag">QUOTATION</div>
-            <div className="mock-doc-num">#QT-2024-047</div>
-            <div className="mock-doc-date">Dated: 15 May 2024</div>
-          </div>
-        </div>
-        <div className="mock-doc-divider" />
-        <div className="mock-doc-to">
-          <div className="mock-doc-label">PREPARED FOR</div>
-          <div className="mock-doc-client-name">Ravi Kumar</div>
-          <div className="mock-doc-client-sub">Kumar Enterprises · Chennai</div>
-        </div>
-        <div className="mock-doc-cols">
-          <span>Description</span><span>Qty</span><span>Amount</span>
-        </div>
-        {items.map((it, i) => (
-          <div key={i} className="mock-doc-item">
-            <div className="mock-doc-item-label">{it.label}</div>
-            <span className="mock-doc-qty">{it.qty}</span>
-            <span className="mock-doc-amt">{it.amt}</span>
-          </div>
-        ))}
-        <div className="mock-doc-divider" />
-        <div className="mock-doc-totals">
-          <div className="mock-doc-subtotal"><span>Subtotal</span><span>₹1,21,700</span></div>
-          <div className="mock-doc-subtotal"><span>GST (18%)</span><span>₹21,906</span></div>
-          <div className="mock-doc-final"><span>Total</span><span>₹1,43,606</span></div>
-        </div>
-        <div className="mock-doc-footer-row">
-          <div className="mock-doc-pdf-btn">Export PDF</div>
-          <div className="mock-doc-send-btn">Send to Client</div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 function PhotographerMock() {
   const photos = [
     { color: '#2d1b69', label: 'Wedding' },
@@ -302,9 +271,52 @@ function DesignsMock() {
   )
 }
 
+/* ── Screenshot Slider ─────────────────────────────────────────────────────── */
+
+function ScreenshotSlider({ images, light }: { images: string[], light: boolean }) {
+  const [idx, setIdx] = useState(0)
+  const prev = () => setIdx(i => (i - 1 + images.length) % images.length)
+  const next = () => setIdx(i => (i + 1) % images.length)
+  return (
+    <div className="pp-slider">
+      <div className="pp-slider-frame">
+        <img src={images[idx]} alt={`Screenshot ${idx + 1}`} className="pp-slider-img" />
+        <button className="pp-slider-btn pp-slider-btn--prev" onClick={prev} aria-label="Previous">&#8249;</button>
+        <button className="pp-slider-btn pp-slider-btn--next" onClick={next} aria-label="Next">&#8250;</button>
+      </div>
+      <div className="pp-slider-dots">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            className={`pp-slider-dot${i === idx ? ' pp-slider-dot--active' : ''}`}
+            onClick={() => setIdx(i)}
+            aria-label={`Go to ${i + 1}`}
+            style={i === idx ? { background: '#fca311' } : { background: light ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.25)' }}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 /* ── Products data ─────────────────────────────────────────────────────────── */
 
-const PRODUCTS = [
+type Product = {
+  num: string
+  id: string
+  name: string
+  tagline: string
+  desc: string
+  features: string[]
+  bg: string
+  accent: string
+  light: boolean
+  flip: boolean
+  Mock?: React.ComponentType
+  screenshots?: string[]
+}
+
+const PRODUCTS: Product[] = [
   {
     num: '01',
     id: 'jewellery',
@@ -342,7 +354,7 @@ const PRODUCTS = [
     accent: '#38bdf8',
     light: false,
     flip: false,
-    Mock: QuotationMock,
+    screenshots: [quote1, quote2, quote3],
   },
   {
     num: '04',
@@ -369,6 +381,51 @@ const PRODUCTS = [
     light: true,
     flip: false,
     Mock: DesignsMock,
+  },
+  {
+    num: '06', id: 'transport',
+    name: 'Transport Management System',
+    tagline: 'Freight, logistics & billing under one roof',
+    desc: 'Built for importers, exporters, and logistics companies. Track job cards, manage container movement, generate freight invoices, handle vendor bills, and produce GST-compliant tax invoices — all from a single dashboard.',
+    features: ['Job Card Management', 'Container Tracking', 'Freight Invoice', 'Vendor Billing', 'GST Tax Invoice', 'Import/Export Logs'],
+    bg: '#0a1628', accent: '#38bdf8', light: false, flip: true,
+    screenshots: [fleet1, fleet2, fleet3],
+  },
+  {
+    num: '07', id: 'member',
+    name: 'Member Management System',
+    tagline: 'Memberships, receipts & renewals — organised',
+    desc: 'Designed for clubs, associations, and societies. Manage 1000s of member profiles, track active and lapsed subscriptions, collect dues, generate e-receipts, monitor income & expenses, and send bulk WhatsApp messages.',
+    features: ['Member Profiles', 'Subscription Tracking', 'E-Receipts', 'Income & Expense', 'Renewal Alerts', 'WhatsApp Notifications'],
+    bg: '#1a0a2e', accent: '#a855f7', light: false, flip: false,
+    screenshots: [member1, member2, member3],
+  },
+  {
+    num: '08', id: 'matrimony',
+    name: 'Matrimony & Hall Booking',
+    tagline: 'Profiles, bookings & bilingual receipts',
+    desc: 'A complete system for community associations managing matrimony services and venue bookings. Maintain active and inactive profiles, handle hall bookings with a calendar, collect payments, and print receipts in English and Tamil.',
+    features: ['Profile Management', 'Hall Booking Calendar', 'Bilingual Receipts', 'Visitor Tracking', 'Photo Gallery', 'Flash News'],
+    bg: '#0d2010', accent: '#22c55e', light: false, flip: true,
+    screenshots: [matrimony1, matrimony2, matrimony3],
+  },
+  {
+    num: '09', id: 'cabletv',
+    name: 'Cable TV / Internet / OTT Billing',
+    tagline: 'Multi-service billing for MSOs and ISPs',
+    desc: 'A unified platform for cable TV operators, ISPs, and OTT resellers. Manage BSNL, Cable TV, Internet, and OTT subscriptions together. Handle complaints, top up partner wallets, track unpaid customers, and accept payments via Razorpay.',
+    features: ['Multi-Service Billing', 'Complaint Management', 'OTT Activation', 'Partner Wallet', 'Razorpay Payments', 'Subscriber Reports'],
+    bg: '#001a10', accent: '#10b981', light: false, flip: false,
+    screenshots: [cable1, cable2, cable3],
+  },
+  {
+    num: '10', id: 'cctv',
+    name: 'CCTV Quotation Software',
+    tagline: 'Instant estimates by brand, camera & accessories',
+    desc: 'Built for CCTV installers and security dealers. Choose from Hikvision, Dahua, CP Plus, or Shingo. Select HD or IP cameras, DVRs, hard disks, cabling, and accessories. Generate a branded, itemised estimate PDF in seconds.',
+    features: ['Brand-wise Estimates', 'HD & IP Camera Support', 'DVR/NVR Selector', 'Combo Estimates', 'Accessories Module', 'PDF Export'],
+    bg: '#2d1b69', accent: '#f59e0b', light: false, flip: true,
+    screenshots: [cctv1, cctv2, cctv3],
   },
 ]
 
@@ -409,7 +466,7 @@ export default function ProductsPage() {
           key={p.id}
           id={p.id}
           className={`pp-product${p.light ? ' pp-product--light' : ' pp-product--dark'}${p.flip ? ' pp-product--flip' : ''}`}
-          style={{ '--accent': p.accent } as React.CSSProperties}
+          style={{ '--accent': p.accent, background: p.bg } as React.CSSProperties}
         >
           {/* Big background number */}
           <div className="pp-bg-num">{p.num}</div>
@@ -442,9 +499,13 @@ export default function ProductsPage() {
               </button>
             </div>
 
-            {/* Mock UI side */}
+            {/* Mock UI / Screenshot side */}
             <div className="pp-mock-wrap">
-              <p.Mock />
+              {p.screenshots ? (
+                <ScreenshotSlider images={p.screenshots} light={p.light} />
+              ) : p.Mock ? (
+                <p.Mock />
+              ) : null}
             </div>
           </div>
         </section>

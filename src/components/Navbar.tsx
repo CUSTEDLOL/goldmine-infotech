@@ -4,6 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
 import './Navbar.css'
 import { useContactModal } from '../context/ContactModalContext'
+import thumbFleet    from '../../screenshots/fleet-management/img1.jpg'
+import thumbQuote    from '../../screenshots/online-quotation-software/quote1.jpg'
+import thumbMember   from '../../screenshots/member-management/img1.jpg'
+import thumbMatrimony from '../../screenshots/matrimony/img1.jpg'
+import thumbCable    from '../../screenshots/cabletv-ott-internet/img1.jpg'
+import thumbCctv     from '../../screenshots/cctv-quote/img1.jpg'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -13,6 +19,7 @@ interface NavLink {
   label: string
   href?: string
   badge?: { label: string; color: BadgeColor }
+  thumb?: string
 }
 
 interface NavColumn {
@@ -46,6 +53,7 @@ interface NavItem {
   label: string
   href?: string
   dropdown?: DropdownData
+  newBadge?: boolean
 }
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -125,7 +133,13 @@ const NAV_ITEMS: NavItem[] = [
         {
           head: 'PRODUCTS BY US',
           links: [
-            { label: 'All Our Products', href: '/products' },
+            { label: 'Transport Management',       href: '/products#transport', thumb: thumbFleet },
+            { label: 'Online Quotation Software',  href: '/products#quotation',  thumb: thumbQuote },
+            { label: 'Member Management',          href: '/products#member',    thumb: thumbMember },
+            { label: 'Matrimony & Hall Booking',   href: '/products#matrimony', thumb: thumbMatrimony },
+            { label: 'Cable TV / OTT / Internet',  href: '/products#cabletv',   thumb: thumbCable },
+            { label: 'CCTV Quotation Software',    href: '/products#cctv',      thumb: thumbCctv },
+            { label: 'All Our Products →',         href: '/products' },
           ],
         },
       ],
@@ -220,6 +234,7 @@ const NAV_ITEMS: NavItem[] = [
   },
   {
     label: 'Free Tools',
+    newBadge: true,
     dropdown: {
       featuredCard: {
         title: 'Free Business Tools →',
@@ -331,7 +346,8 @@ function Dropdown({ data }: { data: DropdownData }) {
                   {col.isList ? (
                     <span className="dd-list-item">{link.label}</span>
                   ) : link.href ? (
-                    <Link to={link.href} className="dd-link" onClick={() => {}}>
+                    <Link to={link.href} className={`dd-link${link.thumb ? ' dd-link--thumb' : ''}`} onClick={() => {}}>
+                      {link.thumb && <img src={link.thumb} className="dd-link-thumb" alt="" />}
                       <span>{link.label}</span>
                       {link.badge && <Badge label={link.badge.label} color={link.badge.color} />}
                       <span className="dd-link-arrow">→</span>
@@ -559,6 +575,7 @@ export default function Navbar() {
                     aria-expanded={isOpen}
                   >
                     {item.label}
+                    {item.newBadge && <span className="nav-new-dot" aria-label="New" />}
                     {item.dropdown && (
                       <svg
                         className={`nav-chevron${isOpen ? ' nav-chevron--up' : ''}`}

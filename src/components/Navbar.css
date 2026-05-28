@@ -987,3 +987,40 @@
     gap: 10px 8px;
   }
 }
+
+/* ─── Free Tools pulsing dot badge ───────────────────────────────────────── */
+.nav-new-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fca311;
+  margin-left: 5px;
+  margin-bottom: 6px;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 0 rgba(252, 163, 17, 0.7);
+  animation: nav-dot-pulse 2s ease-in-out infinite;
+}
+
+@keyframes nav-dot-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(252, 163, 17, 0.7); }
+  60%  { box-shadow: 0 0 0 6px rgba(252, 163, 17, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(252, 163, 17, 0); }
+}
+
+/* ─── Dropdown link with thumbnail ───────────────────────────────────────── */
+.dd-link--thumb {
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px 5px 8px;
+}
+
+.dd-link-thumb {
+  width: 42px;
+  height: 28px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 4px;
+  flex-shrink: 0;
+  border: 1px solid #e8e8e8;
+}
