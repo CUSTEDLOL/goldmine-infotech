@@ -183,7 +183,7 @@ export default function ContactModal() {
                   <iframe
                     title="Goldmine Infotech Location"
                     className="cm-map"
-                    src="https://maps.google.com/maps?q=No.21+North+Usman+Road+T.Nagar+Chennai+600017&output=embed&z=15"
+                    src="https://maps.google.com/maps?q=Goldmine+Infotech+And+Systems,+No.21,+First+Floor,+Parthasarathypuram+Extn,+N+Usman+Rd,+T.+Nagar,+Chennai,+Tamil+Nadu+600017&output=embed&z=17"
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                   />
