@@ -4,12 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
 import './Navbar.css'
 import { useContactModal } from '../context/ContactModalContext'
-import thumbFleet    from '../../screenshots/fleet-management/img1.jpg'
-import thumbQuote    from '../../screenshots/online-quotation-software/quote1.jpg'
-import thumbMember   from '../../screenshots/member-management/img1.jpg'
-import thumbMatrimony from '../../screenshots/matrimony/img1.jpg'
-import thumbCable    from '../../screenshots/cabletv-ott-internet/img1.jpg'
-import thumbCctv     from '../../screenshots/cctv-quote/img1.jpg'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -133,13 +127,7 @@ const NAV_ITEMS: NavItem[] = [
         {
           head: 'PRODUCTS BY US',
           links: [
-            { label: 'Transport Management',       href: '/products#transport', thumb: thumbFleet },
-            { label: 'Online Quotation Software',  href: '/products#quotation',  thumb: thumbQuote },
-            { label: 'Member Management',          href: '/products#member',    thumb: thumbMember },
-            { label: 'Matrimony & Hall Booking',   href: '/products#matrimony', thumb: thumbMatrimony },
-            { label: 'Cable TV / OTT / Internet',  href: '/products#cabletv',   thumb: thumbCable },
-            { label: 'CCTV Quotation Software',    href: '/products#cctv',      thumb: thumbCctv },
-            { label: 'All Our Products →',         href: '/products' },
+            { label: 'All Our Products', href: '/products' },
           ],
         },
       ],

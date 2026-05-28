@@ -21,255 +21,7 @@ import cctv1 from '../../screenshots/cctv-quote/img1.jpg'
 import cctv2 from '../../screenshots/cctv-quote/img2.jpg'
 import cctv3 from '../../screenshots/cctv-quote/img3.jpg'
 
-/* ── Mock UIs ─────────────────────────────────────────────────────────────── */
 
-function JewelleryMock() {
-  const rows = [
-    { gem: '#D4AF37', name: '22K Gold Chain 10g', weight: '10.00g', price: '₹45,000' },
-    { gem: '#C0C0C0', name: 'Silver Anklet Pair', weight: '28.50g', price: '₹8,200' },
-    { gem: '#D4AF37', name: '18K Diamond Ring', weight: '3.20g', price: '₹12,500' },
-    { gem: '#b9f2ff', name: 'Platinum Bracelet', weight: '6.80g', price: '₹3,100' },
-  ]
-  const navItems = [
-    { icon: 'M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z', label: 'Home' },
-    { icon: 'M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM1 7h4M19 7h4', label: 'POS' },
-    { icon: 'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z', label: 'Clients', active: true },
-    { icon: 'M12 20V10M18 20V4M6 20v-4', label: 'Reports' },
-    { icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z', label: 'Stock' },
-  ]
-  return (
-    <div className="mock mock--jewel">
-      <div className="mock-bar">
-        <div className="mock-dots"><span /><span /><span /></div>
-        <div className="mock-bar-title">Jewellery Suite · Billing</div>
-      </div>
-      <div className="mock-body">
-        <div className="mock-sidebar mock-sidebar--wide">
-          {navItems.map((item, i) => (
-            <div key={i} className={`mock-nav-item${item.active ? ' active' : ''}`}>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d={item.icon} />
-              </svg>
-              <span className="mock-nav-label">{item.label}</span>
-            </div>
-          ))}
-        </div>
-        <div className="mock-main">
-          <div className="mock-customer-row">
-            <div className="mock-cust-avatar">RK</div>
-            <div className="mock-cust-info">
-              <div className="mock-cust-name">Ravi Kumar</div>
-              <div className="mock-cust-sub">Walk-in · Bill #2847</div>
-            </div>
-            <div className="mock-topbar-val jewel-gold">₹68,800</div>
-          </div>
-          <div className="mock-table-head">
-            <span>Item</span><span>Wt.</span><span>Amount</span>
-          </div>
-          {rows.map((r, i) => (
-            <div key={i} className="mock-row">
-              <div className="mock-row-gem" style={{ background: r.gem }} />
-              <div className="mock-row-name">{r.name}</div>
-              <div className="mock-row-weight">{r.weight}</div>
-              <div className="mock-row-price jewel-gold">{r.price}</div>
-            </div>
-          ))}
-          <div className="mock-subtotals">
-            <div className="mock-subtotal-line"><span>Subtotal</span><span>₹68,800</span></div>
-            <div className="mock-subtotal-line gst"><span>GST (3%)</span><span>₹2,064</span></div>
-          </div>
-          <div className="mock-total">
-            <span className="mock-total-label">TOTAL</span>
-            <span className="mock-total-val jewel-gold">₹70,864</span>
-          </div>
-          <div className="mock-action-row">
-            <div className="mock-btn mock-btn--gold">Print Bill</div>
-            <div className="mock-btn mock-btn--ghost">Save Draft</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function CarRentalMock() {
-  const cars = [
-    { name: 'Honda City', plate: 'TN09 AB 1234', driver: 'Suresh M.', status: 'booked',  fuel: 78 },
-    { name: 'Swift Dzire', plate: 'TN07 CD 5678', driver: 'Rajan K.', status: 'free',   fuel: 92 },
-    { name: 'Toyota Fortuner', plate: 'TN22 EF 9012', driver: 'Muthu V.', status: 'free', fuel: 45 },
-    { name: 'Maruti Brezza', plate: 'TN04 GH 3456', driver: '—', status: 'maintenance', fuel: 30 },
-  ]
-  return (
-    <div className="mock mock--cars">
-      <div className="mock-bar mock-bar--light">
-        <div className="mock-dots dark"><span /><span /><span /></div>
-        <div className="mock-bar-title dark">Fleet Manager · Overview</div>
-        <div className="mock-bar-btn">+ New Booking</div>
-      </div>
-      <div className="mock-fleet-stats">
-        <div className="mock-fleet-tile">
-          <div className="mock-fleet-tile-val">4</div>
-          <div className="mock-fleet-tile-label">Total Fleet</div>
-        </div>
-        <div className="mock-fleet-tile active">
-          <div className="mock-fleet-tile-val">1</div>
-          <div className="mock-fleet-tile-label">On Trip</div>
-        </div>
-        <div className="mock-fleet-tile avail">
-          <div className="mock-fleet-tile-val">2</div>
-          <div className="mock-fleet-tile-label">Available</div>
-        </div>
-      </div>
-      <div className="mock-cars-header">
-        <span>Vehicle</span><span>Driver</span><span>Status</span><span>Fuel</span>
-      </div>
-      <div className="mock-cars-list">
-        {cars.map((c, i) => (
-          <div key={i} className="mock-car-row">
-            <div className="mock-car-icon-svg">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 17H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h13l4 4v4a2 2 0 0 1-2 2h-1"/>
-                <circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>
-              </svg>
-            </div>
-            <div className="mock-car-info">
-              <div className="mock-car-name">{c.name}</div>
-              <div className="mock-car-plate">{c.plate}</div>
-            </div>
-            <div className="mock-car-driver">{c.driver}</div>
-            <div className={`mock-car-status mock-car-status--${c.status}`}>
-              {c.status === 'booked' ? 'On Trip' : c.status === 'free' ? 'Available' : 'Service'}
-            </div>
-            <div className="mock-fuel-wrap">
-              <div className="mock-fuel-bar">
-                <div className="mock-fuel-fill" style={{ width: `${c.fuel}%`, background: c.fuel > 60 ? '#22c55e' : c.fuel > 30 ? '#f59e0b' : '#ef4444' }} />
-              </div>
-              <span className="mock-fuel-val">{c.fuel}%</span>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="mock-cars-footer">
-        <div className="mock-stat-chip">4 Vehicles</div>
-        <div className="mock-stat-chip booked">1 Booked</div>
-        <div className="mock-stat-chip free">2 Available</div>
-      </div>
-    </div>
-  )
-}
-
-function PhotographerMock() {
-  const photos = [
-    { color: '#2d1b69', label: 'Wedding' },
-    { color: '#1a0533', label: 'Portrait' },
-    { color: '#3b0764', label: 'Nature' },
-    { color: '#4c1d95', label: 'Events' },
-    { color: '#1e1b4b', label: 'Studio' },
-    { color: '#312e81', label: 'Street' },
-  ]
-  return (
-    <div className="mock mock--photo">
-      <div className="mock-bar mock-bar--photo">
-        <div className="mock-dots"><span /><span /><span /></div>
-        <div className="mock-photo-tabs">
-          <span className="active">Portfolio</span>
-          <span>Bookings</span>
-          <span>Community</span>
-        </div>
-      </div>
-      <div className="mock-photo-profile">
-        <div className="mock-avatar" />
-        <div className="mock-photo-profile-info">
-          <div className="mock-profile-name">Arjun Visuals</div>
-          <div className="mock-profile-handle">@arjunvisuals · Chennai</div>
-        </div>
-        <div className="mock-photo-stats">
-          <div className="mock-pstat"><strong>142</strong><span>shoots</span></div>
-          <div className="mock-pstat"><strong>2.4k</strong><span>followers</span></div>
-          <div className="mock-pstat"><strong>98%</strong><span>rating</span></div>
-        </div>
-      </div>
-      <div className="mock-photo-grid">
-        {photos.map((p, i) => (
-          <div key={i} className="mock-photo-tile" style={{ background: p.color }}>
-            <div className="mock-photo-overlay" />
-            <div className="mock-photo-tile-label">{p.label}</div>
-          </div>
-        ))}
-      </div>
-      <div className="mock-photo-footer">
-        <div className="mock-photo-action">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          234
-        </div>
-        <div className="mock-photo-action">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-          Share
-        </div>
-        <div className="mock-photo-action purple">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          Book Session
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function DesignsMock() {
-  const tiles = [
-    { label: 'Logo Pack', type: 'SVG', size: '2.4 MB', color: '#d1fae5', typeColor: '#065f46', ext: 'SVG' },
-    { label: 'UI Kit', type: 'Figma', size: '18 MB', color: '#dbeafe', typeColor: '#1e40af', ext: 'FIG' },
-    { label: 'Icon Set', type: 'PNG', size: '890 KB', color: '#fef3c7', typeColor: '#92400e', ext: 'PNG' },
-    { label: 'Banners', type: 'PSD', size: '5.1 MB', color: '#ede9fe', typeColor: '#5b21b6', ext: 'PSD' },
-    { label: 'Social Kit', type: 'SVG', size: '1.2 MB', color: '#fee2e2', typeColor: '#991b1b', ext: 'SVG' },
-    { label: 'Templates', type: 'AI', size: '9.8 MB', color: '#d1fae5', typeColor: '#065f46', ext: 'AI' },
-  ]
-  const categories = ['All', 'Logos', 'UI Kits', 'Icons', 'Print', 'Social']
-  return (
-    <div className="mock mock--designs">
-      <div className="mock-bar mock-bar--light">
-        <div className="mock-dots dark"><span /><span /><span /></div>
-        <div className="mock-bar-title dark">Design Assets · Library</div>
-      </div>
-      <div className="mock-designs-search">
-        <div className="mock-search-real">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.35)" strokeWidth="2.5" strokeLinecap="round">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
-          <span>Search assets…</span>
-        </div>
-        <div className="mock-filter-pill">Type ▾</div>
-      </div>
-      <div className="mock-category-tags">
-        {categories.map((cat, i) => (
-          <div key={i} className={`mock-cat-tag${i === 0 ? ' active' : ''}`}>{cat}</div>
-        ))}
-      </div>
-      <div className="mock-designs-grid">
-        {tiles.map((t, i) => (
-          <div key={i} className="mock-asset-tile" style={{ background: t.color }}>
-            <div className="mock-asset-preview">
-              <div className="mock-asset-ext-badge" style={{ color: t.typeColor, background: `${t.typeColor}18` }}>{t.ext}</div>
-            </div>
-            <div className="mock-asset-info">
-              <span className="mock-asset-name">{t.label}</span>
-              <span className="mock-asset-meta">{t.size}</span>
-            </div>
-            <div className="mock-asset-dl">
-              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-              </svg>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="mock-designs-footer">
-        <span className="mock-designs-count">48 assets · 3 selected</span>
-        <div className="mock-designs-btn">Download Selected</div>
-      </div>
-    </div>
-  )
-}
 
 /* ── Screenshot Slider ─────────────────────────────────────────────────────── */
 
@@ -319,32 +71,6 @@ type Product = {
 const PRODUCTS: Product[] = [
   {
     num: '01',
-    id: 'jewellery',
-    name: 'Jewellery Business Suite',
-    tagline: 'POS, billing & inventory for jewellers',
-    desc: 'A complete management platform built for jewellery retailers. Track stock by weight and purity, sync live gold rates, generate GST bills, manage customer ledgers, and print hallmark certificates — all from one screen.',
-    features: ['POS Billing', 'Gold Rate Sync', 'Stock by Weight', 'Customer Ledger', 'Hallmark Tracking', 'GST Reports'],
-    bg: '#0a0a0a',
-    accent: '#D4AF37',
-    light: false,
-    flip: false,
-    Mock: JewelleryMock,
-  },
-  {
-    num: '02',
-    id: 'carrental',
-    name: 'Car Rental Software',
-    tagline: 'Fleet management & bookings, simplified',
-    desc: 'End-to-end fleet management for rental businesses. Track every vehicle in real time, manage driver assignments, handle bookings with a calendar view, generate invoices, and log maintenance schedules automatically.',
-    features: ['Fleet Tracking', 'Booking Calendar', 'Driver Management', 'Billing & GST', 'Fuel Log', 'Maintenance Alerts'],
-    bg: '#f5f5f5',
-    accent: '#0f172a',
-    light: true,
-    flip: true,
-    Mock: CarRentalMock,
-  },
-  {
-    num: '03',
     id: 'quotation',
     name: 'Quotation Software',
     tagline: 'Professional quotes. Sent in minutes.',
@@ -357,33 +83,7 @@ const PRODUCTS: Product[] = [
     screenshots: [quote1, quote2, quote3],
   },
   {
-    num: '04',
-    id: 'photographers',
-    name: 'Photographers Community Portal',
-    tagline: 'Portfolio, bookings & community — one home',
-    desc: 'Built for professional photographers. Showcase your work with a curated portfolio, accept client bookings, share galleries with download controls, connect with the community, and generate invoices automatically.',
-    features: ['Portfolio Builder', 'Client Booking', 'Gallery Sharing', 'Download Control', 'Community Feed', 'Auto Invoice'],
-    bg: '#0c0c0c',
-    accent: '#a855f7',
-    light: false,
-    flip: true,
-    Mock: PhotographerMock,
-  },
-  {
-    num: '05',
-    id: 'designs',
-    name: 'Designs Stock Software',
-    tagline: 'Your design asset library, organised',
-    desc: 'A central hub for storing, tagging, and distributing digital design assets. Upload logos, templates, icons, and UI kits. Control licensing, manage team access, track downloads, and search across everything instantly.',
-    features: ['Asset Library', 'Category Tags', 'Search & Filter', 'License Control', 'Team Access', 'Download History'],
-    bg: '#fafafa',
-    accent: '#10b981',
-    light: true,
-    flip: false,
-    Mock: DesignsMock,
-  },
-  {
-    num: '06', id: 'transport',
+    num: '02', id: 'transport',
     name: 'Transport Management System',
     tagline: 'Freight, logistics & billing under one roof',
     desc: 'Built for importers, exporters, and logistics companies. Track job cards, manage container movement, generate freight invoices, handle vendor bills, and produce GST-compliant tax invoices — all from a single dashboard.',
@@ -392,7 +92,7 @@ const PRODUCTS: Product[] = [
     screenshots: [fleet1, fleet2, fleet3],
   },
   {
-    num: '07', id: 'member',
+    num: '03', id: 'member',
     name: 'Member Management System',
     tagline: 'Memberships, receipts & renewals — organised',
     desc: 'Designed for clubs, associations, and societies. Manage 1000s of member profiles, track active and lapsed subscriptions, collect dues, generate e-receipts, monitor income & expenses, and send bulk WhatsApp messages.',
@@ -401,7 +101,7 @@ const PRODUCTS: Product[] = [
     screenshots: [member1, member2, member3],
   },
   {
-    num: '08', id: 'matrimony',
+    num: '04', id: 'matrimony',
     name: 'Matrimony & Hall Booking',
     tagline: 'Profiles, bookings & bilingual receipts',
     desc: 'A complete system for community associations managing matrimony services and venue bookings. Maintain active and inactive profiles, handle hall bookings with a calendar, collect payments, and print receipts in English and Tamil.',
@@ -410,7 +110,7 @@ const PRODUCTS: Product[] = [
     screenshots: [matrimony1, matrimony2, matrimony3],
   },
   {
-    num: '09', id: 'cabletv',
+    num: '05', id: 'cabletv',
     name: 'Cable TV / Internet / OTT Billing',
     tagline: 'Multi-service billing for MSOs and ISPs',
     desc: 'A unified platform for cable TV operators, ISPs, and OTT resellers. Manage BSNL, Cable TV, Internet, and OTT subscriptions together. Handle complaints, top up partner wallets, track unpaid customers, and accept payments via Razorpay.',
@@ -419,7 +119,7 @@ const PRODUCTS: Product[] = [
     screenshots: [cable1, cable2, cable3],
   },
   {
-    num: '10', id: 'cctv',
+    num: '06', id: 'cctv',
     name: 'CCTV Quotation Software',
     tagline: 'Instant estimates by brand, camera & accessories',
     desc: 'Built for CCTV installers and security dealers. Choose from Hikvision, Dahua, CP Plus, or Shingo. Select HD or IP cameras, DVRs, hard disks, cabling, and accessories. Generate a branded, itemised estimate PDF in seconds.',
