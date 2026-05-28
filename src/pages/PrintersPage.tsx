@@ -296,7 +296,7 @@ export default function PrintersPage() {
       <section className="prt-why">
         <div className="prt-why-inner">
           <div className="prt-why-header">
-            <h2 className="prt-why-title">Why buy from Goldmine Infotech?</h2>
+            <h2 className="prt-why-title">Why Buy From Us?</h2>
             <p className="prt-why-sub">Chennai's trusted electronics dealer since day one.</p>
           </div>
 

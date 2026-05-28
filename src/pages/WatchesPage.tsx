@@ -277,7 +277,7 @@ export default function WatchesPage() {
       <section className="wtc-why">
         <div className="wtc-why-inner">
           <div className="wtc-why-header">
-            <h2 className="wtc-why-title">Why buy from Goldmine Infotech?</h2>
+            <h2 className="wtc-why-title">Why Buy From Us?</h2>
             <p className="wtc-why-sub">Chennai's trusted electronics dealer since day one.</p>
           </div>
 

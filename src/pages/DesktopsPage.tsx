@@ -354,7 +354,7 @@ export default function DesktopsPage() {
       <section className="dsk-why">
         <div className="dsk-why-inner">
           <div className="dsk-why-header">
-            <h2 className="dsk-why-title">Why Goldmine Infotech?</h2>
+            <h2 className="dsk-why-title">Why Buy From Us?</h2>
             <p className="dsk-why-sub">
               The trusted desktop supplier for Chennai homes, offices, and schools.
             </p>

@@ -304,7 +304,7 @@ export default function TelevisionsPage() {
       <section className="tvs-why">
         <div className="tvs-why-inner">
           <div className="tvs-why-header">
-            <h2 className="tvs-why-title">Why buy from Goldmine Infotech?</h2>
+            <h2 className="tvs-why-title">Why Buy From Us?</h2>
             <p className="tvs-why-sub">Chennai's trusted electronics dealer since day one.</p>
           </div>
 

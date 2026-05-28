@@ -296,7 +296,7 @@ export default function SmartwatchesPage() {
       <section className="sw-why">
         <div className="sw-why-inner">
           <div className="sw-why-header">
-            <h2 className="sw-why-title">Why buy from Goldmine Infotech?</h2>
+            <h2 className="sw-why-title">Why Buy From Us?</h2>
             <p className="sw-why-sub">Chennai's trusted electronics dealer since day one.</p>
           </div>
 

@@ -72,7 +72,7 @@ export default function Footer() {
             <ul className="footer-links footer-links--contact">
               <li><a href="mailto:contact@gischennai.com">contact@gischennai.com</a></li>
               <li><a href="tel:+919500036310">+91 9500036310</a></li>
-              <li><a href="https://razorpay.com" target="_blank" rel="noopener noreferrer">Pay Online (Razorpay)</a></li>
+              <li><a href="https://www.goldmineinfotech.com/payonline" target="_blank" rel="noopener noreferrer">Pay Online (Razorpay)</a></li>
               <li className="footer-address">
                 No.21, North Usman Road<br />
                 T.Nagar, Chennai – 600 017

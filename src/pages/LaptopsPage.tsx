@@ -316,7 +316,7 @@ export default function LaptopsPage() {
       <section className="lap-why">
         <div className="lap-why-inner">
           <div className="lap-why-header">
-            <h2 className="lap-why-title">Why buy from Goldmine Infotech?</h2>
+            <h2 className="lap-why-title">Why Buy From Us?</h2>
             <p className="lap-why-sub">Chennai's trusted electronics dealer since day one.</p>
           </div>
 

@@ -296,7 +296,7 @@ export default function MobilesPage() {
       <section className="mob-why">
         <div className="mob-why-inner">
           <div className="mob-why-header">
-            <h2 className="mob-why-title">Why buy from Goldmine Infotech?</h2>
+            <h2 className="mob-why-title">Why Buy From Us?</h2>
             <p className="mob-why-sub">Chennai's trusted electronics dealer since day one.</p>
           </div>
 
