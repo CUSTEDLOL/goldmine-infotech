@@ -45,6 +45,12 @@ const TOOLS = [
     example: 'e.g. scan documents, combine photos',
     to: '/tools/image-to-pdf',
   },
+  {
+    name: 'Estimate Generator',
+    desc: 'Create professional estimates and quotes with itemised costs. Download as PDF instantly.',
+    example: 'e.g. project quotes, service estimates',
+    to: '/tools/estimate',
+  },
 ]
 
 export default function FreeToolsPage() {
