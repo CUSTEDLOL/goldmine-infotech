@@ -178,6 +178,16 @@ export default function ContactModal() {
                 </div>
 
                 <p className="cm-response-note">Typically responds within 2 hours</p>
+
+                <div className="cm-map-wrap">
+                  <iframe
+                    title="Goldmine Infotech Location"
+                    className="cm-map"
+                    src="https://maps.google.com/maps?q=No.21+North+Usman+Road+T.Nagar+Chennai+600017&output=embed&z=15"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
               </div>
             </div>
 

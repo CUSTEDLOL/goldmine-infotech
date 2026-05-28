@@ -75,7 +75,17 @@ export default function Footer() {
               <li><a href="https://www.goldmineinfotech.com/payonline" target="_blank" rel="noopener noreferrer">Pay Online (Razorpay)</a></li>
               <li className="footer-address">
                 No.21, North Usman Road<br />
-                T.Nagar, Chennai – 600 017
+                T.Nagar, Chennai – 600 017<br />
+                <span className="footer-gst">GST: 33ABEFG4421E1ZY</span>
+              </li>
+              <li className="footer-map-wrap">
+                <iframe
+                  title="Goldmine Infotech Location"
+                  className="footer-map"
+                  src="https://maps.google.com/maps?q=No.21+North+Usman+Road+T.Nagar+Chennai+600017&output=embed&z=15"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </li>
             </ul>
           </div>
