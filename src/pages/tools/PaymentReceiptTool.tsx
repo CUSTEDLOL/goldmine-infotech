@@ -128,7 +128,7 @@ export default function PaymentReceiptTool() {
     doc.setFontSize(32)
     doc.setFont('helvetica', 'bold')
     doc.setTextColor(10, 10, 10)
-    doc.text(`₹ ${displayAmount}`, centerX, y, { align: 'center' })
+    doc.text(`Rs. ${displayAmount}`, centerX, y, { align: 'center' })
 
     y += 8
     doc.setFontSize(10)

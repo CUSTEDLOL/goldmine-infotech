@@ -38,6 +38,20 @@ export default function SoftwareOverview() {
       {/* ── Platform Features ── */}
       <PlatformFeatures />
 
+      {/* ── All Products CTA ── */}
+      <section className="swo-products-cta">
+        <div className="swo-products-cta-inner">
+          <p className="swo-products-cta-label">See it in action</p>
+          <h2 className="swo-products-cta-title">All Our Products</h2>
+          <p className="swo-products-cta-sub">
+            Live screenshots, feature lists, and demos — every product we've built for real clients.
+          </p>
+          <Link to="/products" className="swo-products-cta-btn">
+            View All Products →
+          </Link>
+        </div>
+      </section>
+
       {/* ── Software Navigation ── */}
       <section className="swo-nav-section">
         <div className="swo-nav-inner">

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useContactModal } from '../context/ContactModalContext'
 import './ProductsPage.css'
 
@@ -27,8 +27,23 @@ import cctv3 from '../../screenshots/cctv-quote/img3.jpg'
 
 function ScreenshotSlider({ images, light }: { images: string[], light: boolean }) {
   const [idx, setIdx] = useState(0)
-  const prev = () => setIdx(i => (i - 1 + images.length) % images.length)
-  const next = () => setIdx(i => (i + 1) % images.length)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  function resetTimer() {
+    if (timerRef.current) clearInterval(timerRef.current)
+    timerRef.current = setInterval(() => {
+      setIdx(i => (i + 1) % images.length)
+    }, 3000)
+  }
+
+  useEffect(() => {
+    resetTimer()
+    return () => { if (timerRef.current) clearInterval(timerRef.current) }
+  }, [images.length])
+
+  const prev = () => { setIdx(i => (i - 1 + images.length) % images.length); resetTimer() }
+  const next = () => { setIdx(i => (i + 1) % images.length); resetTimer() }
+
   return (
     <div className="pp-slider">
       <div className="pp-slider-frame">
@@ -41,7 +56,7 @@ function ScreenshotSlider({ images, light }: { images: string[], light: boolean 
           <button
             key={i}
             className={`pp-slider-dot${i === idx ? ' pp-slider-dot--active' : ''}`}
-            onClick={() => setIdx(i)}
+            onClick={() => { setIdx(i); resetTimer() }}
             aria-label={`Go to ${i + 1}`}
             style={i === idx ? { background: '#fca311' } : { background: light ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.25)' }}
           />

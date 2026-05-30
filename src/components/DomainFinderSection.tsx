@@ -16,23 +16,21 @@ const ALL_TLDS = [
   '.com.in', '.net.in', '.org.in', '.info', '.io', '.tech', '.app',
 ]
 
-const DEFAULT_TLDS = ['.com', '.in', '.co.in', '.net', '.org']
-
-// ─── DNS-over-HTTPS availability check ───────────────────────────────────────
+// ─── Domain availability check via Cloudflare DNS-over-HTTPS (SOA lookup) ────
+// API: https://cloudflare-dns.com/dns-query?name=<domain>&type=SOA
 
 async function checkDomain(domain: string): Promise<DomainStatus> {
   try {
     const res = await fetch(
-      `https://dns.google/resolve?name=${encodeURIComponent(domain)}&type=A`,
-      { signal: AbortSignal.timeout(6000) }
+      `https://cloudflare-dns.com/dns-query?name=${encodeURIComponent(domain)}&type=SOA`,
+      {
+        headers: { Accept: 'application/dns-json' },
+        signal: AbortSignal.timeout(6000),
+      }
     )
     if (!res.ok) return 'unknown'
     const data = await res.json()
-    // NXDOMAIN (Status 3) = domain does not exist = Available
     if (data.Status === 3) return 'available'
-    // Status 0 with answers = domain resolves = Registered
-    if (data.Status === 0 && data.Answer && data.Answer.length > 0) return 'registered'
-    // Status 0 with no Answer: domain is registered (has SOA/NS) but no A record
     if (data.Status === 0) return 'registered'
     return 'unknown'
   } catch {
@@ -88,7 +86,7 @@ function ResultRow({ result }: { result: DomainResult }) {
 
 export default function DomainFinderSection() {
   const [domainInput, setDomainInput]   = useState('')
-  const [selectedTLDs, setSelectedTLDs] = useState<string[]>(DEFAULT_TLDS)
+  const [selectedTLDs, setSelectedTLDs] = useState<string[]>(ALL_TLDS)
   const [results, setResults]           = useState<DomainResult[]>([])
   const [isSearching, setIsSearching]   = useState(false)
   const [hasSearched, setHasSearched]   = useState(false)

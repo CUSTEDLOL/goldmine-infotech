@@ -119,9 +119,12 @@
   font-size: 11px;
   font-weight: 700;
   color: #555;
-  letter-spacing: 0.1em;
   text-transform: uppercase;
   white-space: nowrap;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  letter-spacing: 0.02em;
 }
 
 .navbar--scrolled .nav-logo-img            { height: 36px; }
@@ -788,16 +791,47 @@
   margin-top: auto;
 }
 
-.mob-phone {
-  font-size: 14px;
-  font-weight: 600;
-  color: #2f8f73;
-  text-decoration: none;
-  text-align: center;
-  letter-spacing: 0.02em;
+.mob-contact-btns {
+  display: flex;
+  gap: 10px;
 }
 
-.mob-phone:hover { color: #256f5a; }
+.mob-call-btn,
+.mob-whatsapp-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.mob-call-btn {
+  background: #eef7f4;
+  color: #2f8f73;
+  border: 1.5px solid #c5e5dc;
+}
+
+.mob-call-btn:hover {
+  background: #d9f0e8;
+  transform: translateY(-1px);
+}
+
+.mob-whatsapp-btn {
+  background: #e8f5e9;
+  color: #25a244;
+  border: 1.5px solid #b9dfbc;
+}
+
+.mob-whatsapp-btn:hover {
+  background: #d4edda;
+  transform: translateY(-1px);
+}
 
 .mob-cta-btn {
   display: block;

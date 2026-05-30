@@ -38,6 +38,7 @@ import ENACHIntegration from './pages/ENACHIntegration'
 // Overview pages
 import ServicesPage from './pages/ServicesPage'
 import FreeToolsPage from './pages/FreeToolsPage'
+import AboutPage from './pages/AboutPage'
 import SoftwareOverview from './pages/SoftwareOverview'
 import ElectronicsPage from './pages/ElectronicsPage'
 import SecurityPage from './pages/SecurityPage'
@@ -128,6 +129,7 @@ export default function App() {
         {/* Overview pages */}
         <Route path="/services"    element={<ServicesPage />} />
         <Route path="/tools"       element={<FreeToolsPage />} />
+        <Route path="/about"       element={<AboutPage />} />
         <Route path="/software"    element={<SoftwareOverview />} />
         <Route path="/electronics" element={<ElectronicsPage />} />
         <Route path="/security"    element={<SecurityPage />} />
